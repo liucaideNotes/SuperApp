@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ABA4723C1D9E6E4E0087A115"
+               BlueprintIdentifier = "AB96F0DB1DA88EB7001D8EEE"
                BuildableName = "SuperApp.app"
                BlueprintName = "SuperApp"
                ReferencedContainer = "container:SuperApp.xcodeproj">
@@ -28,11 +28,31 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AB96F0EF1DA88EB8001D8EEE"
+               BuildableName = "SuperAppTests.xctest"
+               BlueprintName = "SuperAppTests"
+               ReferencedContainer = "container:SuperApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AB96F0FA1DA88EB8001D8EEE"
+               BuildableName = "SuperAppUITests.xctest"
+               BlueprintName = "SuperAppUITests"
+               ReferencedContainer = "container:SuperApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABA4723C1D9E6E4E0087A115"
+            BlueprintIdentifier = "AB96F0DB1DA88EB7001D8EEE"
             BuildableName = "SuperApp.app"
             BlueprintName = "SuperApp"
             ReferencedContainer = "container:SuperApp.xcodeproj">
@@ -55,12 +75,19 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABA4723C1D9E6E4E0087A115"
+            BlueprintIdentifier = "AB96F0DB1DA88EB7001D8EEE"
             BuildableName = "SuperApp.app"
             BlueprintName = "SuperApp"
             ReferencedContainer = "container:SuperApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -74,7 +101,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABA4723C1D9E6E4E0087A115"
+            BlueprintIdentifier = "AB96F0DB1DA88EB7001D8EEE"
             BuildableName = "SuperApp.app"
             BlueprintName = "SuperApp"
             ReferencedContainer = "container:SuperApp.xcodeproj">

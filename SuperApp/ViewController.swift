@@ -2,18 +2,153 @@
 //  ViewController.swift
 //  SuperApp
 //
-//  Created by 刘才德 on 2016/9/30.
-//  Copyright © 2016年 sifenzi_Home. All rights reserved.
+//  Created by LCD-sifenzi on 2016/10/8.
+//  Copyright © 2016年 Friends-Home. All rights reserved.
 //
 
 import UIKit
+// -- 图片名称
+private let launch_Images = ["firstOpen_0","firstOpen_1","firstOpen_2"]
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
+    var sp_firstOpenBlock: ((_ isOk:Bool) -> Void)?
+    
+    
+    //MARK:---------- 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // --- collectionView
+        self.view.addSubview(collectionView)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "LaunchCell")
+        // --- 分页圆点
+        self.view.addSubview(scrollPageControl)
     }
+    //MARK:---------- 设置collectionView
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collecView =  UICollectionView(frame:self.view.bounds, collectionViewLayout: layout)
+        collecView.backgroundColor = .clear
+        collecView.dataSource  = self
+        collecView.delegate = self
+        collecView.showsVerticalScrollIndicator   = false
+        collecView.showsHorizontalScrollIndicator = false
+        collecView.isPagingEnabled = true //分页显示
+        collecView.bounces = false
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: SP_ScreenWidth, height: SP_ScreenHeight)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        return collecView
+    }()
+    //MARK:---------- 设置分页圆点
+    private lazy var  scrollPageControl: UIPageControl = {
+        let pageControl = UIPageControl(frame: CGRect(x:10, y:SP_ScreenHeight - 20, width:SP_ScreenWidth - 20, height:20))
+        pageControl.numberOfPages = launch_Images.count // 页数
+        //圆点颜色
+        pageControl.pageIndicatorTintColor = .white
+        pageControl.currentPageIndicatorTintColor = .orange
+        pageControl.isEnabled = false
+        return pageControl
+    }()
+    
+    //MARK:---------- 改变分页圆点
+    private func changePageValue(index:Int) {
+        scrollPageControl.currentPage = index % launch_Images.count
+    }
+    //MARK:---------- 立即体验按钮
+    private lazy var startButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 4.0
+        button.clipsToBounds = true
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1.0
+        button.setTitle("立即体验", for: .normal)
+        button.addTarget(self, action: #selector(ViewController.experienceClick), for: .touchUpInside)
+        return button
+    }()
+    //MARK:---------- 立即体验按钮动画
+    private func startButtonAnimation() {
+        startButton.isHidden = false
+        // 把按钮的 transform 缩放设置为0
+        startButton.transform = CGAffineTransform(scaleX: 0, y: 0)
+        UIView.animate(withDuration: 1, delay: 0.1, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions(rawValue: 0), animations: { () -> Void in
+            self.startButton.transform = .identity
+        }) { (_) -> Void in
+            
+        }
+    }
+    //MARK:---------- 立即体验按钮点击
+    func experienceClick() {
+        sp_firstOpenBlock?(true)
+        
+    }
+    
+    //MARK:---------- UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return launch_Images.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LaunchCell", for: indexPath)
+        for item in cell.subviews {
+            item.removeFromSuperview()
+        }
+        
+        let imageView = UIImageView(frame: cell.bounds)
+        imageView.image = UIImage(named: launch_Images[indexPath.row])
+        cell.addSubview(imageView)
+        
+        
+        if indexPath.row == launch_Images.count - 1 {
+            //startButton.isHidden = true
+            cell.addSubview(startButton)
+            startButton.translatesAutoresizingMaskIntoConstraints = false
+            startButton.snp.makeConstraints({ (make) in
+                make.centerX.equalTo(cell)
+                make.width.equalTo(100)
+                make.bottom.equalTo(-40)
+            })
+
+        }
+        return cell
+        
+    }
+    
+    // collectionView分页滚动完毕时候调用
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        // 正在显示的cell的indexPath
+        let showIndexPath = collectionView.indexPathsForVisibleItems.first!
+        
+        self.changePageValue(index: showIndexPath.item)
+        
+        // 最后一页动画
+        startButton.isHidden = true
+        if showIndexPath.item == launch_Images.count - 1 {
+            // 开始按钮动画
+            startButtonAnimation()
+        }
+        
+    }
+    // MARK: - 惯性滑动结束 - 效果是一样的
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        // 将collectionView在控制器view的中心点转化成collectionView上的坐标
+//        let pInView = self.view.convert(self.collectionView.center, to: self.collectionView)
+//        // 获取这一点的indexPath
+//        let indexPathNow = self.collectionView.indexPathForItem(at: pInView)
+//        // 赋值给记录当前坐标的变量
+//        
+//        // 更新数据
+//        self.changePageValue(index: (indexPathNow?.item)!)
+//        // 最后一页动画
+//        startButton.isHidden = true
+//        if indexPathNow?.item == launch_Images.count - 1 {
+//            // 开始按钮动画
+//            startButtonAnimation()
+//        }
+//    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

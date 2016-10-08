@@ -19,31 +19,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="超级App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B12-U6-Aq8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="WdF-Dv-ybP"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SuperApp@Friends-Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tW-Eh-JSt">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="318" id="45O-WL-D1t"/>
-                                    <constraint firstAttribute="height" constant="108" id="UhK-kF-fUx"/>
+                                    <constraint firstAttribute="height" constant="21" id="LZo-Ai-rck"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="四分子工作室出品" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unx-M4-HrS">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="2HQ-JN-4M4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="unx-M4-HrS" secondAttribute="trailing" constant="22" id="4Vf-bm-b8j"/>
-                            <constraint firstItem="unx-M4-HrS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="23" id="E4L-7d-rFq"/>
-                            <constraint firstItem="B12-U6-Aq8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="RTA-Xz-TO2"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="unx-M4-HrS" secondAttribute="bottom" constant="8" id="mvd-X9-Ool"/>
-                            <constraint firstItem="B12-U6-Aq8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zJd-7j-vpa"/>
+                            <constraint firstItem="3tW-Eh-JSt" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="7Mr-eS-JPc"/>
+                            <constraint firstItem="WdF-Dv-ybP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Bjx-fY-L4f"/>
+                            <constraint firstItem="3tW-Eh-JSt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="FBe-Vh-o5L"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="WdF-Dv-ybP" secondAttribute="bottom" id="aGY-t9-D8c"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="3tW-Eh-JSt" secondAttribute="bottom" constant="8" id="lYa-Gs-bb8"/>
+                            <constraint firstAttribute="trailing" secondItem="WdF-Dv-ybP" secondAttribute="trailing" id="rIE-BV-idn"/>
+                            <constraint firstItem="WdF-Dv-ybP" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="vqZ-ma-p0J"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -52,4 +46,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launchScreen" width="375" height="667"/>
+    </resources>
 </document>
