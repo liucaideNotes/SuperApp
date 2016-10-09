@@ -9,25 +9,6 @@
 import Foundation
 import UIKit
 
-//private var isNewVersio: Bool {
-//get {
-//    // 获取当前的版本号
-//    let versionString = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-//    print(versionString)
-//    
-//    let currentVersion = versionString
-//    
-//    // 获取到之前的版本号
-//    let sandboxVersionKey = "sandboxVersionKey"
-//    let sandboxVersion: String = SP_UserDefaultsGet(key:sandboxVersionKey) as! String
-//    
-//    // 保存当前版本号
-//    SP_UserDefaultsSet(key:sandboxVersionKey, obj:currentVersion as AnyObject)
-//    SP_UserDefaultsSyn()
-//    // 对比
-//    return currentVersion > sandboxVersion
-//}
-//}
 extension AppDelegate {
     //MARK:----------- 状态栏全局样式
     func setupGlobalStyle() {

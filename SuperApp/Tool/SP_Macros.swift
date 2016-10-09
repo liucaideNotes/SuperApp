@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import SnapKit
+//import SnapKit
 
 //全局设置 简化 NSUserDefaults 的写法
 //MARK:----------- 基本数据

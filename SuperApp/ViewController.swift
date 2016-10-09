@@ -102,12 +102,23 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         if indexPath.row == launch_Images.count - 1 {
             //startButton.isHidden = true
             cell.addSubview(startButton)
+            // 关闭autoresizing 不关闭否则程序崩溃
             startButton.translatesAutoresizingMaskIntoConstraints = false
-            startButton.snp.makeConstraints({ (make) in
-                make.centerX.equalTo(cell)
-                make.width.equalTo(100)
-                make.bottom.equalTo(-40)
-            })
+            //宽度约束
+            let width:NSLayoutConstraint = NSLayoutConstraint(item: startButton, attribute: .width, relatedBy:.equal, toItem:nil, attribute: .notAnAttribute, multiplier:0.0, constant:100)
+            startButton.addConstraint(width)//自己添加约束
+            //底部约束
+            let bottom:NSLayoutConstraint = NSLayoutConstraint(item: startButton, attribute: .bottom, relatedBy:.equal, toItem:cell, attribute:.bottom, multiplier:1.0, constant: -40)
+            startButton.superview!.addConstraint(bottom)//父控件添加约束
+            //中线约束
+            let centerX:NSLayoutConstraint = NSLayoutConstraint(item: startButton, attribute: .centerX, relatedBy:.equal, toItem:cell, attribute:.centerX, multiplier:1.0, constant: 0)
+            startButton.superview!.addConstraint(centerX)//父控件添加约束
+//            使用 SnapKit 第三方添加约束
+//            startButton.snp.makeConstraints({ (make) in
+//                make.centerX.equalTo(cell)
+//                make.width.equalTo(100)
+//                make.bottom.equalTo(-40)
+//            })
 
         }
         return cell
@@ -119,9 +130,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         // 正在显示的cell的indexPath
         let showIndexPath = collectionView.indexPathsForVisibleItems.first!
-        
+        // 更新分页圆点
         self.changePageValue(index: showIndexPath.item)
-        
         // 最后一页动画
         startButton.isHidden = true
         if showIndexPath.item == launch_Images.count - 1 {
@@ -138,7 +148,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 //        let indexPathNow = self.collectionView.indexPathForItem(at: pInView)
 //        // 赋值给记录当前坐标的变量
 //        
-//        // 更新数据
+//        // 更新分页圆点
 //        self.changePageValue(index: (indexPathNow?.item)!)
 //        // 最后一页动画
 //        startButton.isHidden = true

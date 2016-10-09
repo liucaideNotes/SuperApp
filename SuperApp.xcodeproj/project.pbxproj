@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB21FE4F1DA9E0EF00DE363C /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB21FE4E1DA9E0EF00DE363C /* SnapKit.framework */; };
 		AB63A1C41DA88F7D00BC7C64 /* SP_Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */; };
 		AB63A1C71DA890AD00BC7C64 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */; };
 		AB96F0E01DA88EB7001D8EEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96F0DF1DA88EB7001D8EEE /* AppDelegate.swift */; };
@@ -72,7 +71,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AB21FE4E1DA9E0EF00DE363C /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Macros.swift; sourceTree = "<group>"; };
 		AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AppDelegate+Extension.swift"; path = "SuperApp/AppDelegate+Extension.swift"; sourceTree = "<group>"; };
 		AB96F0DC1DA88EB7001D8EEE /* SuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD9EB891DA8C399004DAB58 /* jpush-ios-2.1.8.a in Frameworks */,
-				AB21FE4F1DA9E0EF00DE363C /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +265,6 @@
 		ABD9EA5A1DA8C1BF004DAB58 /* Third_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				AB21FE4E1DA9E0EF00DE363C /* SnapKit.framework */,
 				ABD9EB581DA8C399004DAB58 /* JPush */,
 				ABD9EB5C1DA8C399004DAB58 /* MJRefresh */,
 			);
@@ -683,6 +679,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SuperApp/Third_SDK",
@@ -707,6 +704,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SuperApp/Third_SDK",
