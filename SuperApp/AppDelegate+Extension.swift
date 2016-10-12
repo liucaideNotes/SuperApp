@@ -14,7 +14,6 @@ extension AppDelegate {
     func setupGlobalStyle() {
         UIApplication.shared.isStatusBarHidden = false
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-        //JFProgressHUD.setupHUD() // 配置HUD
     }
     //MARK:----------- 配置根控制器
     func setupRootViewController() {

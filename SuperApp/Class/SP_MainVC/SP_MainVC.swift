@@ -29,12 +29,16 @@ class SP_MainVC: UIViewController {
         return [catalogTitles_0,catalogTitles_1,catalogTitles_2,catalogTitles_3,catalogTitles_4,catalogTitles_5]
     }
     
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK:----------- 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-//        let sections = [catalogTitles_0,catalogTitles_1,catalogTitles_2,catalogTitles_3,catalogTitles_4,catalogTitles_5]
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +84,32 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         //cell.rightLabel.text = "\(indexPath.row)-\(indexPath.row)"
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        let vc = SP_MainVC.sp_classFromString(className: "SP_AdsVC")
+        
+        print(vc)
+        
+//        let vc = SP_AdsVC.initVC()
+//        self.present(vc, animated: true, completion: nil)
+        
+        
+        
+        
+    }
+    
+    class func sp_classFromString(className: String) -> AnyClass? {
+        
+        let appName = "SuperApp"
+        let classStringName = "_TtC\(appName.characters.count)\(appName)\(className.characters.count)\(className)"
+        let  cls: AnyClass? = NSClassFromString(classStringName)
+        return cls
+    }
+    
 }
 //MARK:----------- SP_MainVCCell
 class SP_MainVCCell: UITableViewCell {
