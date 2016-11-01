@@ -23,7 +23,7 @@
 
 import UIKit
 
-//MARK:----------- SP_AdsView 接口
+//MARK:----------- SP_AdsView 对外接口
 extension SP_AdsView {
     
     /*
@@ -79,7 +79,7 @@ extension UIPageControl {
         case Center
     }
     //设置分页圆点的位置
-    func alignment(type:PageControlAlignmentType, pageCount:Int, sizeW:CGFloat){
+    fileprivate func alignment(type:PageControlAlignmentType, pageCount:Int, sizeW:CGFloat){
         //小圆点个数
         let page_w: CGFloat = self.size(forNumberOfPages: pageCount).width + 20
         switch type {
@@ -103,7 +103,7 @@ enum SP_AdsViewType {
     case imageBrowse_V
     
 }
-class SP_AdsView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class SP_AdsView: UIView {
     
     /// 默认的图片
     static var placeholderImage = "200x200"
@@ -130,14 +130,14 @@ class SP_AdsView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UIC
         
     }
     
-    private var _layout = UICollectionViewFlowLayout()
-    private var _adsType: SP_AdsViewType = .default_H
-    private var _imaCount:Int = 0
-    private var _time = 5.0
-    private var _frame = CGRect.zero
-    private var _sendTime: Timer!
-    private var _imageView = UIImageView()
-    private var  itemIdex: Int = 0
+    fileprivate var _layout = UICollectionViewFlowLayout()
+    fileprivate var _adsType: SP_AdsViewType = .default_H
+    fileprivate var _imaCount:Int = 0
+    fileprivate var _time = 5.0
+    fileprivate var _frame = CGRect.zero
+    fileprivate var _sendTime: Timer!
+    fileprivate var _imageView = UIImageView()
+    fileprivate var  itemIdex: Int = 0
     var _isUrlImage = true //是否为网络图片
     var _itemSize:CGSize {
         didSet{
@@ -250,13 +250,13 @@ class SP_AdsView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UIC
         self.addSubview(scrollPageControl)
     }
     //MARK:---------- 改变分页圆点
-    private func changePageValue() {
+    fileprivate func changePageValue() {
         scrollPageControl.currentPage = itemIdex % _imageUrls.count
         self._SP_AdsViewClosures?(itemIdex % self._imageUrls.count, false)
     }
     
     //MARK:---------- 轮循 更新 item
-    private func updateCollection()  {
+    fileprivate func updateCollection()  {
         if _time > 0 {
             _sendTime = Timer.scheduledTimer(timeInterval: self._time, target: self, selector:#selector(self.timerClosure), userInfo: nil, repeats: true)
             RunLoop.current.add(_sendTime, forMode: .commonModes)
@@ -295,7 +295,24 @@ class SP_AdsView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UIC
         }
     }
     
-    //MARK:---------- UICollectionViewDelegate
+    
+    
+    
+    func makePerspectiveTransform() -> CATransform3D {
+        var transform = CATransform3DIdentity;
+        transform.m34 = 1.0 / -2000;
+        return transform;
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+
+}
+
+//MARK:---------- UICollectionViewDelegate
+extension SP_AdsView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return _imaCount
@@ -360,31 +377,31 @@ class SP_AdsView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UIC
     }
     
     // collectionView分页滚动完毕时候调用
-//    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        
-//        if _adsType == .default_H {
-//            // 将collectionView在控制器view的中心点转化成collectionView上的坐标
-//            let pInView = self.convert(self.collectionView.center, to: self.collectionView)
-//            // 获取这一点的indexPath
-//            let indexPathNow = self.collectionView.indexPathForItem(at: pInView)
-//            // 赋值给记录当前坐标的变量
-//            self.itemIdex = (indexPathNow?.item)!
-//            
-//            // 更新数据
-//            self.changePageValue()
-//            // ...
-//        }
-//        if _adsType == .half_H {
-//            // 获取当前显示的cell的下标
-//            let lastIndexPath = self.collectionView.indexPathsForVisibleItems.first
-//            print(lastIndexPath?.item)
-//            self.itemIdex = (lastIndexPath?.item)!
-//            // 更新数据
-//            self.changePageValue()
-//            // ...
-//        }
-//        
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    //
+    //        if _adsType == .default_H {
+    //            // 将collectionView在控制器view的中心点转化成collectionView上的坐标
+    //            let pInView = self.convert(self.collectionView.center, to: self.collectionView)
+    //            // 获取这一点的indexPath
+    //            let indexPathNow = self.collectionView.indexPathForItem(at: pInView)
+    //            // 赋值给记录当前坐标的变量
+    //            self.itemIdex = (indexPathNow?.item)!
+    //
+    //            // 更新数据
+    //            self.changePageValue()
+    //            // ...
+    //        }
+    //        if _adsType == .half_H {
+    //            // 获取当前显示的cell的下标
+    //            let lastIndexPath = self.collectionView.indexPathsForVisibleItems.first
+    //            print(lastIndexPath?.item)
+    //            self.itemIdex = (lastIndexPath?.item)!
+    //            // 更新数据
+    //            self.changePageValue()
+    //            // ...
+    //        }
+    //
+    //    }
     
     //MARK:---------- UICollectionViewDelegateFlowLayout
     //布局确定每个Item 的大小
@@ -460,18 +477,5 @@ class SP_AdsView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UIC
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
     }
-    
-    
-    
-    func makePerspectiveTransform() -> CATransform3D {
-        var transform = CATransform3DIdentity;
-        transform.m34 = 1.0 / -2000;
-        return transform;
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 
 }

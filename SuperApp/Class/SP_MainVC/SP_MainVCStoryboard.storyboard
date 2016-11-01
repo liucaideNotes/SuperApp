@@ -52,7 +52,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Ggn-Lb-xWU" secondAttribute="bottom" constant="8" id="mOp-Kb-0H3"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5cG-jH-4ue">
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5cG-jH-4ue">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -111,10 +111,13 @@
                             <constraint firstItem="e44-BU-kVx" firstAttribute="top" secondItem="aZP-Fg-tRb" secondAttribute="top" id="vEr-nX-yk6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="rightTableVIew" destination="5cG-jH-4ue" id="1rg-ch-wXd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0U-9G-yZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="-482"/>
+            <point key="canvasLocation" x="-290.39999999999998" y="-482.60869565217394"/>
         </scene>
     </scenes>
     <resources>

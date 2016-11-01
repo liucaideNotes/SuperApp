@@ -31,7 +31,7 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                    "http://photocdn.sohu.com/20160825/Img465875453.jpg"
     ]
     
-    class func initVC() -> SP_AdsVC {
+    override class func initVC() -> SP_AdsVC {
         return UIStoryboard(name: "SP_CommonClassStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_AdsVC") as! SP_AdsVC
     }
     
@@ -88,13 +88,13 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID_null)
             }
             let adsView = SP_AdsView.show(view: cell!.contentView, frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:cell_H), imageUrls: images1, adsType: .default_H, pageAlignment:.Right)
-            adsView._SP_AdsViewClosures = { (itemIdex, isSelect) in
+            adsView._SP_AdsViewClosures = { [weak self](itemIdex, isSelect) in
                 if isSelect {
                     let aler = UIAlertController(title: "点击了第\(itemIdex)张图片", message: nil, preferredStyle: .alert)
                     let one = UIAlertAction.init(title: "确定", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(one)
-                    self.present(aler, animated: true, completion: nil)
+                    self?.present(aler, animated: true, completion: nil)
                 }
             }
             return cell!
@@ -102,16 +102,16 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let cell = TableViewCell_Title.dequeueReusable(tableView: tableView, indexPath:indexPath as IndexPath)
             let adsView = SP_AdsView.show(view: cell.contentView, frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:cell_H), imageUrls: images1, time: Double(indexPath.section), adsType: .default_H)
             cell.titleLab.text = "title_\(_itemIdex)"
-            adsView._SP_AdsViewClosures = { (itemIdex, isSelect) in
+            adsView._SP_AdsViewClosures = { [weak self](itemIdex, isSelect) in
                 if isSelect {
                     let aler = UIAlertController(title: "点击了第\(itemIdex)张图片", message: nil, preferredStyle: .alert)
                     let one = UIAlertAction.init(title: "确定", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(one)
-                    self.present(aler, animated: true, completion: nil)
+                    self?.present(aler, animated: true, completion: nil)
                 }else{
                     //可以在这里对自定义分页圆点或其他空间赋值
-                    self._itemIdex = itemIdex
+                    self?._itemIdex = itemIdex
 //                    let dic:[String:Any] = ["2":123,"3":"456"]
 //                    cell.titleLab.text = dic["1"]! as? String
                     cell.titleLab.text = "title_\(itemIdex)"
@@ -128,13 +128,13 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID_null)
             }
             let adsView = SP_AdsView.show(view: cell!.contentView, frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:cell_H), imageUrls: images1, time: Double(indexPath.section),adsType: .half_H, itemSize:CGSize(width:UIScreen.main.bounds.size.width/2 - 2, height:cell_H))
-            adsView._SP_AdsViewClosures = { (itemIdex, isSelect) in
+            adsView._SP_AdsViewClosures = { [weak self](itemIdex, isSelect) in
                 if isSelect {
                     let aler = UIAlertController(title: "点击了第\(itemIdex)张图片", message: nil, preferredStyle: .alert)
                     let one = UIAlertAction.init(title: "确定", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(one)
-                    self.present(aler, animated: true, completion: nil)
+                    self?.present(aler, animated: true, completion: nil)
                 }
             }
             return cell!
@@ -146,13 +146,13 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID_null)
             }
             let adsView = SP_AdsView.show(view: cell!.contentView, frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:cell_H), imageUrls: images1, adsType: .imageBrowse_H,itemSize:CGSize(width:(cell_H-5)/2, height:(cell_H-5)/2))
-            adsView._SP_AdsViewClosures = { (itemIdex, isSelect) in
+            adsView._SP_AdsViewClosures = { [weak self](itemIdex, isSelect) in
                 if isSelect {
                     let aler = UIAlertController(title: "点击了第\(itemIdex)张图片", message: nil, preferredStyle: .alert)
                     let one = UIAlertAction.init(title: "确定", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(one)
-                    self.present(aler, animated: true, completion: nil)
+                    self?.present(aler, animated: true, completion: nil)
                 }
             }
             return cell!
@@ -165,13 +165,13 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             let adsView = SP_AdsView.show(view: cell!.contentView, frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:cell_H)
                 , imageUrls: images1, adsType: .imageBrowse_V)
-            adsView._SP_AdsViewClosures = { (itemIdex, isSelect) in
+            adsView._SP_AdsViewClosures = { [weak self](itemIdex, isSelect) in
                 if isSelect {
                     let aler = UIAlertController(title: "点击了第\(itemIdex)张图片", message: nil, preferredStyle: .alert)
                     let one = UIAlertAction.init(title: "确定", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(one)
-                    self.present(aler, animated: true, completion: nil)
+                    self?.present(aler, animated: true, completion: nil)
                 }
             }
             return cell!
@@ -183,13 +183,13 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID_null)
             }
             let adsView = SP_AdsView.show(view: cell!.contentView, frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:cell_H), imageUrls: [], adsType: .imageBrowse_V,itemSize:CGSize(width:(cell_H-5)/2, height:(cell_H-5)/2))
-            adsView._SP_AdsViewClosures = { (itemIdex, isSelect) in
+            adsView._SP_AdsViewClosures = { [weak self](itemIdex, isSelect) in
                 if isSelect {
                     let aler = UIAlertController(title: "点击了第\(itemIdex)张图片", message: nil, preferredStyle: .alert)
                     let one = UIAlertAction.init(title: "确定", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(one)
-                    self.present(aler, animated: true, completion: nil)
+                    self?.present(aler, animated: true, completion: nil)
                 }
             }
             return cell!
@@ -201,13 +201,13 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID_null)
             }
             let adsView = SP_AdsView.show(view: cell!.contentView, frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:cell_H), imageUrls: images1, adsType: .default_H)
-            adsView._SP_AdsViewClosures = { (itemIdex, isSelect) in
+            adsView._SP_AdsViewClosures = { [weak self](itemIdex, isSelect) in
                 if isSelect {
                     let aler = UIAlertController(title: "点击了第\(itemIdex)张图片", message: nil, preferredStyle: .alert)
                     let one = UIAlertAction.init(title: "确定", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(one)
-                    self.present(aler, animated: true, completion: nil)
+                    self?.present(aler, animated: true, completion: nil)
                 }
             }
             return cell!

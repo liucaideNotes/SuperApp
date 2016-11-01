@@ -156,3 +156,38 @@ func nullItem(collectionView:UICollectionView, indexPath:IndexPath, cellId:Strin
 //    return WXApi.isWXAppInstalled()
 //}
 //}
+
+
+//MARK:----------- 通过字符串获得类
+func SP_classFromString(className: String) -> AnyClass? {
+    guard let appName:String = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String else {
+        print("命名空间不存在")
+        return nil
+    }
+    //2.通过命名空间和类名转换成类
+    let classStringName = "_TtC\(appName.characters.count)\(appName)\(className.characters.count)\(className)"
+    let  cls: AnyClass? = NSClassFromString(classStringName)
+    //(不建议用这种方式，封装成framework就有问题了)
+    //let cls : AnyClass? = NSClassFromString(appName + "." + className)
+    return cls
+}
+
+func SP_vcFromString(controllerName : String) -> UIViewController.Type? {
+    guard let appName:String = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String else {
+        print("命名空间不存在")
+        return nil
+    }
+    //2.通过命名空间和类名转换成类
+    let classStringName = "_TtC\(appName.characters.count)\(appName)\(controllerName.characters.count)\(controllerName)"
+    let  cls: AnyClass? = NSClassFromString(classStringName)
+    
+    //(不建议用这种方式，封装成framework就有问题了)
+    //let cls : AnyClass? = NSClassFromString(appName + "." + controllerName)
+    
+    // swift 中通过Class创建一个对象,必须告诉系统Class的类型
+    guard let clsType = cls as? UIViewController.Type else {
+        print("无法转换成UIViewController")
+        return nil
+    }
+    return clsType
+}

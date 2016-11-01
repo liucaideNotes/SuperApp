@@ -10,34 +10,33 @@ import UIKit
 
 class SP_MainVC: UIViewController {
 
-    class func initVC() -> SP_MainVC {
+    override class func initVC() -> SP_MainVC {
         return UIStoryboard(name: "SP_MainVCStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_MainVC") as! SP_MainVC
     }
     
-    
     //MARK:----------- 设置
-    let sections_catalogs = ["基本写法","基本APP展示","网络层封装写法","Model","第三方库二次封装","通用独立模块"]
     
-    let catalogTitles_0 = ["Navigation&TabBar","TableView","CollectionView","WebView","不借助第三方写约束"]
-    let catalogTitles_1 = ["APP"]
-    let catalogTitles_2 = ["写法1","写法2","写法3"]
-    let catalogTitles_3 = ["写法1","写法2","写法3"]
-    let catalogTitles_4 = ["写法1","写法2","写法3"]
-    let catalogTitles_5 = ["广告轮播图","九宫格","城市选择器"]
     
-    var sections:[[String]] {
-        return [catalogTitles_0,catalogTitles_1,catalogTitles_2,catalogTitles_3,catalogTitles_4,catalogTitles_5]
-    }
+    
     
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        
     }
     
+    @IBOutlet weak var leftTableView: UITableView!
+    @IBOutlet weak var rightTableVIew: UITableView!
     //MARK:----------- 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //定位
+        SP_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { (isChange) in
+            if isChange {
+                print("位置变更")
+            }
+        }
         
     }
 
@@ -60,54 +59,51 @@ class SP_MainVC: UIViewController {
 //MARK:----------- UITableViewDelegate
 extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections_catalogs.count
+        return mainDatas.count
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].count
+        return (mainDatas[section]["titles"] as? [AnyObject] ?? [])!.count
+        
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+        
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return SP_SectionH_Min
+        
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections_catalogs[section]
+        return mainDatas[section]["sectionName"] as? String ?? ""
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SP_MainVCCell.dequeueReusable(tableView: tableView, indexPath: indexPath)
-        
-        cell.leftLabel.text = sections[indexPath.section][indexPath.row]
-        //cell.rightLabel.text = "\(indexPath.row)-\(indexPath.row)"
+        cell.leftLabel.text = (mainDatas[indexPath.section]["titles"] as? [AnyObject])?[indexPath.row] as? String ?? "缺少值"
         return cell
+        
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < (mainDatas[indexPath.section]["classes"] as? [UIViewController.Type] ?? [])!.count else {
+            return
+        }
+        guard let vc = (mainDatas[indexPath.section]["classes"] as? [UIViewController.Type])?[indexPath.row].initVC() else {
+            return
+        }
+        self.present(vc, animated: true, completion: nil)
         
         
-        
-        let vc = SP_MainVC.sp_classFromString(className: "SP_AdsVC")
-        
-        print(vc)
-        
-//        let vc = SP_AdsVC.initVC()
-//        self.present(vc, animated: true, completion: nil)
+//        if let vc = SP_classFromString(className: "SP_AdsVC")?.initVC() {
+//            self.present(vc, animated: true, completion: nil)
+//        }
         
         
-        
-        
-    }
-    
-    class func sp_classFromString(className: String) -> AnyClass? {
-        
-        let appName = "SuperApp"
-        let classStringName = "_TtC\(appName.characters.count)\(appName)\(className.characters.count)\(className)"
-        let  cls: AnyClass? = NSClassFromString(classStringName)
-        return cls
     }
     
 }
@@ -118,7 +114,6 @@ class SP_MainVCCell: UITableViewCell {
         return cell
     }
     
-    
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     
@@ -126,5 +121,3 @@ class SP_MainVCCell: UITableViewCell {
         super.awakeFromNib()
     }
 }
-
-

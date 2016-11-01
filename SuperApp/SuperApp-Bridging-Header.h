@@ -5,3 +5,4 @@
 
 #import "JPUSHService.h"
 #import "MJRefresh.h"
+#import "CLLocation+YCLocation.h"

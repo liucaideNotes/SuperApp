@@ -20,13 +20,13 @@ extension AppDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         if isNewVersion() {
-            let vc = ViewController()
+            let vc = SP_GuideVC()
             window?.rootViewController = vc
-            vc.sp_firstOpenBlock = { _ in
+            vc.sp_firstOpenBlock = { [weak self]_ in
                 
                 let vc = SP_MainVC.initVC()
-                self.window?.rootViewController = vc
-                self.saveVersion()
+                self?.window?.rootViewController = vc
+                self?.saveVersion()
             }
         }else{
             let vc = SP_MainVC.initVC()
