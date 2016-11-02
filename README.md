@@ -4,3 +4,4 @@
 ####[一.独立模块](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/ViewController.swift)
 #####[1.启动页](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Class/SP_GuideVC/SP_GuideVC.swift)
 #####[2.定位](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Tool/SP_LocationManager/SP_LocationManager.swift)
+#####[3.广告轮播](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Tool/SP_AdsView/SP_AdsView.swift)
