@@ -6,14 +6,24 @@
 //  Copyright © 2016年 IEXBUY. All rights reserved.
 //
 /*
- 在 info.plist里加入定位描述（Value值为空也可以）： 
+ 1,在 info.plist里加入定位描述（Value值为空也可以）：
     <key>NSLocationAlwaysUsageDescription</key>
-	<string>允许在后台获取GPS的描述</string>
+	<string>允许SupApp在后台获取您的定位信息</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>允许在前台获取GPS的描述</string>
+	<string>允许SupApp在前台获取您的定位信息</string>
+ 2,在桥接文件中添加
+   #import "CLLocation+YCLocation.h"
+ 3,添加CoreLocation.framework
+ 4,使用：
+SP_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { [weak self](isChange) in
+    if isChange {
+        print("位置变更")
+    }
+}
+SP_LocationManager.shared.cityChangeBlock = { [weak self](province, city, subCity) in
+    print("城市（省、市、区）变更")
+}
  */
-
-import UIKit
 
 
 enum CoordinateType {
@@ -49,7 +59,6 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
                 UserDefaults.standard.set(113.321201, forKey: "SP_LocationManagerLongitude")
                 UserDefaults.standard.synchronize()
                 currentCoordinate = CLLocationCoordinate2DMake(23.119298, 113.321201)//珠江新城
-                
             }
             return currentCoordinate
         }
@@ -60,7 +69,8 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
     var locationChangeBlock:((_ changeLocation:Bool)->Void)?
     ///城市变更回调
     var cityChangeBlock:((_ province:String, _ city:String, _ subCity:String)->Void)?
-    private var _parentVC:UIViewController?
+    
+    private weak var _parentVC:UIViewController?
     private var _coordinateType:CoordinateType = .GPS
     private var _locationManager:CLLocationManager!
     
@@ -156,6 +166,7 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
             let locationS = CLLocation(latitude: _currentCoord.latitude, longitude: _currentCoord.longitude)
             let locationE = CLLocation(latitude: amapcoord!.latitude, longitude: amapcoord!.longitude)
             let distance:CLLocationDistance = locationS.distance(from: locationE)
+            //代理有时候会连续跑很多次，这里再增加限制
             if distance > 10.0 || distance < -10.0 {
                 // --- 进行变更
                 locationChangeBlock?(true)

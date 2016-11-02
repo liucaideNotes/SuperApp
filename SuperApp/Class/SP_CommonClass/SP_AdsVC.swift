@@ -38,6 +38,7 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
 //        self.perform(#selector(SP_AdsVC.upArrayClick), with: nil, afterDelay: 4.3)
     }
     
@@ -246,6 +247,13 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    
+    
+    
     
     
 }

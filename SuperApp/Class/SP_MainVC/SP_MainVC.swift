@@ -25,20 +25,63 @@ class SP_MainVC: UIViewController {
         
     }
     
-    @IBOutlet weak var leftTableView: UITableView!
+    
     @IBOutlet weak var rightTableVIew: UITableView!
     //MARK:----------- 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
     
         //定位
-        SP_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { (isChange) in
+        SP_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { [weak self](isChange) in
             if isChange {
                 print("位置变更")
             }
         }
+        SP_LocationManager.shared.cityChangeBlock = { (province, city, subCity) in
+            print("城市（省、市、区）变更")
+        }
         
+        addMJHeaderAndFooter()
+        
+        
+//        rightTableVIew.mj_header = MJRefreshGifHeader(refreshingBlock: {
+//            // 模拟延迟加载数据，2秒后才调用（真实开发中，可以移除这段gcd代码）
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {
+//                self.rightTableVIew.headerEndRefresh()
+//            }
+//            
+//            
+//        })
     }
+    
+    //MARK:----------- 上拉下拉刷新
+    func addMJHeaderAndFooter() {
+        rightTableVIew.headerAddMJRefreshGif { [unowned self]() -> Void in
+            // 模拟延迟加载数据，2秒后才调用（
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(5*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {
+                self.rightTableVIew.headerEndRefresh()
+                self.rightTableVIew.footerResetNoMoreData()
+            }
+            
+        }
+        rightTableVIew.footerAddMJRefresh_Auto { [unowned self]() -> Void in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(5*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {
+                self.rightTableVIew.footerEndRefreshNoMoreData()
+            }
+            
+        }
+    }
+    func endRefresh()  {
+        rightTableVIew.headerEndRefresh()
+        rightTableVIew.footerEndRefresh()
+    }
+    func footerEndRefreshNoMoreData() {
+        rightTableVIew.footerEndRefreshNoMoreData()
+    }
+
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -83,13 +126,25 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SP_MainVCCell.dequeueReusable(tableView: tableView, indexPath: indexPath)
-        cell.leftLabel.text = (mainDatas[indexPath.section]["titles"] as? [AnyObject])?[indexPath.row] as? String ?? "缺少值"
+        if (mainDatas[indexPath.section]["titles"] as? [String] ?? [])!.count > indexPath.row {
+            cell.leftLabel.text = (mainDatas[indexPath.section]["titles"] as? [String])![indexPath.row]
+        }
+        if (mainDatas[indexPath.section]["represent"] as? [String] ?? [])!.count > indexPath.row {
+            cell.rightLabel.text = (mainDatas[indexPath.section]["represent"] as? [String])![indexPath.row]
+        }
+        
         return cell
         
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (mainDatas[indexPath.section]["titles"] as? [String])![indexPath.row] == "MJRefresh" {
+            tableView.headerBeginRefresh()
+        }
+        
+        
         guard indexPath.row < (mainDatas[indexPath.section]["classes"] as? [UIViewController.Type] ?? [])!.count else {
             return
         }

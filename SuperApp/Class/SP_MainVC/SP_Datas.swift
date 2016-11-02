@@ -8,6 +8,14 @@
 
 import Foundation
 
+/*mainDatas结构说明：
+["sectionName" : String,
+ "titles"      : [String],
+ "represent"   : [String],
+ "classes"     : [UIViewController.Type]
+]
+ */
+
 let mainDatas:[[String:Any]] = [
     ["sectionName":"基本写法",
      "titles":[
@@ -15,14 +23,30 @@ let mainDatas:[[String:Any]] = [
         "TableView",
         "CollectionView",
         "WebView",
-        "不借助第三方写约束"
+        "不借助第三方写约束",
+        "RXSwift+TableView",
+        "RXSwift+MVVM"
               ],
+     "represent":[
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+                 ],
      "classes":[
                ]
     ],
     
     ["sectionName":"APP展示",
-     "titles":"",
+     "titles":[
+        "电商类app"
+        ],
+     "represent":[
+        ""
+        ],
     "classes":[
               ]
     ],
@@ -33,6 +57,11 @@ let mainDatas:[[String:Any]] = [
         "写法2",
         "写法3"
               ],
+     "represent":[
+        "",
+        "",
+        ""
+        ],
      "classes":[
                ]
     ],
@@ -43,6 +72,11 @@ let mainDatas:[[String:Any]] = [
         "写法2",
         "写法3"
         ],
+     "represent":[
+        "",
+        "",
+        ""
+        ],
      "classes":[
                ]
     ],
@@ -51,6 +85,9 @@ let mainDatas:[[String:Any]] = [
      "titles":[
         "MJRefresh"
               ],
+     "represent":[
+        "点我或上拉下拉本页面即可观看效果"
+        ],
      "classes":[
                ]
     ],
@@ -59,8 +96,12 @@ let mainDatas:[[String:Any]] = [
      "titles":[
         "广告轮播图",
         "九宫格",
-        "城市选择器"
+        "城市选择器",
+        "标签导航"
               ],
+     "represent":[
+        "基于CollectionView实现"
+        ],
      "classes":[
         SP_AdsVC.self,
                ]

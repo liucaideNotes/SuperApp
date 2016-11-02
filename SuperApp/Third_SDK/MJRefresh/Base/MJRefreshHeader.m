@@ -118,6 +118,10 @@
             if (self.isAutomaticallyChangeAlpha) self.alpha = 0.0;
         } completion:^(BOOL finished) {
             self.pullingPercent = 0.0;
+            
+            if (self.endRefreshingCompletionBlock) {
+                self.endRefreshingCompletionBlock();
+            }
         }];
     } else if (state == MJRefreshStateRefreshing) {
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -134,23 +138,12 @@
     }
 }
 
-- (void)drawRect:(CGRect)rect
-{
-    [super drawRect:rect];
-    
-    
-}
-
 #pragma mark - 公共方法
 - (void)endRefreshing
 {
-    if ([self.scrollView isKindOfClass:[UICollectionView class]]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [super endRefreshing];
-        });
-    } else {
-        [super endRefreshing];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.state = MJRefreshStateIdle;
+    });
 }
 
 - (NSDate *)lastUpdatedTime

@@ -54,7 +54,8 @@
     self.stateDurations[@(state)] = @(duration); 
     
     /* 根据图片设置控件的高度 */ 
-    UIImage *image = [images firstObject]; 
+    UIImage *image = [images firstObject];
+    NSLog(@"%f",image.size.height);
     if (image.size.height > self.mj_h) { 
         self.mj_h = image.size.height; 
     } 
@@ -66,6 +67,14 @@
 }
 
 #pragma mark - 实现父类的方法
+- (void)prepare
+{
+    [super prepare];
+    
+    // 初始化间距
+    self.labelLeftInset = 20;
+}
+
 - (void)setPullingPercent:(CGFloat)pullingPercent
 {
     [super setPullingPercent:pullingPercent];
@@ -90,7 +99,14 @@
         self.gifView.contentMode = UIViewContentModeCenter;
     } else {
         self.gifView.contentMode = UIViewContentModeRight;
-        self.gifView.mj_w = self.mj_w * 0.5 - 90;
+        
+        CGFloat stateWidth = self.stateLabel.mj_textWith;
+        CGFloat timeWidth = 0.0;
+        if (!self.lastUpdatedTimeLabel.hidden) {
+            timeWidth = self.lastUpdatedTimeLabel.mj_textWith;
+        }
+        CGFloat textWidth = MAX(stateWidth, timeWidth);
+        self.gifView.mj_w = self.mj_w * 0.5 - textWidth * 0.5 - self.labelLeftInset;
     }
 }
 
