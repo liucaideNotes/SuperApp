@@ -32,10 +32,6 @@ class SP_MJDIYHeader: MJRefreshHeader {
     }
     //MARK:----------- 监听控件的刷新状态
     override var state:MJRefreshState {
-        willSet{
-            state = newValue
-            
-        }
         didSet{
             switch state {
             case .idle:
@@ -53,10 +49,6 @@ class SP_MJDIYHeader: MJRefreshHeader {
     }
     //MARK:----------- 监听拖拽比例变化（控件被拖出来的比例）
     override var pullingPercent:CGFloat {
-        willSet{
-            pullingPercent = newValue
-            
-        }
         didSet{
             
         }

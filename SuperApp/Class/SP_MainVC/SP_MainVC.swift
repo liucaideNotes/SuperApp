@@ -57,7 +57,7 @@ class SP_MainVC: UIViewController {
     //MARK:----------- 上拉下拉刷新
     func addMJHeaderAndFooter() {
         rightTableVIew.headerAddMJRefreshGif { [unowned self]() -> Void in
-            // 模拟延迟加载数据，2秒后才调用（
+            // 模拟延迟加载数据，5秒后调用
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(5*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {
                 self.rightTableVIew.headerEndRefresh()
                 self.rightTableVIew.footerResetNoMoreData()
