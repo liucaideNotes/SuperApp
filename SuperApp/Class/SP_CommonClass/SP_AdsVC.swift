@@ -35,6 +35,7 @@ class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return UIStoryboard(name: "SP_CommonClassStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_AdsVC") as! SP_AdsVC
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

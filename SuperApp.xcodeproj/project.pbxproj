@@ -17,6 +17,7 @@
 		AB2E79211DC8C57D000FAD09 /* SP_Datas.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2E79201DC8C57D000FAD09 /* SP_Datas.swift */; };
 		AB308B911DAA3B9300C2F005 /* SP_CommonClassStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB308B901DAA3B9300C2F005 /* SP_CommonClassStoryboard.storyboard */; };
 		AB308B931DAA3BCB00C2F005 /* SP_AdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB308B921DAA3BCB00C2F005 /* SP_AdsVC.swift */; };
+		AB5FFE931DCA35C60039C9D1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5FFE921DCA35C60039C9D1 /* Reachability.swift */; };
 		AB63A1C41DA88F7D00BC7C64 /* SP_Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */; };
 		AB63A1C71DA890AD00BC7C64 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */; };
 		AB7856121DC8997E00A11CC0 /* SP_LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7856111DC8997E00A11CC0 /* SP_LocationManager.swift */; };
@@ -101,6 +102,8 @@
 		AB2E79201DC8C57D000FAD09 /* SP_Datas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Datas.swift; sourceTree = "<group>"; };
 		AB308B901DAA3B9300C2F005 /* SP_CommonClassStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_CommonClassStoryboard.storyboard; sourceTree = "<group>"; };
 		AB308B921DAA3BCB00C2F005 /* SP_AdsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_AdsVC.swift; sourceTree = "<group>"; };
+		AB5FFE8F1DCA1C4D0039C9D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AB5FFE921DCA35C60039C9D1 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Macros.swift; sourceTree = "<group>"; };
 		AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AppDelegate+Extension.swift"; path = "SuperApp/AppDelegate+Extension.swift"; sourceTree = "<group>"; };
 		AB7856111DC8997E00A11CC0 /* SP_LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_LocationManager.swift; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 		7A088C91D20330BB5B016A15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB5FFE8F1DCA1C4D0039C9D1 /* SystemConfiguration.framework */,
 				444B5762F7F0EE11AF601D68 /* Pods_SuperApp.framework */,
 			);
 			name = Frameworks;
@@ -237,6 +241,14 @@
 			path = SP_AdsView;
 			sourceTree = "<group>";
 		};
+		AB5FFE911DCA35BE0039C9D1 /* SP_Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				AB5FFE921DCA35C60039C9D1 /* Reachability.swift */,
+			);
+			path = SP_Reachability;
+			sourceTree = "<group>";
+		};
 		AB63A1BE1DA88F7D00BC7C64 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */,
+				AB5FFE911DCA35BE0039C9D1 /* SP_Reachability */,
 				AB9C4FCF1DC9851F00107130 /* SP_MJRefresh */,
 				AB2E79131DC8C03C000FAD09 /* SP_AdsView */,
 				AB27F47F1DB0D6E1000E0F3A /* Extension */,
@@ -728,6 +741,7 @@
 				AB9C509F1DC99D8800107130 /* UIView+MJExtension.m in Sources */,
 				AB9C509D1DC99D8800107130 /* UIScrollView+MJExtension.m in Sources */,
 				AB9C508C1DC99D8700107130 /* MJRefreshAutoFooter.m in Sources */,
+				AB5FFE931DCA35C60039C9D1 /* Reachability.swift in Sources */,
 				AB9C50961DC99D8800107130 /* MJRefreshBackStateFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,6 +895,7 @@
 					"$(PROJECT_DIR)/SuperApp/Third_SDK",
 				);
 				INFOPLIST_FILE = SuperApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -908,6 +923,7 @@
 					"$(PROJECT_DIR)/SuperApp/Third_SDK",
 				);
 				INFOPLIST_FILE = SuperApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

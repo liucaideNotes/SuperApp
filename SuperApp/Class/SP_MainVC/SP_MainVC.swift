@@ -31,6 +31,12 @@ class SP_MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //网络判断
+        Reachability.netRemindForNone(self)
+        Reachability.netWorkType { [weak self](type) in
+            print(type)
+        }
+        
         //定位
         SP_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { [weak self](isChange) in
             if isChange {

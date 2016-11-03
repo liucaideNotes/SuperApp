@@ -83,14 +83,19 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
         {
             DispatchQueue.main.async{
                 let aler = UIAlertController(title: "无法定位，因为您的设备没有启用定位服务，请到设置中启用", message: nil, preferredStyle: .alert)
-                let cancel = UIAlertAction.init(title: "取消", style: .default, handler: { (UIAlertAction) in
+                let cancel = UIAlertAction.init(title: "知道了", style: .default, handler: { (UIAlertAction) in
                 })
-                let paizhao = UIAlertAction.init(title: "启用", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
-                    UIApplication.shared.open(URL(string: "prefs:root=LOCATION_SERVICES")!, options: [:], completionHandler: nil)
-                })
-                
                 aler.addAction(cancel)
-                aler.addAction(paizhao)
+                if #available(iOS 10.0, *) {
+                    let paizhao = UIAlertAction.init(title: "开启", style: UIAlertActionStyle.default, handler: { (alertAction) in
+                        UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                    })
+                    aler.addAction(paizhao)
+                    
+                }else{
+                    // Fallback on earlier versions
+                    //UIApplication.shared.open(URL(string: "prefs:root=LOCATION_SERVICES")!, options: [:], completionHandler: nil)
+                }
                 self._parentVC?.present(aler, animated: true, completion: nil)
             }
             return
@@ -125,14 +130,19 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
                 //需要把弹窗放在主线程才能强制显示
                 DispatchQueue.main.async{
                     let aler = UIAlertController(title: "无法定位，因为您没有授权爱换购使用定位，请至设置中开启！", message: nil, preferredStyle: .alert)
-                    let cancel = UIAlertAction.init(title: "取消", style: .default, handler: { (UIAlertAction) in
+                    let cancel = UIAlertAction.init(title: "知道了", style: .default, handler: { (UIAlertAction) in
                     })
-                    let paizhao = UIAlertAction.init(title: "启用", style: .default, handler: { (UIAlertAction) in
-                        UIApplication.shared.open(URL(string: "prefs:root=LOCATION_SERVICES")!, options: [:], completionHandler: nil)
-                    })
-                    
                     aler.addAction(cancel)
-                    aler.addAction(paizhao)
+                    if #available(iOS 10.0, *) {
+                        let paizhao = UIAlertAction.init(title: "开启", style: UIAlertActionStyle.default, handler: { (alertAction) in
+                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                        })
+                        aler.addAction(paizhao)
+                        
+                    }else{
+                        // Fallback on earlier versions
+                        //UIApplication.shared.open(URL(string: "prefs:root=LOCATION_SERVICES")!, options: [:], completionHandler: nil)
+                    }
                     self._parentVC?.present(aler, animated: true, completion: nil)
                     return
                 }
