@@ -23,13 +23,13 @@
 
 import UIKit
 
-//MARK:----------- SP_AdsView 对外接口
+//MARK:---- SP_AdsView 对外接口
 extension SP_AdsView {
     
     /*
      * 对外接口
      */
-    class func show(view:UIView ,frame: CGRect,  imageUrls: [String], isUrlImage:Bool = true , time: TimeInterval = 5.0, adsType: SP_AdsViewType = .default_H, itemSize:CGSize = CGSize(width: 0, height: 0), pageAlignment:UIPageControl.PageControlAlignmentType = .Center) -> SP_AdsView {
+    class func show(_ view:UIView ,frame: CGRect,  imageUrls: [String], isUrlImage:Bool = true , time: TimeInterval = 5.0, adsType: SP_AdsViewType = .default_H, itemSize:CGSize = CGSize(width: 0, height: 0), pageAlignment:UIPageControl.PageControlAlignmentType = .center) -> SP_AdsView {
         for subView in view.subviews {
             if let adsView = subView as? SP_AdsView {
                 adsView.frame = frame
@@ -68,34 +68,34 @@ extension SP_AdsView {
 }
 //MARK:---------- UIColor
 extension UIColor {
-    open class var adsTintColor1: UIColor { get{return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha:1)} }
-    open class var adsTintColor2: UIColor { get{return UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 0.6)} }
+    open class var adsTintColor1: UIColor { return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha:1) }
+    open class var adsTintColor2: UIColor { return UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 0.6) }
 }
 //MARK:---------- UIPageControl
 extension UIPageControl {
     enum PageControlAlignmentType {
-        case Left
-        case Right
-        case Center
+        case left
+        case right
+        case center
     }
     //设置分页圆点的位置
-    fileprivate func alignment(type:PageControlAlignmentType, pageCount:Int, sizeW:CGFloat){
+    fileprivate func alignment(_ type:PageControlAlignmentType, pageCount:Int, sizeW:CGFloat){
         //小圆点个数
         let page_w: CGFloat = self.size(forNumberOfPages: pageCount).width + 20
         switch type {
-        case .Left:
+        case .left:
             self.frame.size.width = page_w
-        case .Right:
+        case .right:
             print(self.frame.size.width)
             let page_x:CGFloat = sizeW - page_w
             self.frame.origin.x = page_x
             self.frame.size.width = page_w
-        case .Center:break
+        case .center:break
         }
     }
 }
 
-//MARK:----------- 主体类
+//MARK:---- 主体类
 enum SP_AdsViewType {
     case default_H
     case half_H
@@ -111,11 +111,42 @@ class SP_AdsView: UIView {
     ///闭包传值
     var _SP_AdsViewClosures: ((_ itemIdex: Int, _ isSelect:Bool) -> Void)?
     ///collectionView
-    var collectionView: UICollectionView!
+    lazy var collectionView: UICollectionView = {
+        let view =  UICollectionView(frame:self.frame, collectionViewLayout: self._layout)
+        view.backgroundColor = UIColor.clear
+        view.dataSource  = self
+        view.delegate = self
+        view.showsVerticalScrollIndicator   = false  //隐藏滑动条
+        view.showsHorizontalScrollIndicator = false
+        view.isPagingEnabled = true //分页显示
+        
+        view.register(UINib(nibName: "LCDAdsColleCell", bundle: nil), forCellWithReuseIdentifier: "LCDAdsColleCell")
+        return view
+    }()
+    fileprivate lazy var _layout:UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        return layout
+    }()
     
     ///分页圆点
-    private var scrollPageControl = UIPageControl()
-    var pageControlAlignment:UIPageControl.PageControlAlignmentType = .Center
+    fileprivate var pageControlAlignment:UIPageControl.PageControlAlignmentType = .center
+    fileprivate lazy var scrollPageControl: UIPageControl = {
+        let pageControl = UIPageControl(frame: CGRect(x: 0, y: self.frame.size.height - 20, width: self.frame.size.width, height: 20))
+        //圆点颜色
+        pageControl.pageIndicatorTintColor = .adsTintColor2
+        pageControl.currentPageIndicatorTintColor = .adsTintColor1
+        pageControl.isEnabled = false
+        
+        return pageControl
+    }()
+    ///设置一张底图
+    fileprivate lazy var _imageView: UIImageView = {
+        let image = UIImageView(frame: self.frame)
+        image.backgroundColor = .adsTintColor2
+        image.image = UIImage(named: SP_AdsView.placeholderImage)
+        return image
+    }()
     ///图片数据
     var _imageUrls:[String] = [] {
         didSet{
@@ -130,13 +161,12 @@ class SP_AdsView: UIView {
         
     }
     
-    fileprivate var _layout = UICollectionViewFlowLayout()
     fileprivate var _adsType: SP_AdsViewType = .default_H
     fileprivate var _imaCount:Int = 0
     fileprivate var _time = 5.0
     fileprivate var _frame = CGRect.zero
     fileprivate var _sendTime: Timer!
-    fileprivate var _imageView = UIImageView()
+    
     fileprivate var  itemIdex: Int = 0
     var _isUrlImage = true //是否为网络图片
     var _itemSize:CGSize {
@@ -153,36 +183,24 @@ class SP_AdsView: UIView {
         _adsType = adsType
         _time = time
         
-        ///设置一张底图
-        _imageView = UIImageView(frame: frame)
-        self.addSubview(_imageView)
-        _imageView.backgroundColor = .adsTintColor2
-        _imageView.image = UIImage(named: SP_AdsView.placeholderImage)
         
         
-        setCollectionView()
-        setScrollPageControl()
+        addSubview(_imageView)
+        addSubview(collectionView)
+        addSubview(scrollPageControl)
+        
         if adsType == .default_H || adsType == .half_H {
             updateCollection()
         }
     }
-    private func setCollectionView() {
-        collectionView =  UICollectionView(frame:frame, collectionViewLayout: _layout)
-        collectionView.backgroundColor = UIColor.white
-        
-        collectionView.dataSource  = self
-        collectionView.delegate = self
-        addSubview(collectionView)
-        collectionView.showsVerticalScrollIndicator   = false  //隐藏滑动条
-        collectionView.showsHorizontalScrollIndicator = false
-        
-        collectionView.register(UINib(nibName: "LCDAdsColleCell", bundle: nil), forCellWithReuseIdentifier: "LCDAdsColleCell")
-        
-    }
-    //MARK:----------- 更新数据
-    private func xzSetType() {
+    
+    //MARK:---- 更新数据
+    fileprivate func xzSetType() {
         _imaCount = _imageUrls.count * 100
         //已滚动后刷新数据不回到原点
+        if itemIdex == 0 {
+            itemIdex = _imaCount/2
+        }
         if itemIdex > _imaCount {
             itemIdex = _imaCount/2
         }
@@ -198,7 +216,7 @@ class SP_AdsView: UIView {
             itemIdex = 0
         }
         scrollPageControl.numberOfPages = _imageUrls.count // 页数
-        scrollPageControl.alignment(type: pageControlAlignment, pageCount:_imageUrls.count, sizeW:self.frame.size.width)
+        scrollPageControl.alignment(pageControlAlignment, pageCount:_imageUrls.count, sizeW:self.frame.size.width)
         
         // --- 分页圆点
         if _imageUrls.count > 1 {
@@ -239,16 +257,7 @@ class SP_AdsView: UIView {
     
     
     
-    //MARK:---------- 设置分页圆点
-    private func setScrollPageControl() {
-        scrollPageControl = UIPageControl(frame: CGRect(x: 0, y: frame.size.height - 20, width: frame.size.width, height: 20))
-        //圆点颜色
-        
-        scrollPageControl.pageIndicatorTintColor = .adsTintColor2
-        scrollPageControl.currentPageIndicatorTintColor = .adsTintColor1
-        scrollPageControl.isEnabled = false
-        self.addSubview(scrollPageControl)
-    }
+    
     //MARK:---------- 改变分页圆点
     fileprivate func changePageValue() {
         scrollPageControl.currentPage = itemIdex % _imageUrls.count
@@ -308,7 +317,7 @@ class SP_AdsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
 }
 
 //MARK:---------- UICollectionViewDelegate
@@ -366,7 +375,7 @@ extension SP_AdsView: UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         if _adsType == .half_H {
             // 获取当前显示的cell的下标
             let lastIndexPath = self.collectionView.indexPathsForVisibleItems.first
-            print(lastIndexPath?.item)
+            print(lastIndexPath?.item ?? "没有值")
             self.itemIdex = (lastIndexPath?.item)!
             // 更新数据
             self.changePageValue()
@@ -473,9 +482,9 @@ extension SP_AdsView: UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         
         return 0;
     }
-    //MARK:----------- 核心动画
+    //MARK:---- 核心动画
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
     }
-
+    
 }

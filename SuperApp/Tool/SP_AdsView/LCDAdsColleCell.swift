@@ -26,5 +26,4 @@ class LCDAdsColleCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
 }

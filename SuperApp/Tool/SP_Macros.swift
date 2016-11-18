@@ -14,7 +14,7 @@ import UIKit
 //全局设置 简化 NSUserDefaults 的写法
 //MARK:----------- 基本数据
 var SP_UserIsLogin: Bool {
-    let isLogin = ((SP_UserDefaultsGet(key: UserId) as! String).isEmpty) ? false : true
+    let isLogin = ((SP_UserDefaultsGet(key: UserId) as? String ?? "").isEmpty) ? false : true
     return isLogin
 }
 //MARK:-------- 全局 常量 设置
@@ -40,14 +40,14 @@ let UserCodeNum   = "UserCodeNum"
 let UserCodeQR   =  "UserCodeQR"
 
 //MARK:------------- SP_UserDefaults
-func SP_UserDefaultsSet(key:String, obj:AnyObject) -> Void {
+func SP_UserDefaultsSet(key:String, obj:Any) -> Void {
     return UserDefaults.standard.set(obj, forKey: key)
 }
-func SP_UserDefaultsGet(key:String) -> AnyObject {
+func SP_UserDefaultsGet(key:String) -> Any {
     if (UserDefaults.standard.value(forKey: key) != nil) {
-        return UserDefaults.standard.value(forKey: key) as AnyObject
+        return UserDefaults.standard.value(forKey: key)
     }
-    return "" as AnyObject
+    return ""
 }
 func SP_UserDefaultsRemo(key:String) -> Void {
     UserDefaults.standard.removeObject(forKey: key)
@@ -116,40 +116,6 @@ func SP_ViewHeight_Navi_Tab(view: AnyObject) -> CGFloat {
 let SP_SectionH_Top: CGFloat = 40.0
 let SP_SectionH_Foot: CGFloat = 5.0
 let SP_SectionH_Min: CGFloat = 0.0001
-
-
-
-func nullCell(tableView:UITableView, indexPath:NSIndexPath, cellId:String = "CellID_null", remove:Bool = true, lineHidden:Bool = false) -> UITableViewCell {
-    let cellID_null = cellId
-    var cell = tableView.dequeueReusableCell(withIdentifier: cellID_null)
-    if (cell == nil)
-    {
-        cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellID_null)
-    }
-    if remove {
-        for  view in cell!.contentView.subviews {
-            view.removeFromSuperview()
-        }
-    }
-    cell!.selectionStyle = UITableViewCellSelectionStyle.none
-//    cell?.backgroundColor = UIColor.xzMainColorBackground()
-//    if !lineHidden {
-//        UIView.xzSetLineView(cell!, placeType: .Bottom)
-//    }
-    return cell!
-}
-
-let itemID_null = "itemID_null"
-func nullItem(collectionView:UICollectionView, indexPath:IndexPath, cellId:String = itemID_null, remove:Bool = true) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-    if remove {
-        for suItem in cell.subviews {
-            suItem.removeFromSuperview()
-        }
-    }
-    
-    return cell
-}
 
 /// 是否安装微信
 //var haveWeixin:Bool {
