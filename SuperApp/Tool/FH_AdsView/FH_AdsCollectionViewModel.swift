@@ -1,5 +1,5 @@
 //
-//  SP_AdsCollectionViewModel.swift
+//  FH_AdsCollectionViewModel.swift
 //  SuperApp
 //
 //  Created by 刘才德 on 2016/11/1.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SP_AdsCollectionViewModel: NSObject {
-    weak var target:SP_AdsCollectionView!
+class FH_AdsCollectionViewModel: NSObject {
+    weak var target:FH_AdsCollectionView!
     
     
     

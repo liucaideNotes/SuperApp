@@ -1,5 +1,5 @@
 //
-//  SP_MJDIYAutoFooter.swift
+//  FH_MJDIYAutoFooter.swift
 //  SuperApp
 //
 //  Created by 刘才德 on 2016/11/2.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SP_MJDIYAutoFooter: MJRefreshAutoFooter {
+class FH_MJDIYAutoFooter: MJRefreshAutoFooter {
 
     //MARK:----------- 在这里做一些初始化配置（比如添加子控件）
     override func prepare()  {

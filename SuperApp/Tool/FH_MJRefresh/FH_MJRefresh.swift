@@ -1,5 +1,5 @@
 //
-//  SP_MJRefresh.swift
+//  FH_MJRefresh.swift
 //  SuperApp
 //
 //  Created by 刘才德 on 2016/11/2.
@@ -11,9 +11,9 @@ import Foundation
 /*
  1,需要添加第三方库 MJRefresh 支持
  2,在桥接文件中添加 #import "MJRefresh.h"
- 3,如需自定义刷新控件的文字或图片可在SP_MJRefreshDatas类中设置
- 4,SP_MJDIYHeader 类用于完全自定义下拉头部View
-   SP_MJDIYAutoFooter、SP_MJDIYBackFooter 两个类用于完全自定义上拉底部View
+ 3,如需自定义刷新控件的文字或图片可在FH_MJRefreshDatas类中设置
+ 4,FH_MJDIYHeader 类用于完全自定义下拉头部View
+   FH_MJDIYAutoFooter、FH_MJDIYBackFooter 两个类用于完全自定义上拉底部View
    可在类中自由编写
  4,使用
 //没有添加这个扩展类使用 MJRefresh 如下
@@ -124,7 +124,7 @@ extension UIScrollView {
     }
     //MARK:----------- 添加顶部刷新 -- 完全自定义
     func headerAddMJRefreshDIY(_ block:@escaping MJRefreshComponentRefreshingBlock) {
-        self.mj_header = SP_MJDIYHeader(refreshingBlock: block)
+        self.mj_header = FH_MJDIYHeader(refreshingBlock: block)
     }
     //MARK:----------- 调用顶部刷新
     func headerBeginRefresh() {
@@ -245,11 +245,11 @@ extension UIScrollView {
     }
     //MARK:-- 添加底部刷新 -- 完全自定义自动刷新
     func footerAddMJRefreshDIY_Auto(_ block:@escaping MJRefreshComponentRefreshingBlock) {
-        self.mj_footer = SP_MJDIYAutoFooter(refreshingBlock: block)
+        self.mj_footer = FH_MJDIYAutoFooter(refreshingBlock: block)
     }
     //MARK:-- 添加底部刷新 -- 完全自定义手动刷新
     func footerAddMJRefreshDIY_Back(_ block:@escaping MJRefreshComponentRefreshingBlock) {
-        self.mj_footer = SP_MJDIYBackFooter(refreshingBlock: block)
+        self.mj_footer = FH_MJDIYBackFooter(refreshingBlock: block)
     }
 
 }

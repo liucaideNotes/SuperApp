@@ -1,5 +1,5 @@
 //
-//  SP_GuideVC.swift
+//  FH_GuideVC.swift
 //  SuperApp
 //
 //  Created by 刘才德 on 2016/11/1.
@@ -10,9 +10,9 @@ import UIKit
 // -- 图片名称
 private let launch_Images = ["firstOpen_0","firstOpen_1","firstOpen_2"]
 
-class SP_GuideVC: UIViewController {
+class FH_GuideVC: UIViewController {
 
-    var sp_firstOpenBlock: ((_ isOk:Bool) -> Void)?
+    var fh_firstOpenBlock: ((_ isOk:Bool) -> Void)?
     //MARK:----------- 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class SP_GuideVC: UIViewController {
         collecView.isPagingEnabled = true //分页显示
         collecView.bounces = false
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: SP_ScreenWidth, height: SP_ScreenHeight)
+        layout.itemSize = CGSize(width: FH_ScreenWidth, height: FH_ScreenHeight)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         return collecView
@@ -47,7 +47,7 @@ class SP_GuideVC: UIViewController {
     }
     //MARK:---------- 设置分页圆点
     private lazy var  scrollPageControl: UIPageControl = {
-        let pageControl = UIPageControl(frame: CGRect(x:10, y:SP_ScreenHeight - 20, width:SP_ScreenWidth - 20, height:20))
+        let pageControl = UIPageControl(frame: CGRect(x:10, y:FH_ScreenHeight - 20, width:FH_ScreenWidth - 20, height:20))
         pageControl.numberOfPages = launch_Images.count // 页数
         //圆点颜色
         pageControl.pageIndicatorTintColor = .white
@@ -68,7 +68,7 @@ class SP_GuideVC: UIViewController {
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1.0
         button.setTitle("立即体验", for: .normal)
-        button.addTarget(self, action: #selector(SP_GuideVC.experienceClick), for: .touchUpInside)
+        button.addTarget(self, action: #selector(FH_GuideVC.experienceClick), for: .touchUpInside)
         return button
     }()
     //MARK:---------- 立即体验按钮动画
@@ -84,7 +84,7 @@ class SP_GuideVC: UIViewController {
     }
     //MARK:---------- 立即体验按钮点击
     func experienceClick() {
-        sp_firstOpenBlock?(true)
+        fh_firstOpenBlock?(true)
         
     }
     
@@ -97,7 +97,7 @@ class SP_GuideVC: UIViewController {
 
 }
 
-extension SP_GuideVC:UICollectionViewDelegate,UICollectionViewDataSource {
+extension FH_GuideVC:UICollectionViewDelegate,UICollectionViewDataSource {
     //MARK:---------- UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return launch_Images.count

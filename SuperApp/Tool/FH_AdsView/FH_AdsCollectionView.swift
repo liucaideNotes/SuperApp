@@ -1,5 +1,5 @@
 //
-//  SP_AdsCollectionView.swift
+//  FH_AdsCollectionView.swift
 //  SuperApp
 //
 //  Created by 刘才德 on 2016/11/1.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SP_AdsCollectionView: UICollectionView {
+class FH_AdsCollectionView: UICollectionView {
 
-    var vm = SP_AdsCollectionViewModel()
+    var vm = FH_AdsCollectionViewModel()
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         vm.target = self

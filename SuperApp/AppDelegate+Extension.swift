@@ -20,16 +20,16 @@ extension AppDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         if isNewVersion() {
-            let vc = SP_GuideVC()
+            let vc = FH_GuideVC()
             window?.rootViewController = vc
-            vc.sp_firstOpenBlock = { [weak self]_ in
+            vc.fh_firstOpenBlock = { [weak self]_ in
                 
-                let vc = SP_MainVC.initVC()
+                let vc = FH_MainVC.initVC()
                 self?.window?.rootViewController = vc
                 self?.saveVersion()
             }
         }else{
-            let vc = SP_MainVC.initVC()
+            let vc = FH_MainVC.initVC()
             window?.rootViewController = vc
         }
         window?.makeKeyAndVisible()
@@ -42,7 +42,7 @@ extension AppDelegate {
         print(versionString)
         let nowVersion = versionString
         // 获取到之前的版本号
-        let oldVersion: String = SP_UserDefaultsGet(key:"oldVersionKey") as! String
+        let oldVersion: String = FH_UserDefaultsGet(key:"oldVersionKey") as! String
         // 对比
         return nowVersion > oldVersion
     }
@@ -51,8 +51,8 @@ extension AppDelegate {
         // 获取当前的版本号
         let nowVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         // 保存当前版本号
-        SP_UserDefaultsSet(key:"oldVersionKey", obj:nowVersion as AnyObject)
-        SP_UserDefaultsSyn()
+        FH_UserDefaultsSet(key:"oldVersionKey", obj:nowVersion as AnyObject)
+        FH_UserDefaultsSyn()
     }
     
     

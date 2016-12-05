@@ -1,5 +1,5 @@
 //
-//  SP_LocationManager.swift
+//  FH_LocationManager.swift
 //  IEXBUY
 //
 //  Created by sifenzi on 16/6/8.
@@ -15,12 +15,12 @@
    #import "CLLocation+YCLocation.h"
  3,添加CoreLocation.framework
  4,使用：
-SP_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { [weak self](isChange) in
+FH_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { [weak self](isChange) in
     if isChange {
         print("位置变更")
     }
 }
-SP_LocationManager.shared.cityChangeBlock = { [weak self](province, city, subCity) in
+FH_LocationManager.shared.cityChangeBlock = { [weak self](province, city, subCity) in
     print("城市（省、市、区）变更")
 }
  */
@@ -31,12 +31,12 @@ enum CoordinateType {
     case Mars
     case GPS
 }
-class SP_LocationManager: NSObject,CLLocationManagerDelegate {
+class FH_LocationManager: NSObject,CLLocationManagerDelegate {
     
-    private static let sharedInstance = SP_LocationManager()
+    private static let sharedInstance = FH_LocationManager()
     private override init() {}
     //提供静态访问方法
-    internal static var shared: SP_LocationManager {
+    internal static var shared: FH_LocationManager {
         return self.sharedInstance
     }
     
@@ -46,17 +46,17 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
     var _currentCoord: CLLocationCoordinate2D {
         set{
             
-            UserDefaults.standard.set(newValue.latitude, forKey: "SP_LocationManagerLatitude")
-            UserDefaults.standard.set(newValue.longitude, forKey: "SP_LocationManagerLongitude")
+            UserDefaults.standard.set(newValue.latitude, forKey: "FH_LocationManagerLatitude")
+            UserDefaults.standard.set(newValue.longitude, forKey: "FH_LocationManagerLongitude")
             UserDefaults.standard.synchronize()
         }
         get{
-            let latitude = UserDefaults.standard.value(forKey: "SP_LocationManagerLatitude") as? Double ?? 0.0
-            let longitude = UserDefaults.standard.value(forKey: "SP_LocationManagerLongitude") as? Double ?? 0.0
+            let latitude = UserDefaults.standard.value(forKey: "FH_LocationManagerLatitude") as? Double ?? 0.0
+            let longitude = UserDefaults.standard.value(forKey: "FH_LocationManagerLongitude") as? Double ?? 0.0
             var currentCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
             if(longitude == 0.0 || longitude == 0.0) {
-                UserDefaults.standard.set(23.119298, forKey: "SP_LocationManagerLatitude")
-                UserDefaults.standard.set(113.321201, forKey: "SP_LocationManagerLongitude")
+                UserDefaults.standard.set(23.119298, forKey: "FH_LocationManagerLatitude")
+                UserDefaults.standard.set(113.321201, forKey: "FH_LocationManagerLongitude")
                 UserDefaults.standard.synchronize()
                 currentCoordinate = CLLocationCoordinate2DMake(23.119298, 113.321201)//珠江新城
             }
@@ -201,18 +201,18 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
                             let subCityName:String = placemark.subLocality!   //获取区名
                             myProvince = placemark.administrativeArea!   //获取省名
                             
-                            //print_LCD(placemark.name)//地址
-                            //print_LCD(placemark.thoroughfare)//街道
-                            //print_LCD(placemark.subThoroughfare)//门牌号
-                            //print_LCD(placemark.locality)//城市 、、如果是拼音首字母大写，没有市，Guangzhou
-                            //print_LCD(placemark.subLocality)//城区
-                            //print_LCD(placemark.administrativeArea)//省
-                            //print_LCD(placemark.subAdministrativeArea)
-                            //print_LCD(placemark.postalCode)
-                            //print_LCD(placemark.ISOcountryCode)//国家编码
-                            //print_LCD(placemark.country)//国家
-                            //print_LCD(placemark.inlandWater)
-                            //print_LCD(placemark.ocean)
+                            //print_FH(placemark.name)//地址
+                            //print_FH(placemark.thoroughfare)//街道
+                            //print_FH(placemark.subThoroughfare)//门牌号
+                            //print_FH(placemark.locality)//城市 、、如果是拼音首字母大写，没有市，Guangzhou
+                            //print_FH(placemark.subLocality)//城区
+                            //print_FH(placemark.administrativeArea)//省
+                            //print_FH(placemark.subAdministrativeArea)
+                            //print_FH(placemark.postalCode)
+                            //print_FH(placemark.ISOcountryCode)//国家编码
+                            //print_FH(placemark.country)//国家
+                            //print_FH(placemark.inlandWater)
+                            //print_FH(placemark.ocean)
                             
                             //城市变更
                             self.cityChangeBlock?(myProvince, cityName, subCityName)

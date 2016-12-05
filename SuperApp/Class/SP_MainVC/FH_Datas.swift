@@ -1,5 +1,5 @@
 //
-//  SP_Datas.swift
+//  FH_Datas.swift
 //  SuperApp
 //
 //  Created by 刘才德 on 2016/11/1.
@@ -103,7 +103,7 @@ let mainDatas:[[String:Any]] = [
         "基于CollectionView实现"
         ],
      "classes":[
-        SP_AdsVC.self,
+        FH_AdsVC.self,
                ]
     ],
 ]

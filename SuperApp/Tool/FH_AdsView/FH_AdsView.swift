@@ -1,5 +1,5 @@
 //
-//  SP_AdsView.swift
+//  FH_AdsView.swift
 //  iexbuy
 //
 //  Created by sifenzi on 16/5/18.
@@ -8,7 +8,7 @@
 
 /**
  * 需要必要的第三方库 SDWebImage 的支持
- * 必要的默认图片修改 SP_AdsView.placeholderImage = ""
+ * 必要的默认图片修改 FH_AdsView.placeholderImage = ""
  * 参数列表：
  * view 父view 必要
  * imageUrls 图片数组 必要
@@ -18,20 +18,20 @@
  * itemSize cell 大小 非必要，默认CGSize(width:frame.size.width/2, height:frame.size.height/2)
  * pageAlignment 分页圆点的位置 非必要，默认 居中
  
- * 使用只需要执行 SP_AdsView.show()
+ * 使用只需要执行 FH_AdsView.show()
  */
 
 import UIKit
 
-//MARK:---- SP_AdsView 对外接口
-extension SP_AdsView {
+//MARK:---- FH_AdsView 对外接口
+extension FH_AdsView {
     
     /*
      * 对外接口
      */
-    class func show(_ view:UIView ,frame: CGRect,  imageUrls: [String], isUrlImage:Bool = true , time: TimeInterval = 5.0, adsType: SP_AdsViewType = .default_H, itemSize:CGSize = CGSize(width: 0, height: 0), pageAlignment:UIPageControl.PageControlAlignmentType = .center) -> SP_AdsView {
+    class func show(_ view:UIView ,frame: CGRect,  imageUrls: [String], isUrlImage:Bool = true , time: TimeInterval = 5.0, adsType: FH_AdsViewType = .default_H, itemSize:CGSize = CGSize(width: 0, height: 0), pageAlignment:UIPageControl.PageControlAlignmentType = .center) -> FH_AdsView {
         for subView in view.subviews {
-            if let adsView = subView as? SP_AdsView {
+            if let adsView = subView as? FH_AdsView {
                 adsView.frame = frame
                 switch adsType {
                 case .default_H:
@@ -49,7 +49,7 @@ extension SP_AdsView {
                 return adsView
             }
         }
-        let adsView = SP_AdsView(frame: frame, adsType:adsType, time: time)
+        let adsView = FH_AdsView(frame: frame, adsType:adsType, time: time)
         view.addSubview(adsView)
         switch adsType {
         case .default_H:
@@ -96,20 +96,20 @@ extension UIPageControl {
 }
 
 //MARK:---- 主体类
-enum SP_AdsViewType {
+enum FH_AdsViewType {
     case default_H
     case half_H
     case imageBrowse_H
     case imageBrowse_V
     
 }
-class SP_AdsView: UIView {
+class FH_AdsView: UIView {
     
     /// 默认的图片
     static var placeholderImage = "200x200"
     
     ///闭包传值
-    var _SP_AdsViewClosures: ((_ itemIdex: Int, _ isSelect:Bool) -> Void)?
+    var _FH_AdsViewClosures: ((_ itemIdex: Int, _ isSelect:Bool) -> Void)?
     ///collectionView
     lazy var collectionView: UICollectionView = {
         let view =  UICollectionView(frame:self.frame, collectionViewLayout: self._layout)
@@ -120,7 +120,7 @@ class SP_AdsView: UIView {
         view.showsHorizontalScrollIndicator = false
         view.isPagingEnabled = true //分页显示
         
-        view.register(UINib(nibName: "LCDAdsColleCell", bundle: nil), forCellWithReuseIdentifier: "LCDAdsColleCell")
+        view.register(UINib(nibName: "FH_AdsColleCell", bundle: nil), forCellWithReuseIdentifier: "FH_AdsColleCell")
         return view
     }()
     fileprivate lazy var _layout:UICollectionViewFlowLayout = {
@@ -144,7 +144,7 @@ class SP_AdsView: UIView {
     fileprivate lazy var _imageView: UIImageView = {
         let image = UIImageView(frame: self.frame)
         image.backgroundColor = .adsTintColor2
-        image.image = UIImage(named: SP_AdsView.placeholderImage)
+        image.image = UIImage(named: FH_AdsView.placeholderImage)
         return image
     }()
     ///图片数据
@@ -161,7 +161,7 @@ class SP_AdsView: UIView {
         
     }
     
-    fileprivate var _adsType: SP_AdsViewType = .default_H
+    fileprivate var _adsType: FH_AdsViewType = .default_H
     fileprivate var _imaCount:Int = 0
     fileprivate var _time = 5.0
     fileprivate var _frame = CGRect.zero
@@ -175,7 +175,7 @@ class SP_AdsView: UIView {
         }
     }
     
-    init(frame: CGRect,adsType:SP_AdsViewType, time: TimeInterval) {
+    init(frame: CGRect,adsType:FH_AdsViewType, time: TimeInterval) {
         _itemSize = CGSize(width: frame.size.width, height: frame.size.height)
         
         super.init(frame: frame)
@@ -261,7 +261,7 @@ class SP_AdsView: UIView {
     //MARK:---------- 改变分页圆点
     fileprivate func changePageValue() {
         scrollPageControl.currentPage = itemIdex % _imageUrls.count
-        self._SP_AdsViewClosures?(itemIdex % self._imageUrls.count, false)
+        self._FH_AdsViewClosures?(itemIdex % self._imageUrls.count, false)
     }
     
     //MARK:---------- 轮循 更新 item
@@ -321,14 +321,14 @@ class SP_AdsView: UIView {
 }
 
 //MARK:---------- UICollectionViewDelegate
-extension SP_AdsView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension FH_AdsView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return _imaCount
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LCDAdsColleCell", for: indexPath) as! LCDAdsColleCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FH_AdsColleCell", for: indexPath) as! FH_AdsColleCell
         
         switch _adsType {
         case .default_H,.half_H:
@@ -341,7 +341,7 @@ extension SP_AdsView: UICollectionViewDelegate,UICollectionViewDataSource,UIColl
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        _SP_AdsViewClosures?(indexPath.item % _imageUrls.count, true)
+        _FH_AdsViewClosures?(indexPath.item % _imageUrls.count, true)
     }
     //开始拖曳
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

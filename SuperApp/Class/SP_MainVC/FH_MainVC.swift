@@ -1,5 +1,5 @@
 //
-//  SP_MainVC.swift
+//  FH_MainVC.swift
 //  SuperApp
 //
 //  Created by LCD-sifenzi on 2016/10/8.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SP_MainVC: UIViewController {
+class FH_MainVC: UIViewController {
 
-    override class func initVC() -> SP_MainVC {
-        return UIStoryboard(name: "SP_MainVCStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_MainVC") as! SP_MainVC
+    override class func initVC() -> FH_MainVC {
+        return UIStoryboard(name: "FH_MainVCStoryboard", bundle: nil).instantiateViewController(withIdentifier: "FH_MainVC") as! FH_MainVC
     }
     
     //MARK:----------- 设置
@@ -38,12 +38,12 @@ class SP_MainVC: UIViewController {
         }
         
         //定位
-        SP_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { [weak self](isChange) in
+        FH_LocationManager.shared.getLocation(self, coordinateType: .Baidu) { [weak self](isChange) in
             if isChange {
                 print("位置变更")
             }
         }
-        SP_LocationManager.shared.cityChangeBlock = { (province, city, subCity) in
+        FH_LocationManager.shared.cityChangeBlock = { (province, city, subCity) in
             print("城市（省、市、区）变更")
         }
         
@@ -106,7 +106,7 @@ class SP_MainVC: UIViewController {
 
 }
 //MARK:----------- UITableViewDelegate
-extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
+extension FH_MainVC: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return mainDatas.count
         
@@ -120,7 +120,7 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return SP_SectionH_Min
+        return FH_SectionH_Min
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -131,7 +131,7 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         return 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = SP_MainVCCell.dequeueReusable(tableView: tableView, indexPath: indexPath)
+        let cell = FH_MainVCCell.dequeueReusable(tableView: tableView, indexPath: indexPath)
         if (mainDatas[indexPath.section]["titles"] as? [String] ?? [])!.count > indexPath.row {
             cell.leftLabel.text = (mainDatas[indexPath.section]["titles"] as? [String])![indexPath.row]
         }
@@ -160,7 +160,7 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         self.present(vc, animated: true, completion: nil)
         
         
-//        if let vc = SP_classFromString(className: "SP_AdsVC")?.initVC() {
+//        if let vc = FH_classFromString(className: "FH_AdsVC")?.initVC() {
 //            self.present(vc, animated: true, completion: nil)
 //        }
         
@@ -168,10 +168,10 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
     }
     
 }
-//MARK:----------- SP_MainVCCell
-class SP_MainVCCell: UITableViewCell {
-    class func dequeueReusable(tableView:UITableView, indexPath:IndexPath) -> SP_MainVCCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SP_MainVCCell", for: indexPath) as! SP_MainVCCell
+//MARK:----------- FH_MainVCCell
+class FH_MainVCCell: UITableViewCell {
+    class func dequeueReusable(tableView:UITableView, indexPath:IndexPath) -> FH_MainVCCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FH_MainVCCell", for: indexPath) as! FH_MainVCCell
         return cell
     }
     

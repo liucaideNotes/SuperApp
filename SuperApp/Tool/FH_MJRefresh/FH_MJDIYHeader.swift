@@ -1,5 +1,5 @@
 //
-//  SP_MJDIYBackFooter.swift
+//  FH_MJDIYHeader.swift
 //  SuperApp
 //
 //  Created by 刘才德 on 2016/11/2.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SP_MJDIYBackFooter: MJRefreshBackFooter {
+class FH_MJDIYHeader: MJRefreshHeader {
 
     //MARK:----------- 在这里做一些初始化配置（比如添加子控件）
     override func prepare()  {
@@ -32,10 +32,6 @@ class SP_MJDIYBackFooter: MJRefreshBackFooter {
     }
     //MARK:----------- 监听控件的刷新状态
     override var state:MJRefreshState {
-        willSet{
-            state = newValue
-            
-        }
         didSet{
             switch state {
             case .idle:
@@ -53,13 +49,9 @@ class SP_MJDIYBackFooter: MJRefreshBackFooter {
     }
     //MARK:----------- 监听拖拽比例变化（控件被拖出来的比例）
     override var pullingPercent:CGFloat {
-        willSet{
-            pullingPercent = newValue
-            
-        }
         didSet{
             
         }
     }
-
+    
 }
