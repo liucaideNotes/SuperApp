@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SP_TabMenuView" customModule="SuperApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpA-7Z-WVq" userLabel="ItemView">
+                    <rect key="frame" x="0.0" y="317" width="375" height="350"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="350" id="3B3-G1-nDi"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="200x200" translatesAutoresizingMaskIntoConstraints="NO" id="nSW-Xs-pCh">
+                    <rect key="frame" x="50" y="50" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="N4H-6A-st6"/>
+                        <constraint firstAttribute="width" constant="50" id="aiZ-Sy-mq8"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="超级APP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vX-Co-obf">
+                    <rect key="frame" x="105" y="50" width="67" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRY-q7-fRF">
+                    <rect key="frame" x="162" y="607" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="R40-xZ-bUo"/>
+                        <constraint firstAttribute="width" secondItem="PRY-q7-fRF" secondAttribute="height" multiplier="1:1" id="gGn-37-BKn"/>
+                    </constraints>
+                    <state key="normal" title="X" image="logo_0"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="GfO-Cr-KIv"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.7928617294520548" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="0vX-Co-obf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="105" id="Bym-1h-7un"/>
+                <constraint firstItem="0vX-Co-obf" firstAttribute="top" secondItem="nSW-Xs-pCh" secondAttribute="top" id="GLm-Hz-Hli"/>
+                <constraint firstItem="nSW-Xs-pCh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="JKx-fV-pEd"/>
+                <constraint firstItem="PRY-q7-fRF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="La4-G0-cwV"/>
+                <constraint firstItem="0vX-Co-obf" firstAttribute="centerY" secondItem="nSW-Xs-pCh" secondAttribute="centerY" id="Vsc-hj-5Db"/>
+                <constraint firstAttribute="bottom" secondItem="cpA-7Z-WVq" secondAttribute="bottom" id="bZn-G5-2Pz"/>
+                <constraint firstItem="nSW-Xs-pCh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="ghp-Xp-PNF"/>
+                <constraint firstAttribute="bottom" secondItem="PRY-q7-fRF" secondAttribute="bottom" constant="10" id="h2N-oG-3Jt"/>
+                <constraint firstAttribute="trailing" secondItem="cpA-7Z-WVq" secondAttribute="trailing" id="h2T-uc-SeB"/>
+                <constraint firstItem="cpA-7Z-WVq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nZY-pj-OMB"/>
+            </constraints>
+            <connections>
+                <outlet property="button_back" destination="PRY-q7-fRF" id="hoq-wv-c6o"/>
+                <outlet property="view_item" destination="cpA-7Z-WVq" id="hgt-Nh-47M"/>
+                <outlet property="view_item_W" destination="3B3-G1-nDi" id="RRE-Dz-OJB"/>
+            </connections>
+            <point key="canvasLocation" x="-43.5" y="22.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="200x200" width="229" height="229"/>
+        <image name="logo_0" width="100" height="100"/>
+    </resources>
+</document>

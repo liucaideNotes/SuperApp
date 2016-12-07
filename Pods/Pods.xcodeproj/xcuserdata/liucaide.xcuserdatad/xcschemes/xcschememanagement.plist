@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SuperApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -14,15 +19,40 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>21DF36D4F31A1F4BB4CC09860AE360AF</key>
+		<key>6353326F6C3EC6CEED2FC504B8B8F4DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2FD9CC1710EA4B8B9F861AA903BED20</key>
+		<key>B3061703A9C432743BF436ED73F1ABC4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7228DEE6899A293CEC660FCFF0985E4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECBFC718002A8C8E64D3FC8BD8C2FB8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
