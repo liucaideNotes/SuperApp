@@ -1,5 +1,4 @@
-# SuperApp -- 这是一个超级App、支持swift3.0
-#[超级应用（SuperApp）](https://github.com/Friends-Home/SuperApp) 我们竭尽所能，持续更新！
+# [SuperApp -- 这是一个超级App、支持swift3.0，一个让ios开发人员疯狂的一个超级demo，我们竭尽所能，持续更新！](https://github.com/Friends-Home/SuperApp)
 ######这个项目demo里面，
 ######1，包含了主流第三方库的二次封装，代码简洁便于使用；
 ######2，包含了常见Navigation&TabBar嵌套框架的写法；
@@ -8,7 +7,8 @@
 ######4，包含了常见动画写法（如新浪 + 弹窗）
 ######5，包含多种网络层封装的具体写法思路，
 ######6，包含多个独立小模块（如：广告轮播图，九宫格，城市选择器，二维码扫描等），基本能一两句代码搞定，拿来即用！注释清晰，简直就是让初学者疯狂的一个超级demo！
-######7，我们追求代码的极致整洁，强烈抵制杂乱无章。所以这个项目的代码，我们希望能一眼就看懂（非码农人士除外）。
+######7，包含一个使用 React Native 编写的双平台 app！！！
+######8，我们追求代码的极致整洁，强烈抵制杂乱无章。所以这个项目的代码，我们希望能一眼就看懂（非码农人士除外）。
 ##[目录：](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Class/SP_MainVC/SP_Datas.swift)
 ###[一.独立模块](https://github.com/Friends-Home/SuperApp/tree/master/SuperApp/Tool)
 ######[---启动引导页](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Tool/SP_GuideVC/SP_GuideVC.swift)
