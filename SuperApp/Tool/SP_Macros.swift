@@ -77,7 +77,7 @@ let SP_ScreenWidth:CGFloat = UIScreen.main.bounds.size.width
 let SP_ScreenHeight:CGFloat = UIScreen.main.bounds.size.height
 let SP_ScreenRatio: CGFloat = SP_ScreenWidth / SP_ScreenHeight
 //MARK:----------- 设备
-func Iphone() -> String {
+let SP_iphone:String = {
     if SP_ScreenHeight == 667 {
         return "6"
     }
@@ -88,7 +88,7 @@ func Iphone() -> String {
         return "4"
     }
     return "5"
-}
+}()
 
 //MARK:----------- 导航栏 底部栏 和各减去 高度
 let SP_NaviHeight: CGFloat = 64.0
@@ -120,7 +120,6 @@ let SP_SectionH_Min: CGFloat = 0.0001
 //    return WXApi.isWXAppInstalled()
 //}
 //}
-
 
 //MARK:----------- 通过字符串获得类
 func SP_classFromString(_ className: String) -> AnyClass? {
@@ -155,3 +154,14 @@ func SP_vcFromString(_ controllerName : String) -> UIViewController.Type? {
     }
     return clsType
 }
+
+//MARK:--- 判断是否为模拟器平台
+let SP_isSimulator: Bool = {
+    var isSim = false
+    #if arch(i386) || arch(x86_64)
+        isSim = true
+    #endif
+    return isSim
+}()
+
+

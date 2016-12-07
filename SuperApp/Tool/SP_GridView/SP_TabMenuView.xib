@@ -73,10 +73,12 @@
             </constraints>
             <connections>
                 <outlet property="button_back" destination="PRY-q7-fRF" id="hoq-wv-c6o"/>
+                <outlet property="image_logo" destination="nSW-Xs-pCh" id="rwB-fd-dPU"/>
+                <outlet property="label_logo" destination="0vX-Co-obf" id="hTV-dZ-BQH"/>
                 <outlet property="view_item" destination="cpA-7Z-WVq" id="hgt-Nh-47M"/>
                 <outlet property="view_item_W" destination="3B3-G1-nDi" id="RRE-Dz-OJB"/>
             </connections>
-            <point key="canvasLocation" x="-43.5" y="22.5"/>
+            <point key="canvasLocation" x="-44" y="-1"/>
         </view>
     </objects>
     <resources>

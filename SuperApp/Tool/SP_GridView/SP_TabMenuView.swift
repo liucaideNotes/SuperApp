@@ -43,14 +43,18 @@ class SP_TabMenuView: UIView {
         blurView.snp.makeConstraints { (make) in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
-        
     }
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        //zoomAnimation(self)
+        zoomAnimation(view_item)
+        zoomAnimation(button_back)
+        zoomAnimation(image_logo)
+        zoomAnimation(label_logo)
         showSubViews()
     }
     //MARK:--- 主体数据和控件
-    var _type:SP_TabMenuViewType = .t两行三列 {
+    private var _type:SP_TabMenuViewType = .t两行三列 {
         didSet{
             switch _type {
             case .t两行两列:
@@ -67,14 +71,16 @@ class SP_TabMenuView: UIView {
             }
         }
     }
-    lazy var _images = [String]()
-    lazy var _titles = [String]()
-    lazy var _eachNum = 3
-    lazy var _row = 2
+    private lazy var _images = [String]()
+    private lazy var _titles = [String]()
+    private lazy var _eachNum = 3
+    private lazy var _row = 2
     private lazy  var _pageItemNum:Int = {
         return self._eachNum * self._row
     }()
     private lazy var _animateTime:TimeInterval = 0
+    @IBOutlet weak var image_logo: UIImageView!
+    @IBOutlet weak var label_logo: UILabel!
     @IBOutlet weak var view_item: UIView!
     @IBOutlet weak var view_item_W: NSLayoutConstraint!
     @IBOutlet weak var button_back: UIButton!
@@ -83,14 +89,19 @@ class SP_TabMenuView: UIView {
         hideSubViews()
     }
     //MARK:--- 九宫格，需要本项目当中 SP_GridView类 的支持
-    lazy var _itemView:SP_GridView = {
+    private lazy var _itemView:SP_GridView = {
         let view = SP_GridView.show(CGRect(x:0,y:0,width:SP_ScreenWidth,height:self.view_item.bounds.size.height),superView: self.view_item, datas: (eachNum: self._eachNum, row: self._row, space: 0, margin: (30,10), images: (name: self._images, placeholderImage: "200x200"), titles: self._titles, angles: []), block: { (indx) in
         })
         view.tDefaultAnimate()
         return view
     }()
     //MARK:--- 音频播放器
-    lazy var _player:AVAudioPlayer? = {
+    private lazy var _player:AVAudioPlayer? = {
+        
+        if SP_isSimulator {
+            return nil
+        }
+        
         let path = Bundle.main.path(forResource: "tanhuang", ofType: "mp3") ?? ""
         
         guard let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: path)) else {
@@ -110,16 +121,19 @@ class SP_TabMenuView: UIView {
         //6、仪表计数
         //player.isMeteringEnabled = true //开启仪表计数功能
         //player.updateMeters()//更新仪表计数
+        player.prepareToPlay()//分配播放所需的资源，并将其加入内部播放队列
         return player
         
     }()
-    //MARK:--- 显示
-    private func showSubViews() {
-        _player?.prepareToPlay()//分配播放所需的资源，并将其加入内部播放队列
+    private func playerShow() {
         _player?.play()//播放
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
             self._player?.stop()
         }
+    }
+    //MARK:--- 显示
+    private func showSubViews() {
+        playerShow()
         _itemView._pageControl.isHidden = true
         for (i,item) in _itemView._pageView.subviews.enumerated() {
             showAnimate(item, delay:0.0+TimeInterval(i)/16, height: view_item_W.constant, block: {
@@ -135,11 +149,7 @@ class SP_TabMenuView: UIView {
     
     //MARK:--- 隐藏
     private func hideSubViews() {
-        _player?.prepareToPlay()//分配播放所需的资源，并将其加入内部播放队列
-        _player?.play()//播放
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
-            self._player?.stop()
-        }
+        playerShow()
         //当前显示的页码
         _itemView._pageControl.isHidden = true
         let pagenum = _itemView._pageControl.currentPage
@@ -208,6 +218,22 @@ class SP_TabMenuView: UIView {
             block()
         }
         
+    }
+    //MARK:--- 核心动画 缩放
+    private func zoomAnimation(_ view:UIView) {
+        view.isHidden = false
+        // 把按钮的 transform 缩放设置为0
+        view.transform = CGAffineTransform(scaleX: 0, y: 0)
+        UIView.animate(withDuration: 1.0,// 动画时长
+                       delay: 0.0,     // 动画延迟
+                       usingSpringWithDamping: 0.7,// 类似弹簧振动效果 0~1
+                       initialSpringVelocity: 5,   // 初始速度
+                       options: .allowAnimatedContent,// 动画过渡效果
+                       animations: { () -> Void in
+            view.transform = .identity
+        }) { (_) -> Void in
+            
+        }
     }
  
 
