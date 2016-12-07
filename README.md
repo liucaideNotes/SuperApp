@@ -6,7 +6,7 @@
 
 [.广告轮播](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Tool/SP_AdsView/SP_AdsView.swift)
 
-[.仿新浪微博tabbar(内有音频，模拟器运行需将音频部分注释掉)](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Tool/SP_GridView/SP_TabMenuView.swift)
+[.仿新浪微博tabbar，酷炫动画](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Tool/SP_GridView/SP_TabMenuView.swift)
 
 [.定位(系统)](https://github.com/Friends-Home/SuperApp/blob/master/SuperApp/Tool/SP_LocationManager/SP_LocationManager.swift)
 
