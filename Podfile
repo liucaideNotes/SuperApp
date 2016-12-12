@@ -3,6 +3,8 @@ platform :ios, '9.0'
 use_frameworks!
 
 target ‘SuperApp’ do
+    pod 'Alamofire'
+    pod 'AFNetworking'
     pod 'SDWebImage'
     pod 'SwiftyJSON'
     pod 'SnapKit'
