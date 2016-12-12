@@ -16,6 +16,12 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (4.2.0)
   - MBProgressHUD (1.0.0)
+  - RxCocoa (3.0.1):
+    - RxSwift (~> 3.0)
+  - RxDataSources (1.0.0):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.1)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -26,6 +32,9 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - MBProgressHUD
+  - RxCocoa
+  - RxDataSources
+  - RxSwift
   - SDWebImage
   - SnapKit
   - SwiftyJSON
@@ -34,10 +43,13 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
+  RxDataSources: 824693e84d00781d0a5e5cedc1ff95ce9250aacd
+  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: 9c2edc9918311fe2f6ec96a636d474b6b7389e45
+PODFILE CHECKSUM: 70716048b873bf5cdfa4527ecb6d0f80116ca4a6
 
 COCOAPODS: 1.0.1

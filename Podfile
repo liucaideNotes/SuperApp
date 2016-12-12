@@ -9,6 +9,9 @@ target ‘SuperApp’ do
     pod 'SwiftyJSON'
     pod 'SnapKit'
     pod 'MBProgressHUD'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'RxDataSources'
 end
 
 post_install do |installer|
