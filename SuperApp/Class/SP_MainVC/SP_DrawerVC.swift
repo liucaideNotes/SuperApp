@@ -7,6 +7,7 @@
 //
 /**
  * 抽屉 底部的 ViewController， 以此VC作为底层
+ * 让需要展示抽屉的 子类继承 SP_ParentVC_Drawer
  *
  *
  *
