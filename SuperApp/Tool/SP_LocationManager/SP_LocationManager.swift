@@ -129,7 +129,7 @@ class SP_LocationManager: NSObject,CLLocationManagerDelegate {
             else if(CLLocationManager.authorizationStatus() == .denied){
                 //需要把弹窗放在主线程才能强制显示
                 DispatchQueue.main.async{
-                    let aler = UIAlertController(title: "无法定位，因为您没有授权爱换购使用定位，请至设置中开启！", message: nil, preferredStyle: .alert)
+                    let aler = UIAlertController(title: "无法定位，因为您没有授权使用定位，请至设置中开启！", message: nil, preferredStyle: .alert)
                     let cancel = UIAlertAction.init(title: "知道了", style: .default, handler: { (UIAlertAction) in
                     })
                     aler.addAction(cancel)

@@ -24,16 +24,30 @@ extension AppDelegate {
             window?.rootViewController = vc
             vc.SP_firstOpenBlock = { [weak self]_ in
                 
-                let vc = SP_MainVC.initSPVC()
+                //let vc = SP_MainVC.initSPVC()
+                let vc = SP_DrawerVC.initSPVC()
+                
                 self?.window?.rootViewController = vc
                 self?.saveVersion()
             }
         }else{
-            let vc = SP_MainVC.initSPVC()
+            //let vc = SP_MainVC.initSPVC()
+            let vc = SP_DrawerVC.initSPVC()
             window?.rootViewController = vc
         }
         window?.makeKeyAndVisible()
     }
+    
+    private static var tabBar:SP_TabBarController = {
+        let viewControllers = [SP_MainVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC()]
+        let titles = ["1","2","","4","5"]
+        let images = ["30x30","30x30","","30x30","30x30"]
+        let selectedImages = ["30x30","30x30","","30x30","30x30"]
+        let vc = SP_TabBarController.initTabbar(viewControllers, titles: titles, images: images, selectedImages: selectedImages, selectedIndex: 0)
+        vc.setProperty(true, colorNormal: UIColor.maintext_darkgray, colorSelected: UIColor.main_1, titleFontNormal: 12.0, titleFontSelected: 12.0, imageInsets: UIEdgeInsetsMake(0, 0, 0, 0))
+        vc.centerMenuButton()
+        return vc
+    }()
     
     //MARK:----------- 判断是否是新版本
     private func isNewVersion() -> Bool {

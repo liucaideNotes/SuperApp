@@ -30,9 +30,9 @@ let mainDatas:[[String:Any]] = [
         "RXSwift+MVVM"
               ],
      "represent":[
-        "",
-        "",
-        "",
+        "基本Navigation&TabBar嵌套封装，简单接口",
+        "基本嵌套基础之上添加一个独立按钮",
+        "点击头像或右划即可展示",
         "",
         "",
         "",

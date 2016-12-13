@@ -8,25 +8,12 @@
 
 import UIKit
 
-class SP_MainVC: UIViewController {
+class SP_MainVC: SP_ParentVC_Drawer {
 
+    //MARK:----------- 生命周期
     override class func initSPVC() -> SP_MainVC {
         return UIStoryboard(name: "SP_MainVCStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_MainVC") as! SP_MainVC
     }
-    //MARK:----------- 设置
-    
-    
-    
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-    }
-    
-    
-    @IBOutlet weak var rightTableVIew: UITableView!
-    //MARK:----------- 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -49,6 +36,8 @@ class SP_MainVC: UIViewController {
         addMJHeaderAndFooter()
         
         
+        
+        
 //        rightTableVIew.mj_header = MJRefreshGiSPeader(refreshingBlock: {
 //            // 模拟延迟加载数据，2秒后才调用（真实开发中，可以移除这段gcd代码）
 //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {
@@ -57,8 +46,36 @@ class SP_MainVC: UIViewController {
 //            
 //            
 //        })
+        
+        
+    }
+    //MARK:--- 抽屉点击事件通知
+    override func drawerReceptionValue(_ notification:NSNotification) {
+        super.drawerReceptionValue(notification)
+        let notifi = notification.object as? [String:Any]
+        
+        let tag = notifi?["tag"] as? Int ?? 0
+        let index = notifi?["selectIndex"] as? Int ?? 0
+        if index == 0 {
+            SP_VipVC.push(self,tag:tag)
+        }
+        
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
+    
+    
+    @IBOutlet weak var rightTableVIew: UITableView!
+    
+
+    
+    
+
+}
+//MARK:----------- UITableViewDelegate
+extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
     //MARK:----------- 上拉下拉刷新
     func addMJHeaderAndFooter() {
         rightTableVIew.headerAddMJRefreshGif { [unowned self]() -> Void in
@@ -83,29 +100,8 @@ class SP_MainVC: UIViewController {
     func footerEndRefreshNoMoreData() {
         rightTableVIew.footerEndRefreshNoMoreData()
     }
-
     
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-//MARK:----------- UITableViewDelegate
-extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
+    //MARK:--- DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return mainDatas.count
         
@@ -178,7 +174,8 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         guard let vc = (mainDatas[indexPath.section]["classes"] as? [UIViewController.Type])?[indexPath.row].initSPVC() else {
             return
         }
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+        //self.present(vc, animated: true, completion: nil)
         
         
 //        if let vc = SP_classFromString(className: "SP_AdsVC")?.initVC() {

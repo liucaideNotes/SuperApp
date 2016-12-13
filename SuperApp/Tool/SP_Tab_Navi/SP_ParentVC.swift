@@ -5,8 +5,11 @@
 //  Created by 刘才德 on 2016/11/14.
 //  Copyright © 2016年 Friends-Home. All rights reserved.
 //
-/***
- ***/
+/**
+   基础父类 SP_ParentVC
+   这个类重新自定义 Navigation
+   拥有 导航栏的基本原件，并增添新原件,可扩展定制多种效果
+*/
 import UIKit
 enum SP_ParentVCType {
     case tDefault
@@ -40,9 +43,7 @@ class SP_ParentVC: UIViewController {
         
         //bgViewAddConstraints()
         
-        
-        
-        
+        makeNavigation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +53,11 @@ class SP_ParentVC: UIViewController {
         self.view.bringSubview(toFront: _statusBarView)
         //updateFrame()
     }
+    
+    open func makeNavigation() {
+        
+    }
+    
     open var _ParentVCType:SP_ParentVCType = .tDefault {
         didSet{
             xz_navigationView()
@@ -304,7 +310,7 @@ class SP_ParentVC: UIViewController {
         return button
     }()
     ///设置 searchButton显示文字
-    open var _title = "爱换购" {
+    open var _title = "超级App" {
         didSet{
             _centerButton.setTitle(_title, for: .normal)
             updateConstraints()
@@ -423,10 +429,10 @@ class SP_ParentVC: UIViewController {
             }
             _centerView.snp.removeConstraints()
             _centerView.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
+                make.center.equalToSuperview()
                 make.bottom.equalToSuperview()
                 make.leading.equalTo(_leftView.snp.trailing).offset(5)
-                make.trailing.equalTo(_rightView.snp.leading).offset(-5)
+                //make.trailing.equalTo(_rightView.snp.leading).offset(-5)
             }
             
             _leftBarButton.snp.removeConstraints()
