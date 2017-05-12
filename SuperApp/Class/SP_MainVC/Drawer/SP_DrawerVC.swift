@@ -51,7 +51,7 @@ class SP_DrawerVC: UIViewController {
         let selectedImages = ["30x30","30x30","","30x30","30x30"]
         let vc = SP_TabBarController.initTabbar(viewControllers, titles: titles, images: images, selectedImages: selectedImages, selectedIndex: 0)
         vc.setProperty(true, colorNormal: UIColor.maintext_darkgray, colorSelected: UIColor.main_1, titleFontNormal: 12.0, titleFontSelected: 12.0, imageInsets: UIEdgeInsetsMake(0, 0, 0, 0))
-        vc.centerMenuButton()
+        vc.sp_centerMenuButton()
         return vc
     }()
     

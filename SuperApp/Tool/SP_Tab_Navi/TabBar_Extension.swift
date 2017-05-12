@@ -11,10 +11,10 @@ import Foundation
  * 自定义按钮
  *
  */
-extension SP_TabBarController {
+extension UITabBarController {
     //MARK:--- 中间 + 按钮
-    func centerMenuButton() {
-        hideLine()
+    func sp_centerMenuButton() {
+        sp_hideLine()
         //顶部灰线 -- 需要隐藏自有分割线，因为自有分割线在最上层
         let lineView = UIView()
         lineView.backgroundColor = UIColor.main_line
@@ -32,14 +32,14 @@ extension SP_TabBarController {
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.setImage(UIImage(named:"logo_0"), for: .normal)
-        button.addTarget(self, action: #selector(SP_TabBarController.centerMenuButtonClick(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(UITabBarController.sp_centerMenuButtonClick(_:)), for: .touchUpInside)
         button.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-10)
             make.width.height.equalTo(50)
         }
     }
-    func centerMenuButtonClick(_ sender:UIButton) {
+    func sp_centerMenuButtonClick(_ sender:UIButton) {
         let images = ["200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200"]
         let titles = ["200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200","200x200"]
         SP_TabMenuView.show((images,titles) ,type:.t两行三列, block: { tag in
@@ -47,8 +47,9 @@ extension SP_TabBarController {
         })
         
     }
+    
     //MARK:--- 去掉tabBar顶部线条
-    func hideLine() {
+    func sp_hideLine() {
         //去掉tabBar顶部线条
         let rect = CGRect(x: 0, y: 0, width: SP_ScreenWidth, height: 0.5)
         UIGraphicsBeginImageContext(rect.size)
@@ -62,13 +63,7 @@ extension SP_TabBarController {
     }
 }
 
-/**
- * 默认代码加载
- *
- */
-extension SP_TabBarController {
-    
-}
+
 
 
 

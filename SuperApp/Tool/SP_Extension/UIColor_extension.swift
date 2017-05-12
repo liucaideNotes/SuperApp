@@ -9,7 +9,7 @@ import UIKit
 extension UIColor {
     ///主题色
     open class var main_1: UIColor {
-        return UIColor(red: 243/255, green: 78/255, blue: 8/255, alpha:1)
+        return UIColor(red: 89/255, green: 145/255, blue: 249/255, alpha: 1)
     }
     ///第二主题色 -- 按钮蓝 天空蓝
     open class var main_2: UIColor {

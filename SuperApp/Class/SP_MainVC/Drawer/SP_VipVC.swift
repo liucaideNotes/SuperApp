@@ -20,7 +20,7 @@ class SP_VipVC: SP_ParentVC {
         super.viewDidLoad()
 
         self._title = "会员特权\(_tag)"
-        
+        self.view.backgroundColor = UIColor.red
     }
 
     deinit {

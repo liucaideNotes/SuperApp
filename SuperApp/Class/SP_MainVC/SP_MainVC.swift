@@ -47,7 +47,9 @@ class SP_MainVC: SP_ParentVC_Drawer {
 //            
 //        })
         
-        
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     //MARK:--- 抽屉点击事件通知
     override func drawerReceptionValue(_ notification:NSNotification) {
@@ -61,9 +63,7 @@ class SP_MainVC: SP_ParentVC_Drawer {
         }
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
     
     
     
@@ -149,9 +149,11 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
             let titles = ["1","2","","4","5"]
             let images = ["30x30","30x30","","30x30","30x30"]
             let selectedImages = ["30x30","30x30","","30x30","30x30"]
-            let vc = SP_TabBarController.initTabbar(viewControllers, titles: titles, images: images, selectedImages: selectedImages, selectedIndex: 0)
-            vc.setProperty(true, colorNormal: UIColor.maintext_darkgray, colorSelected: UIColor.main_1, titleFontNormal: 12.0, titleFontSelected: 12.0, imageInsets: UIEdgeInsetsMake(0, 0, 0, 0))
-            vc.centerMenuButton()
+            let vc = SPNT_TabBarController.initSPVC()
+            
+//                .initTabbar(viewControllers, titles: titles, images: images, selectedImages: selectedImages, selectedIndex: 0)
+//            vc.setProperty(false, colorNormal: UIColor.maintext_darkgray, colorSelected: UIColor.main_1, titleFontNormal: 12.0, titleFontSelected: 12.0, imageInsets: UIEdgeInsetsMake(0, 0, 0, 0))
+//            vc.centerMenuButton()
             self.present(vc, animated: true, completion: nil)
         case "仿新浪微博TabBar":
             let viewControllers = [SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC()]
