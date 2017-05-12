@@ -20,7 +20,8 @@ class SP_NavigationView: UIView {
         let view = (Bundle.main.loadNibNamed("SP_NavigationView", owner: nil, options: nil)!.first as? SP_NavigationView)!
         pView.addSubview(view)
         view.snp.makeConstraints { (make) in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(0)
             make.height.equalTo(64)
         }
         return view
