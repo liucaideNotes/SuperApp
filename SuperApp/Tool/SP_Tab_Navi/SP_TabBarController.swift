@@ -31,6 +31,7 @@ class SP_NavigationController: UINavigationController,UINavigationControllerDele
         self.delegate = self
     }
     
+    
     //UINavigationControllerDelegate方法 -- 解决自定义返回键 右划返回手势失效
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         //实现滑动返回功能
@@ -64,6 +65,7 @@ class SP_NavigationController: UINavigationController,UINavigationControllerDele
  */
 class SP_TabBarController: UITabBarController {
     
+    //代码定义
     class func initTabbar(_ viewControllers:[UIViewController], titles:[String], images:[String], selectedImages:[String], selectedIndex:Int = 0) -> SP_TabBarController {
        
         let tabbar = SP_TabBarController()
@@ -78,6 +80,12 @@ class SP_TabBarController: UITabBarController {
         return tabbar
     }
     
+    //Storyboard
+    override class func initSPVC() -> SPNT_TabBarController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SPNT_TabBarController") as! SPNT_TabBarController
+    }
+    
+    //MARK:--- 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
         

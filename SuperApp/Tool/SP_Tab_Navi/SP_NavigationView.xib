@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SP_NavigationView" customModule="SuperApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLk-Uy-ZHV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUn-SP-QHw">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Be8-Gm-8le"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oug-Wd-ECf">
+                            <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5g-aF-so5">
+                                    <rect key="frame" x="0.0" y="44" width="375" height="0.0"/>
+                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="p81-u7-Nap"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpX-Nb-flm">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="K49-jp-qdo"/>
+                                        <constraint firstAttribute="height" constant="44" id="hWr-ay-7T3"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="click_NaviButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="vpi-dD-3Ju"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGi-T5-r08">
+                                    <rect key="frame" x="44" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="8U9-ha-oKZ"/>
+                                        <constraint firstAttribute="width" constant="44" id="Aau-H6-c52"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="click_NaviButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZoC-gI-IAj"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCR-Gz-4aD">
+                                    <rect key="frame" x="243" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="CEb-jS-fii"/>
+                                        <constraint firstAttribute="width" constant="44" id="LQU-BR-8zY"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="click_NaviButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="ToQ-3d-NbF"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-Ep-4pX">
+                                    <rect key="frame" x="287" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="FEg-iA-Nqe"/>
+                                        <constraint firstAttribute="width" constant="44" id="GK0-Fx-AEC"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="click_NaviButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="QLz-Ea-mtd"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iy2-ho-fkA">
+                                    <rect key="frame" x="331" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="WjZ-YI-8WK"/>
+                                        <constraint firstAttribute="width" constant="44" id="miQ-tc-Lma"/>
+                                    </constraints>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="click_NaviButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="rln-sM-ueO"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueZ-lN-YjE">
+                                    <rect key="frame" x="155.5" y="0.0" width="64" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="Ghw-L0-WJj"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <state key="normal" title="SupApp">
+                                        <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="click_NaviButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="EkI-b8-9dd"/>
+                                    </connections>
+                                </button>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4pA-uI-zFl">
+                                    <rect key="frame" x="130.5" y="12" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="YH0-Ep-4pX" firstAttribute="centerY" secondItem="oug-Wd-ECf" secondAttribute="centerY" id="90P-OH-g2o"/>
+                                <constraint firstItem="hCR-Gz-4aD" firstAttribute="centerY" secondItem="oug-Wd-ECf" secondAttribute="centerY" id="He3-WM-ISF"/>
+                                <constraint firstItem="ueZ-lN-YjE" firstAttribute="centerX" secondItem="oug-Wd-ECf" secondAttribute="centerX" id="Kcs-XX-Cq0"/>
+                                <constraint firstItem="tpX-Nb-flm" firstAttribute="leading" secondItem="oug-Wd-ECf" secondAttribute="leading" id="MCg-Ov-CYq"/>
+                                <constraint firstItem="YH0-Ep-4pX" firstAttribute="leading" secondItem="hCR-Gz-4aD" secondAttribute="trailing" id="OrS-4l-Xua"/>
+                                <constraint firstItem="ueZ-lN-YjE" firstAttribute="leading" secondItem="4pA-uI-zFl" secondAttribute="trailing" constant="5" id="VjU-dA-81y"/>
+                                <constraint firstAttribute="bottom" secondItem="Z5g-aF-so5" secondAttribute="bottom" id="XCb-88-o7R"/>
+                                <constraint firstItem="Z5g-aF-so5" firstAttribute="leading" secondItem="oug-Wd-ECf" secondAttribute="leading" id="ZTd-Gq-0P7"/>
+                                <constraint firstItem="Iy2-ho-fkA" firstAttribute="centerY" secondItem="oug-Wd-ECf" secondAttribute="centerY" id="Zaa-Jc-egm"/>
+                                <constraint firstAttribute="trailing" secondItem="Iy2-ho-fkA" secondAttribute="trailing" id="ad1-Bn-AUG"/>
+                                <constraint firstItem="ueZ-lN-YjE" firstAttribute="centerY" secondItem="oug-Wd-ECf" secondAttribute="centerY" id="ePS-06-9CL"/>
+                                <constraint firstAttribute="height" constant="44" id="evp-os-g35"/>
+                                <constraint firstAttribute="trailing" secondItem="Z5g-aF-so5" secondAttribute="trailing" id="lEv-1c-Avy"/>
+                                <constraint firstItem="tpX-Nb-flm" firstAttribute="centerY" secondItem="oug-Wd-ECf" secondAttribute="centerY" id="llT-1T-wsu"/>
+                                <constraint firstItem="kGi-T5-r08" firstAttribute="centerY" secondItem="oug-Wd-ECf" secondAttribute="centerY" id="oID-jn-BBt"/>
+                                <constraint firstItem="ueZ-lN-YjE" firstAttribute="centerY" secondItem="4pA-uI-zFl" secondAttribute="centerY" id="oan-ah-sJC"/>
+                                <constraint firstItem="hCR-Gz-4aD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ueZ-lN-YjE" secondAttribute="trailing" constant="5" id="on6-id-8Dv"/>
+                                <constraint firstItem="Iy2-ho-fkA" firstAttribute="leading" secondItem="YH0-Ep-4pX" secondAttribute="trailing" id="pav-XP-izN"/>
+                                <constraint firstItem="4pA-uI-zFl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kGi-T5-r08" secondAttribute="trailing" constant="5" id="sc1-zh-T4b"/>
+                                <constraint firstItem="kGi-T5-r08" firstAttribute="leading" secondItem="tpX-Nb-flm" secondAttribute="trailing" id="typ-J4-DAd"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="nUn-SP-QHw" firstAttribute="top" secondItem="dLk-Uy-ZHV" secondAttribute="top" id="5Qt-nG-UIz"/>
+                        <constraint firstAttribute="height" constant="64" id="O1s-jJ-zqS"/>
+                        <constraint firstItem="nUn-SP-QHw" firstAttribute="leading" secondItem="dLk-Uy-ZHV" secondAttribute="leading" id="P3z-dd-Wfb"/>
+                        <constraint firstItem="oug-Wd-ECf" firstAttribute="leading" secondItem="dLk-Uy-ZHV" secondAttribute="leading" id="PGA-th-aUD"/>
+                        <constraint firstAttribute="trailing" secondItem="nUn-SP-QHw" secondAttribute="trailing" id="cfT-Ug-6eg"/>
+                        <constraint firstAttribute="trailing" secondItem="oug-Wd-ECf" secondAttribute="trailing" id="vsv-hA-SKp"/>
+                        <constraint firstAttribute="bottom" secondItem="oug-Wd-ECf" secondAttribute="bottom" id="x5G-l0-eLk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="dLk-Uy-ZHV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5ZT-5u-89F"/>
+                <constraint firstAttribute="trailing" secondItem="dLk-Uy-ZHV" secondAttribute="trailing" id="QWt-d7-hSG"/>
+                <constraint firstItem="dLk-Uy-ZHV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eqL-s8-axj"/>
+            </constraints>
+            <connections>
+                <outlet property="n_btn_C1" destination="ueZ-lN-YjE" id="ubj-v0-6B8"/>
+                <outlet property="n_btn_C1_H" destination="Ghw-L0-WJj" id="lQF-qa-s7B"/>
+                <outlet property="n_btn_L1" destination="tpX-Nb-flm" id="9WO-A9-jjF"/>
+                <outlet property="n_btn_L1_H" destination="hWr-ay-7T3" id="EPg-yt-aKr"/>
+                <outlet property="n_btn_L1_W" destination="K49-jp-qdo" id="938-nN-A5v"/>
+                <outlet property="n_btn_L2" destination="kGi-T5-r08" id="sLL-O9-ekj"/>
+                <outlet property="n_btn_L2_H" destination="8U9-ha-oKZ" id="LY2-9r-Xe9"/>
+                <outlet property="n_btn_L2_W" destination="Aau-H6-c52" id="o0r-0k-i46"/>
+                <outlet property="n_btn_R1" destination="Iy2-ho-fkA" id="qY4-mL-npp"/>
+                <outlet property="n_btn_R1_H" destination="WjZ-YI-8WK" id="dVK-Cq-0bv"/>
+                <outlet property="n_btn_R1_W" destination="miQ-tc-Lma" id="avi-BH-zwg"/>
+                <outlet property="n_btn_R2" destination="YH0-Ep-4pX" id="Y9x-g6-Vsl"/>
+                <outlet property="n_btn_R2_H" destination="FEg-iA-Nqe" id="WpY-YD-51S"/>
+                <outlet property="n_btn_R2_W" destination="GK0-Fx-AEC" id="EXG-YN-uie"/>
+                <outlet property="n_btn_R3" destination="hCR-Gz-4aD" id="M7V-Da-akl"/>
+                <outlet property="n_btn_R3_H" destination="CEb-jS-fii" id="Njm-Ji-E61"/>
+                <outlet property="n_btn_R3_W" destination="LQU-BR-8zY" id="si6-n9-MWR"/>
+                <outlet property="n_view_Act" destination="4pA-uI-zFl" id="ajP-Lv-1oT"/>
+                <outlet property="n_view_Bg" destination="dLk-Uy-ZHV" id="hWb-Ii-qsH"/>
+                <outlet property="n_view_NaviBar" destination="oug-Wd-ECf" id="xE4-hc-m4L"/>
+                <outlet property="n_view_NaviLine" destination="Z5g-aF-so5" id="lwO-4O-hcQ"/>
+                <outlet property="n_view_Status" destination="nUn-SP-QHw" id="Q0k-vq-ueh"/>
+            </connections>
+        </view>
+    </objects>
+</document>

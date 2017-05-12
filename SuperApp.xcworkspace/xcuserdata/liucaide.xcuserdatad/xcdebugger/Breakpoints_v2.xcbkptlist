@@ -35,5 +35,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SuperApp/Tool/SP_Tab_Navi/SP_NavigationView.swift"
+            timestampString = "516270888.603556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "show(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SuperApp/Tool/SP_Tab_Navi/SP_NavigationView.swift"
+            timestampString = "516270888.603556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "show(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static SuperApp.SP_NavigationView.show (__ObjC.UIView) -&gt; SuperApp.SP_NavigationView"
+                  moduleName = "SuperApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liucaide/Desktop/MyWorking/SuperApp/SuperApp/Tool/SP_Tab_Navi/SP_NavigationView.swift"
+                  timestampString = "516262169.001376"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static SuperApp.SP_NavigationView.show (__ObjC.UIView) -&gt; SuperApp.SP_NavigationView"
+                  moduleName = "SuperApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liucaide/Desktop/MyWorking/SuperApp/SuperApp/Tool/SP_Tab_Navi/SP_NavigationView.swift"
+                  timestampString = "516262169.002806"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "1512">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

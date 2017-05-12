@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SP_AdsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class SP_AdsVC: SP_ParentVC,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     

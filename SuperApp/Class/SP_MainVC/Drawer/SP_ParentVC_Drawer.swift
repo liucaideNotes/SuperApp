@@ -16,7 +16,19 @@ class SP_ParentVC_Drawer: SP_ParentVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.fd_prefersNavigationBarHidden = true
+        /*
+        NotificationCenter
+            .default
+            .rx
+            .notification(NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: nil)
+            .takeUntil(self.rx.deallocated)
+            .asObservable().subscribe(onNext: { (notification) in
+                
+            }).addDisposableTo(disposeBag)*/
+        
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(SP_ParentVC_Drawer.drawerReceptionValue(_:)), name:NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: nil)
         
     }
@@ -39,16 +51,24 @@ class SP_ParentVC_Drawer: SP_ParentVC {
     private let _top_H:CGFloat = 50
 
     //MARK:--- 设置导航栏
-    override func makeNavigation() {
-        _leftBarButtonImage = "200x200"
-        _leftBarButton_H = 36
-        _leftBarButton.snp.removeConstraints()
-        _leftBarButton.snp.makeConstraints({ (make) in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(10)
-            make.height.equalTo(_leftBarButton_H)
-            make.width.equalTo(_leftBarButton_H)
-        })
+    override func sp_makeNaviDefault() {
+        super.sp_makeNaviDefault()
+        n_btn_L2_Image = "200x200"
+        _navigationView.n_btn_L1.setImage(UIImage(named: ""), for: .normal)
+        _navigationView.n_btn_L2_W.constant = 36
+        _navigationView.n_btn_L2_H.constant = 36
+        _navigationView.n_btn_L1_W.constant = 10
+        _navigationView.n_btn_L2.layer.cornerRadius = 18
+        _navigationView.n_btn_L2.clipsToBounds = true
+        
+//        _leftBarButton_H = 36
+//        _leftBarButton.snp.removeConstraints()
+//        _leftBarButton.snp.makeConstraints({ (make) in
+//            make.centerY.equalToSuperview()
+//            make.leading.equalToSuperview().offset(10)
+//            make.height.equalTo(_leftBarButton_H)
+//            make.width.equalTo(_leftBarButton_H)
+//        })
         
         //设置抽屉
         SP_MainWindow.addSubview(sunshadeView)
@@ -60,7 +80,7 @@ class SP_ParentVC_Drawer: SP_ParentVC {
         let viewPan = UIPanGestureRecognizer(target: self, action: #selector(SP_ParentVC_Drawer.viewPanClick(_:)))
         self.view.addGestureRecognizer(viewPan)
     }
-    override func leftButtonClick() {
+    override func clickn_btn_L2() {
         //_naviBlock?(true)
         openDrawer()
     }
