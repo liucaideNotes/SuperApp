@@ -60,7 +60,7 @@ class SP_ParentVC: UIViewController {
                 _navigationView.n_btn_L1_W.constant = 0
             }else {
                 _navigationView.n_btn_L1.setImage(UIImage(named: n_btn_L1_Image), for: .normal)
-                _navigationView.n_btn_L1_W.constant = 44
+                
             }
             
             
@@ -206,6 +206,8 @@ class SP_ParentVC: UIViewController {
         n_btn_R2_Image = ""
         n_btn_R3_Image = ""
         n_view_ActShow = false
+        
+        _navigationView.n_btn_L1_W.constant = 44
     }
     
 }

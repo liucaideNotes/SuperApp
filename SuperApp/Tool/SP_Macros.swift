@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 
 //import SnapKit
-
+//MARK:---- 打印
+func print_SP(_ items:Any){
+    print(items)
+}
 //全局设置 简化 NSUserDefaults 的写法
 //MARK:----------- 基本数据
 var SP_UserIsLogin: Bool {

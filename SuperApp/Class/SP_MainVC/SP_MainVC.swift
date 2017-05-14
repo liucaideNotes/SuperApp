@@ -33,8 +33,8 @@ class SP_MainVC: SP_ParentVC_Drawer {
             print("城市（省、市、区）变更")
         }
         
-        addMJHeaderAndFooter()
-        
+        sp_addMJHeaderAndFooter()
+        sp_AddMJFooter()
         
         
         
@@ -77,28 +77,36 @@ class SP_MainVC: SP_ParentVC_Drawer {
 //MARK:----------- UITableViewDelegate
 extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
     //MARK:----------- 上拉下拉刷新
-    func addMJHeaderAndFooter() {
-        rightTableVIew.headerAddMJRefreshGif { [unowned self]() -> Void in
+    func sp_addMJHeaderAndFooter() {
+        rightTableVIew.sp_headerAddMJRefreshGif { [weak self]_ in
             // 模拟延迟加载数据，5秒后调用
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(5*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {
-                self.rightTableVIew.headerEndRefresh()
-                self.rightTableVIew.footerResetNoMoreData()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(5*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {[weak self]_ in
+                self?.rightTableVIew.sp_headerEndRefresh()
+                self?.rightTableVIew.sp_footerResetNoMoreData()
             }
             
         }
-        rightTableVIew.footerAddMJRefresh_Auto { [unowned self]() -> Void in
+        
+        rightTableVIew.sp_footerAddMJRefresh_Auto { [weak self]() -> Void in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(5*NSEC_PER_SEC))/Double(NSEC_PER_SEC)) {
-                self.rightTableVIew.footerEndRefreshNoMoreData()
+                self?.rightTableVIew.sp_footerEndRefreshNoMoreData()
             }
-            
         }
+        
     }
-    func endRefresh()  {
-        rightTableVIew.headerEndRefresh()
-        rightTableVIew.footerEndRefresh()
+    func sp_AddMJFooter(_ error:String = MJRefreshDIY_Title_NoMoreData_Up, endRefresh:Bool = false) {
+        
+            if endRefresh {
+                self.sp_footerEndRefreshNoMoreData()
+            }
+        
     }
-    func footerEndRefreshNoMoreData() {
-        rightTableVIew.footerEndRefreshNoMoreData()
+    func sp_endRefresh()  {
+        rightTableVIew.sp_headerEndRefresh()
+        rightTableVIew.sp_footerEndRefresh()
+    }
+    func sp_footerEndRefreshNoMoreData() {
+        rightTableVIew.sp_footerEndRefreshNoMoreData()
     }
     
     //MARK:--- DataSource
@@ -143,7 +151,7 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         
         switch (mainDatas[indexPath.section]["titles"] as? [String])![indexPath.row] {
         case "MJRefresh":
-            tableView.headerBeginRefresh()
+            tableView.sp_headerBeginRefresh()
         case "Navigation&TabBar":
             let viewControllers = [SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC(),SP_AdsVC.initSPVC()]
             let titles = ["1","2","","4","5"]

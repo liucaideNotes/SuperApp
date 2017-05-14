@@ -29,12 +29,14 @@ class SP_NavigationView: UIView {
     
     
 
-    @IBOutlet weak var n_view_Bg: UIView!
+    
     @IBOutlet weak var n_view_Status: UIView!
     @IBOutlet weak var n_view_NaviBar: UIView!
     @IBOutlet weak var n_view_NaviLine: UIView!
     @IBOutlet weak var n_view_Act: UIActivityIndicatorView!
     
+    @IBOutlet weak var n_img_Bg: UIImageView!
+    @IBOutlet weak var n_img_NaviBar: UIImageView!
     
     @IBOutlet weak var n_btn_C1: UIButton!
     
