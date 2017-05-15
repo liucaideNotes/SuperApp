@@ -15,7 +15,7 @@ import RxDataSources
 class SP_RxSwiftTableView: SP_ParentVC_Drawer,UITableViewDelegate {
 
     override class func initSPVC() -> SP_RxSwiftTableView {
-        return UIStoryboard(name: "SP_MainVCStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_RxSwiftTableView") as! SP_RxSwiftTableView
+        return UIStoryboard(name: "SP_MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_RxSwiftTableView") as! SP_RxSwiftTableView
     }
     
     class func push(_ parentVC:UIViewController?) {
@@ -35,8 +35,8 @@ class SP_RxSwiftTableView: SP_ParentVC_Drawer,UITableViewDelegate {
     }
     override func sp_makeNaviDefault() {
         super.sp_makeNaviDefault()
-        _navigationView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        _navigationView.n_view_NaviLine.isHidden = true
+        n_view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        n_view.n_view_NaviLine.isHidden = true
     }
     //MARK:--- 抽屉点击事件通知
     override func drawerReceptionValue(_ notification:NSNotification) {

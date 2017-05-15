@@ -1,0 +1,6 @@
+framework module MPBluetoothKit {
+  umbrella header "MPBluetoothKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

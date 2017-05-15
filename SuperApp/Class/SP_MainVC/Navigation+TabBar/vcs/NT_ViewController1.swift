@@ -13,15 +13,13 @@ class NT_ViewController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //_navigationView.backgroundColor = UIColor.main_1
-        //self.navigationController?.isNavigationBarHidden = true
-        //self.navigationController?.sp_SetNavigationBarLine(UIColor.white)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
+    @IBOutlet weak var myTableView: UITableView!
     
     
     @IBAction func backClick(_ sender: Any) {
@@ -30,13 +28,35 @@ class NT_ViewController1: UIViewController {
         }
     }
     
-//    override func clickn_btn_L1() {
-//        //_naviBlock?(true)
-//        self.dismiss(animated: true) { 
-//            
-//        }
-//    }
+}
 
+extension NT_ViewController1:UITableViewDelegate,UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String.init(format: "NT_ViewController1Cell%d", indexPath.row), for: indexPath)
+        return cell
+    }
+    
+    //MARK:---------- ScrollViewDelegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 滚动时修改NavigationBar的透明度
+        // NavigationBar的颜色
+        // 当前的Y轴偏移量offsetY
+        // 最大偏移量，当滚动到这个位置时，NavigationBar完全显示
+        // 向下滚动为负
+        
+        //self.navigationController?.sp_changeColor(offsetY: scrollView.contentOffset.y, maxOffsetY: 100, bgColor:UIColor.main_1)
+        
+        
+    }
 
 }

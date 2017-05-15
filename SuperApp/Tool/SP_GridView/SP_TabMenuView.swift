@@ -19,7 +19,7 @@ class SP_TabMenuView: UIView {
     //MARK:--- ❤️外部接口
     class func show(_ datas:(images:[String],titles:[String]), type:SP_TabMenuViewType = .t两行三列, block:@escaping ((Int)->Void)) {
         let view = (Bundle.main.loadNibNamed("SP_TabMenuView", owner: nil, options: nil)!.first as? SP_TabMenuView)!
-        view.block = block
+        view._block = block
         view.frame = SP_MainWindow.bounds
         view._type = type
         view._images = datas.images
@@ -47,6 +47,7 @@ class SP_TabMenuView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         //zoomAnimation(self)
+        
         zoomAnimation(view_item)
         zoomAnimation(button_back)
         zoomAnimation(image_logo)
@@ -84,13 +85,16 @@ class SP_TabMenuView: UIView {
     @IBOutlet weak var view_item: UIView!
     @IBOutlet weak var view_item_W: NSLayoutConstraint!
     @IBOutlet weak var button_back: UIButton!
-    var block:((_ tag:Int)->Void)?
+    var _block:((_ tag:Int)->Void)?
     @IBAction func backClick(_ sender: UIButton) {
-        hideSubViews()
+        hideSubViews({})
     }
     //MARK:--- 九宫格，需要本项目当中 SP_GridView类 的支持
     private lazy var _itemView:SP_GridView = {
-        let view = SP_GridView.show(CGRect(x:0,y:0,width:SP_ScreenWidth,height:self.view_item.bounds.size.height),superView: self.view_item, datas: (eachNum: self._eachNum, row: self._row, space: 0, margin: (30,10), images: (name: self._images, placeholderImage: "200x200"), titles: self._titles, angles: []), block: { (indx) in
+        let view = SP_GridView.show(CGRect(x:0,y:0,width:SP_ScreenWidth,height:self.view_item.bounds.size.height),superView: self.view_item, datas: (eachNum: self._eachNum, row: self._row, space: 0, margin: (30,10), images: (name: self._images, placeholderImage: "200x200"), titles: self._titles, angles: []), block: { [unowned self](indx) in
+            self.hideSubViews({
+                self._block?(indx)
+            })
         })
         view.tDefaultAnimate()
         return view
@@ -136,7 +140,7 @@ class SP_TabMenuView: UIView {
         playerShow()
         _itemView._pageControl.isHidden = true
         for (i,item) in _itemView._pageView.subviews.enumerated() {
-            showAnimate(item, delay:0.0+TimeInterval(i)/16, height: view_item_W.constant, block: {
+            showAnimate(item, delay:0.0+TimeInterval(i)/32, height: view_item_W.constant, block: {
                 if i == self._pageItemNum-1 {
                     self._itemView._pageControl.isHidden = false
                 }
@@ -148,16 +152,18 @@ class SP_TabMenuView: UIView {
     
     
     //MARK:--- 隐藏
-    private func hideSubViews() {
+    private func hideSubViews(_ block:@escaping (()->Void)) {
         playerShow()
         //当前显示的页码
         _itemView._pageControl.isHidden = true
         let pagenum = _itemView._pageControl.currentPage
         for (i,item) in _itemView._pageView.subviews.enumerated() {
             if item.tag >= pagenum*_pageItemNum && item.tag < (pagenum+1)*_pageItemNum {
-                hideAnimate(item, delay:_animateTime-TimeInterval(i%self._pageItemNum)/16, height: view_item_W.constant+100, block: {
+                hideAnimate(item, delay:_animateTime-TimeInterval(i%self._pageItemNum)/32, height: view_item_W.constant+100, block: {
                     if i == pagenum*self._pageItemNum {
+                        
                         self.removeFromSuperview()
+                        block()
                     }
                 })
             }
@@ -188,7 +194,7 @@ class SP_TabMenuView: UIView {
             view.isHidden = false
             print(spring.duration)
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay+_animateTime) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay+_animateTime ) {
             block()
         }
         

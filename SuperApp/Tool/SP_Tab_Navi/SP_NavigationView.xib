@@ -147,10 +147,10 @@
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="IgE-3m-cYa" firstAttribute="top" secondItem="MfL-IM-EYP" secondAttribute="bottom" id="2sN-R2-KMR"/>
                 <constraint firstItem="uLX-Yu-0wj" firstAttribute="top" secondItem="QIc-mq-RQP" secondAttribute="top" id="7PL-8a-LQB"/>
                 <constraint firstItem="MfL-IM-EYP" firstAttribute="top" secondItem="QIc-mq-RQP" secondAttribute="top" id="Dx7-Ip-qUF"/>
                 <constraint firstAttribute="trailing" secondItem="MfL-IM-EYP" secondAttribute="trailing" id="Jpj-qj-I2s"/>
+                <constraint firstItem="IgE-3m-cYa" firstAttribute="top" secondItem="QIc-mq-RQP" secondAttribute="top" constant="20" id="K0A-7L-abS"/>
                 <constraint firstAttribute="bottom" secondItem="uLX-Yu-0wj" secondAttribute="bottom" id="NwW-UA-DnW"/>
                 <constraint firstItem="uLX-Yu-0wj" firstAttribute="leading" secondItem="QIc-mq-RQP" secondAttribute="leading" id="UGE-M4-gKu"/>
                 <constraint firstItem="MfL-IM-EYP" firstAttribute="leading" secondItem="QIc-mq-RQP" secondAttribute="leading" id="UJe-5p-gYz"/>
@@ -179,6 +179,7 @@
                 <outlet property="n_btn_R3_W" destination="Cgo-KO-sDl" id="Xme-uc-pYi"/>
                 <outlet property="n_img_Bg" destination="uLX-Yu-0wj" id="oWb-it-pfF"/>
                 <outlet property="n_img_NaviBar" destination="cVu-2b-ReX" id="Jul-H6-vKZ"/>
+                <outlet property="n_viewStatus_T" destination="Dx7-Ip-qUF" id="SJI-Xw-rua"/>
                 <outlet property="n_view_Act" destination="TTu-gA-8v0" id="heF-pc-1L2"/>
                 <outlet property="n_view_NaviBar" destination="IgE-3m-cYa" id="B0X-UY-NgW"/>
                 <outlet property="n_view_NaviLine" destination="qlr-EB-sBv" id="n9s-ek-3PY"/>

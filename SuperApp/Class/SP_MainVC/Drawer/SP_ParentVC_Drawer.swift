@@ -16,7 +16,7 @@ class SP_ParentVC_Drawer: SP_ParentVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fd_prefersNavigationBarHidden = true
+        //self.fd_prefersNavigationBarHidden = true
         /*
         NotificationCenter
             .default
@@ -53,13 +53,13 @@ class SP_ParentVC_Drawer: SP_ParentVC {
     //MARK:--- 设置导航栏
     override func sp_makeNaviDefault() {
         super.sp_makeNaviDefault()
-        n_btn_L2_Image = "200x200"
-        _navigationView.n_btn_L1.setImage(UIImage(named: ""), for: .normal)
-        _navigationView.n_btn_L2_W.constant = 36
-        _navigationView.n_btn_L2_H.constant = 36
-        _navigationView.n_btn_L1_W.constant = 10
-        _navigationView.n_btn_L2.layer.cornerRadius = 18
-        _navigationView.n_btn_L2.clipsToBounds = true
+        n_view.n_btn_L2_Image = "200x200"
+        n_view.n_btn_L1.setImage(UIImage(named: ""), for: .normal)
+        n_view.n_btn_L2_W.constant = 36
+        n_view.n_btn_L2_H.constant = 36
+        n_view.n_btn_L1_W.constant = 10
+        n_view.n_btn_L2.layer.cornerRadius = 18
+        n_view.n_btn_L2.clipsToBounds = true
         
 //        _leftBarButton_H = 36
 //        _leftBarButton.snp.removeConstraints()

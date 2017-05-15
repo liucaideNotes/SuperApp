@@ -12,8 +12,8 @@
 		AB0774031DFFCA7D00D782BF /* SP_DrawerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0774001DFFCA7D00D782BF /* SP_DrawerVC.swift */; };
 		AB0774041DFFCA7D00D782BF /* SP_ParentVC_Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0774011DFFCA7D00D782BF /* SP_ParentVC_Drawer.swift */; };
 		AB0774051DFFCA7D00D782BF /* SP_VipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0774021DFFCA7D00D782BF /* SP_VipVC.swift */; };
-		AB0EB4C81DFE7D4A00987BC8 /* SP_iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0EB4C71DFE7D4A00987BC8 /* SP_iPadStoryboard.storyboard */; };
 		AB0EB4CC1DFE808900987BC8 /* TabBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0EB4CB1DFE808900987BC8 /* TabBar_Extension.swift */; };
+		AB342C771EC89D4C006C1A2D /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AB342C761EC89D4C006C1A2D /* UINavigationController+FDFullscreenPopGesture.m */; };
 		AB56454C1DF810C300436382 /* tanhuang.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AB56454B1DF810C300436382 /* tanhuang.mp3 */; };
 		AB63A1C41DA88F7D00BC7C64 /* SP_Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */; };
 		AB63A1C71DA890AD00BC7C64 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */; };
@@ -21,14 +21,13 @@
 		AB8B4CA91EC54F080063AFBB /* SPNT_NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CA81EC54F080063AFBB /* SPNT_NavigationController.swift */; };
 		AB8B4CAB1EC54F520063AFBB /* SPNT_TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CAA1EC54F520063AFBB /* SPNT_TabBarController.swift */; };
 		AB8B4CAE1EC550FF0063AFBB /* NT_ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CAD1EC550FF0063AFBB /* NT_ViewController1.swift */; };
-		AB8B4CB01EC5510F0063AFBB /* NT_ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CAF1EC5510F0063AFBB /* NT_ViewController2.swift */; };
-		AB8B4CB21EC551330063AFBB /* NT_ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CB11EC551330063AFBB /* NT_ViewController3.swift */; };
+		AB8B4CB01EC5510F0063AFBB /* NT_ViewController11.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CAF1EC5510F0063AFBB /* NT_ViewController11.swift */; };
+		AB8B4CB21EC551330063AFBB /* NT_ViewController12.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CB11EC551330063AFBB /* NT_ViewController12.swift */; };
 		AB96F0E01DA88EB7001D8EEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96F0DF1DA88EB7001D8EEE /* AppDelegate.swift */; };
 		AB96F0E71DA88EB7001D8EEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB96F0E61DA88EB7001D8EEE /* Assets.xcassets */; };
 		AB96F0EA1DA88EB7001D8EEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB96F0E81DA88EB7001D8EEE /* LaunchScreen.storyboard */; };
 		AB96F0F51DA88EB8001D8EEE /* SuperAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96F0F41DA88EB8001D8EEE /* SuperAppTests.swift */; };
 		AB96F1001DA88EB8001D8EEE /* SuperAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96F0FF1DA88EB8001D8EEE /* SuperAppUITests.swift */; };
-		AB993D8F1DA90C2A003339A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB993D8E1DA90C2A003339A8 /* Main.storyboard */; };
 		AB9C508C1DC99D8700107130 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9C50601DC99D8700107130 /* MJRefreshAutoFooter.m */; };
 		AB9C508D1DC99D8700107130 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9C50621DC99D8700107130 /* MJRefreshBackFooter.m */; };
 		AB9C508E1DC99D8700107130 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9C50641DC99D8700107130 /* MJRefreshComponent.m */; };
@@ -95,14 +94,16 @@
 		ABBFE08A1DF7B807000D7124 /* navi_share_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBFE0601DF7B807000D7124 /* navi_share_gray@2x.png */; };
 		ABBFE08C1DF7B807000D7124 /* SP_TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBFE0621DF7B807000D7124 /* SP_TabBarController.swift */; };
 		ABBFE0961DF7B84A000D7124 /* SP_AdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBFE0901DF7B84A000D7124 /* SP_AdsVC.swift */; };
-		ABBFE0971DF7B84A000D7124 /* SP_CommonClassStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABBFE0911DF7B84A000D7124 /* SP_CommonClassStoryboard.storyboard */; };
 		ABBFE0981DF7B84A000D7124 /* SP_Datas.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBFE0931DF7B84A000D7124 /* SP_Datas.swift */; };
 		ABBFE0991DF7B84A000D7124 /* SP_MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBFE0941DF7B84A000D7124 /* SP_MainVC.swift */; };
-		ABBFE09A1DF7B84A000D7124 /* SP_MainVCStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABBFE0951DF7B84A000D7124 /* SP_MainVCStoryboard.storyboard */; };
 		ABBFE09F1DF80872000D7124 /* SP_TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBFE09D1DF80872000D7124 /* SP_TabMenuView.swift */; };
 		ABBFE0A01DF80872000D7124 /* SP_TabMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABBFE09E1DF80872000D7124 /* SP_TabMenuView.xib */; };
+		ABC71FB51EC97C2300C780F9 /* SP_Navigation_TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC71FB11EC97C2300C780F9 /* SP_Navigation_TabBar.storyboard */; };
+		ABC71FB71EC97C2300C780F9 /* SP_iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC71FB31EC97C2300C780F9 /* SP_iPadStoryboard.storyboard */; };
+		ABC71FB81EC97C2300C780F9 /* SP_MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC71FB41EC97C2300C780F9 /* SP_MainStoryboard.storyboard */; };
+		ABC71FBA1EC992B900C780F9 /* NT_ViewController13.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC71FB91EC992B900C780F9 /* NT_ViewController13.swift */; };
 		ABD9EB891DA8C399004DAB58 /* jpush-ios-2.1.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD9EB591DA8C399004DAB58 /* jpush-ios-2.1.8.a */; };
-		ABFAA1841EC5BA8A00EEA338 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFAA1801EC5BA8A00EEA338 /* UINavigationController+FDFullscreenPopGesture.m */; };
+		ABDFC9101EC99E53002110AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDFC90F1EC99E53002110AB /* Main.storyboard */; };
 		ABFAA18A1EC5DBAF00EEA338 /* SP_AFNetWorkingSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAA1871EC5DBAF00EEA338 /* SP_AFNetWorkingSwift.swift */; };
 		ABFAA18B1EC5DBAF00EEA338 /* SP_NetWorkingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAA1881EC5DBAF00EEA338 /* SP_NetWorkingType.swift */; };
 		ABFAA18C1EC5DBAF00EEA338 /* SP_UploadParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAA1891EC5DBAF00EEA338 /* SP_UploadParam.swift */; };
@@ -145,8 +146,9 @@
 		AB0774001DFFCA7D00D782BF /* SP_DrawerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_DrawerVC.swift; sourceTree = "<group>"; };
 		AB0774011DFFCA7D00D782BF /* SP_ParentVC_Drawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_ParentVC_Drawer.swift; sourceTree = "<group>"; };
 		AB0774021DFFCA7D00D782BF /* SP_VipVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_VipVC.swift; sourceTree = "<group>"; };
-		AB0EB4C71DFE7D4A00987BC8 /* SP_iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_iPadStoryboard.storyboard; sourceTree = "<group>"; };
 		AB0EB4CB1DFE808900987BC8 /* TabBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar_Extension.swift; sourceTree = "<group>"; };
+		AB342C751EC89D4C006C1A2D /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		AB342C761EC89D4C006C1A2D /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		AB56454B1DF810C300436382 /* tanhuang.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tanhuang.mp3; sourceTree = "<group>"; };
 		AB5FFE8F1DCA1C4D0039C9D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Macros.swift; sourceTree = "<group>"; };
@@ -155,8 +157,8 @@
 		AB8B4CA81EC54F080063AFBB /* SPNT_NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNT_NavigationController.swift; sourceTree = "<group>"; };
 		AB8B4CAA1EC54F520063AFBB /* SPNT_TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNT_TabBarController.swift; sourceTree = "<group>"; };
 		AB8B4CAD1EC550FF0063AFBB /* NT_ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NT_ViewController1.swift; sourceTree = "<group>"; };
-		AB8B4CAF1EC5510F0063AFBB /* NT_ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NT_ViewController2.swift; sourceTree = "<group>"; };
-		AB8B4CB11EC551330063AFBB /* NT_ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NT_ViewController3.swift; sourceTree = "<group>"; };
+		AB8B4CAF1EC5510F0063AFBB /* NT_ViewController11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NT_ViewController11.swift; sourceTree = "<group>"; };
+		AB8B4CB11EC551330063AFBB /* NT_ViewController12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NT_ViewController12.swift; sourceTree = "<group>"; };
 		AB96F0DC1DA88EB7001D8EEE /* SuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB96F0DF1DA88EB7001D8EEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SuperApp/AppDelegate.swift; sourceTree = "<group>"; };
 		AB96F0E61DA88EB7001D8EEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,7 +170,6 @@
 		AB96F0FB1DA88EB8001D8EEE /* SuperAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB96F0FF1DA88EB8001D8EEE /* SuperAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperAppUITests.swift; sourceTree = "<group>"; };
 		AB96F1011DA88EB8001D8EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB993D8E1DA90C2A003339A8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AB9C505F1DC99D8700107130 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		AB9C50601DC99D8700107130 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		AB9C50611DC99D8700107130 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -257,17 +258,18 @@
 		ABBFE0601DF7B807000D7124 /* navi_share_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navi_share_gray@2x.png"; sourceTree = "<group>"; };
 		ABBFE0621DF7B807000D7124 /* SP_TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_TabBarController.swift; sourceTree = "<group>"; };
 		ABBFE0901DF7B84A000D7124 /* SP_AdsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_AdsVC.swift; sourceTree = "<group>"; };
-		ABBFE0911DF7B84A000D7124 /* SP_CommonClassStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_CommonClassStoryboard.storyboard; sourceTree = "<group>"; };
 		ABBFE0931DF7B84A000D7124 /* SP_Datas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Datas.swift; sourceTree = "<group>"; };
 		ABBFE0941DF7B84A000D7124 /* SP_MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_MainVC.swift; sourceTree = "<group>"; };
-		ABBFE0951DF7B84A000D7124 /* SP_MainVCStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_MainVCStoryboard.storyboard; sourceTree = "<group>"; };
 		ABBFE09D1DF80872000D7124 /* SP_TabMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_TabMenuView.swift; sourceTree = "<group>"; };
 		ABBFE09E1DF80872000D7124 /* SP_TabMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SP_TabMenuView.xib; sourceTree = "<group>"; };
+		ABC71FB11EC97C2300C780F9 /* SP_Navigation_TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_Navigation_TabBar.storyboard; sourceTree = "<group>"; };
+		ABC71FB31EC97C2300C780F9 /* SP_iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_iPadStoryboard.storyboard; sourceTree = "<group>"; };
+		ABC71FB41EC97C2300C780F9 /* SP_MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_MainStoryboard.storyboard; sourceTree = "<group>"; };
+		ABC71FB91EC992B900C780F9 /* NT_ViewController13.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NT_ViewController13.swift; sourceTree = "<group>"; };
 		ABD9EB591DA8C399004DAB58 /* jpush-ios-2.1.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.8.a"; sourceTree = "<group>"; };
 		ABD9EB5B1DA8C399004DAB58 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		ABD9EBA21DA8C8A6004DAB58 /* SuperApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SuperApp-Bridging-Header.h"; path = "SuperApp/SuperApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		ABFAA17F1EC5BA8A00EEA338 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
-		ABFAA1801EC5BA8A00EEA338 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		ABDFC90F1EC99E53002110AB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ABFAA1871EC5DBAF00EEA338 /* SP_AFNetWorkingSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_AFNetWorkingSwift.swift; sourceTree = "<group>"; };
 		ABFAA1881EC5DBAF00EEA338 /* SP_NetWorkingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_NetWorkingType.swift; sourceTree = "<group>"; };
 		ABFAA1891EC5DBAF00EEA338 /* SP_UploadParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_UploadParam.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 		AB63A1BE1DA88F7D00BC7C64 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				ABC71FB01EC97BB800C780F9 /* Sp_Storyboard */,
 				ABBFE08F1DF7B84A000D7124 /* SP_CommonClass */,
 				ABBFE0921DF7B84A000D7124 /* SP_MainVC */,
 			);
@@ -360,7 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				AB63A1C21DA88F7D00BC7C64 /* SP_Macros.swift */,
-				ABFAA17C1EC5BA8A00EEA338 /* FDFullscreenPopGesture */,
 				ABBFE0311DF7B807000D7124 /* SP_AdsView */,
 				ABBFE0371DF7B807000D7124 /* SP_Extension */,
 				ABBFE04A1DF7B807000D7124 /* SP_GuideVC */,
@@ -376,7 +378,7 @@
 		AB63A1C51DA88FA800BC7C64 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				AB993D8E1DA90C2A003339A8 /* Main.storyboard */,
+				ABDFC90F1EC99E53002110AB /* Main.storyboard */,
 				AB96F0E61DA88EB7001D8EEE /* Assets.xcassets */,
 				AB96F0E81DA88EB7001D8EEE /* LaunchScreen.storyboard */,
 				AB96F0EB1DA88EB7001D8EEE /* Info.plist */,
@@ -398,8 +400,9 @@
 			isa = PBXGroup;
 			children = (
 				AB8B4CAD1EC550FF0063AFBB /* NT_ViewController1.swift */,
-				AB8B4CAF1EC5510F0063AFBB /* NT_ViewController2.swift */,
-				AB8B4CB11EC551330063AFBB /* NT_ViewController3.swift */,
+				AB8B4CAF1EC5510F0063AFBB /* NT_ViewController11.swift */,
+				AB8B4CB11EC551330063AFBB /* NT_ViewController12.swift */,
+				ABC71FB91EC992B900C780F9 /* NT_ViewController13.swift */,
 			);
 			path = vcs;
 			sourceTree = "<group>";
@@ -652,6 +655,8 @@
 				ABBFE0621DF7B807000D7124 /* SP_TabBarController.swift */,
 				AB0EB4CB1DFE808900987BC8 /* TabBar_Extension.swift */,
 				ABBF72D01EC59F2000C590E5 /* Navigation_Extension.swift */,
+				AB342C751EC89D4C006C1A2D /* UINavigationController+FDFullscreenPopGesture.h */,
+				AB342C761EC89D4C006C1A2D /* UINavigationController+FDFullscreenPopGesture.m */,
 			);
 			path = SP_Tab_Navi;
 			sourceTree = "<group>";
@@ -674,7 +679,6 @@
 			isa = PBXGroup;
 			children = (
 				ABBFE0901DF7B84A000D7124 /* SP_AdsVC.swift */,
-				ABBFE0911DF7B84A000D7124 /* SP_CommonClassStoryboard.storyboard */,
 			);
 			path = SP_CommonClass;
 			sourceTree = "<group>";
@@ -684,13 +688,21 @@
 			children = (
 				ABBFE0931DF7B84A000D7124 /* SP_Datas.swift */,
 				ABBFE0941DF7B84A000D7124 /* SP_MainVC.swift */,
-				ABBFE0951DF7B84A000D7124 /* SP_MainVCStoryboard.storyboard */,
-				AB0EB4C71DFE7D4A00987BC8 /* SP_iPadStoryboard.storyboard */,
 				AB8B4CA71EC54EC50063AFBB /* Navigation+TabBar */,
 				AB0773FF1DFFCA7D00D782BF /* 抽屉 */,
 				AB0773FC1DFFCA3900D782BF /* RxSwift_TableView */,
 			);
 			path = SP_MainVC;
+			sourceTree = "<group>";
+		};
+		ABC71FB01EC97BB800C780F9 /* Sp_Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				ABC71FB41EC97C2300C780F9 /* SP_MainStoryboard.storyboard */,
+				ABC71FB11EC97C2300C780F9 /* SP_Navigation_TabBar.storyboard */,
+				ABC71FB31EC97C2300C780F9 /* SP_iPadStoryboard.storyboard */,
+			);
+			path = Sp_Storyboard;
 			sourceTree = "<group>";
 		};
 		ABD9EA5A1DA8C1BF004DAB58 /* Third_SDK */ = {
@@ -716,15 +728,6 @@
 			children = (
 			);
 			path = AF_NetWorking;
-			sourceTree = "<group>";
-		};
-		ABFAA17C1EC5BA8A00EEA338 /* FDFullscreenPopGesture */ = {
-			isa = PBXGroup;
-			children = (
-				ABFAA17F1EC5BA8A00EEA338 /* UINavigationController+FDFullscreenPopGesture.h */,
-				ABFAA1801EC5BA8A00EEA338 /* UINavigationController+FDFullscreenPopGesture.m */,
-			);
-			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
 		ABFAA1861EC5DBAF00EEA338 /* SP_NetWorking */ = {
@@ -853,21 +856,21 @@
 				ABBFE0851DF7B807000D7124 /* navi_add_white@2x.png in Resources */,
 				ABBFE0841DF7B807000D7124 /* navi_add_gray@2x.png in Resources */,
 				AB56454C1DF810C300436382 /* tanhuang.mp3 in Resources */,
+				ABC71FB81EC97C2300C780F9 /* SP_MainStoryboard.storyboard in Resources */,
 				AB96F0EA1DA88EB7001D8EEE /* LaunchScreen.storyboard in Resources */,
 				AB9C509A1DC99D8800107130 /* MJRefresh.bundle in Resources */,
 				ABBFE08A1DF7B807000D7124 /* navi_share_gray@2x.png in Resources */,
-				AB0EB4C81DFE7D4A00987BC8 /* SP_iPadStoryboard.storyboard in Resources */,
+				ABC71FB71EC97C2300C780F9 /* SP_iPadStoryboard.storyboard in Resources */,
 				ABBF72CB1EC565FC00C590E5 /* SP_NavigationView.xib in Resources */,
-				AB993D8F1DA90C2A003339A8 /* Main.storyboard in Resources */,
 				ABBFE0891DF7B807000D7124 /* navi_search_gray@2x.png in Resources */,
 				ABBFE0661DF7B807000D7124 /* SP_AdsColleCell.xib in Resources */,
 				ABBFE0861DF7B807000D7124 /* navi_back_gray@2x.png in Resources */,
 				ABBFE0A01DF80872000D7124 /* SP_TabMenuView.xib in Resources */,
+				ABC71FB51EC97C2300C780F9 /* SP_Navigation_TabBar.storyboard in Resources */,
 				ABBFE0871DF7B807000D7124 /* navi_back_white@2x.png in Resources */,
 				AB96F0E71DA88EB7001D8EEE /* Assets.xcassets in Resources */,
 				ABBFE0881DF7B807000D7124 /* navi_scanCode_white@2x.png in Resources */,
-				ABBFE0971DF7B84A000D7124 /* SP_CommonClassStoryboard.storyboard in Resources */,
-				ABBFE09A1DF7B84A000D7124 /* SP_MainVCStoryboard.storyboard in Resources */,
+				ABDFC9101EC99E53002110AB /* Main.storyboard in Resources */,
 				ABBFE02E1DF7AE40000D7124 /* placeholderImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -954,7 +957,7 @@
 				AB9C50981DC99D8800107130 /* MJRefreshNormalHeader.m in Sources */,
 				ABBFE07C1DF7B807000D7124 /* CLLocation+YCLocation.m in Sources */,
 				AB0EB4CC1DFE808900987BC8 /* TabBar_Extension.swift in Sources */,
-				AB8B4CB21EC551330063AFBB /* NT_ViewController3.swift in Sources */,
+				AB8B4CB21EC551330063AFBB /* NT_ViewController12.swift in Sources */,
 				ABBFE07E1DF7B807000D7124 /* SP_MJDIYAutoFooter.swift in Sources */,
 				ABBFE0711DF7B807000D7124 /* NSTimer_extension.swift in Sources */,
 				AB63A1C41DA88F7D00BC7C64 /* SP_Macros.swift in Sources */,
@@ -964,6 +967,7 @@
 				AB9C509E1DC99D8800107130 /* UIScrollView+MJRefresh.m in Sources */,
 				AB9C508D1DC99D8700107130 /* MJRefreshBackFooter.m in Sources */,
 				ABBFE06C1DF7B807000D7124 /* CGSize_extension.swift in Sources */,
+				ABC71FBA1EC992B900C780F9 /* NT_ViewController13.swift in Sources */,
 				AB9C50951DC99D8800107130 /* MJRefreshBackNormalFooter.m in Sources */,
 				AB9C508F1DC99D8800107130 /* MJRefreshFooter.m in Sources */,
 				ABBFE0301DF7AE40000D7124 /* SP_GridView_Extension.swift in Sources */,
@@ -987,7 +991,7 @@
 				ABBFE0671DF7B807000D7124 /* SP_AdsCollectionView.swift in Sources */,
 				AB9C50991DC99D8800107130 /* MJRefreshStateHeader.m in Sources */,
 				ABBFE07F1DF7B807000D7124 /* SP_MJDIYBackFooter.swift in Sources */,
-				AB8B4CB01EC5510F0063AFBB /* NT_ViewController2.swift in Sources */,
+				AB8B4CB01EC5510F0063AFBB /* NT_ViewController11.swift in Sources */,
 				ABBFE06A1DF7B807000D7124 /* Bool_extension.swift in Sources */,
 				ABBFE0961DF7B84A000D7124 /* SP_AdsVC.swift in Sources */,
 				AB8B4CAE1EC550FF0063AFBB /* NT_ViewController1.swift in Sources */,
@@ -999,6 +1003,7 @@
 				AB8B4CAB1EC54F520063AFBB /* SPNT_TabBarController.swift in Sources */,
 				ABBFE0731DF7B807000D7124 /* UIButton_extension.swift in Sources */,
 				ABBFE0791DF7B807000D7124 /* UIView_extension.swift in Sources */,
+				AB342C771EC89D4C006C1A2D /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				AB9C509D1DC99D8800107130 /* UIScrollView+MJExtension.m in Sources */,
 				ABBFE09F1DF80872000D7124 /* SP_TabMenuView.swift in Sources */,
 				ABBFE02F1DF7AE40000D7124 /* SP_GridView.swift in Sources */,
@@ -1010,7 +1015,6 @@
 				AB0773FE1DFFCA3900D782BF /* SP_RxSwiftTableView.swift in Sources */,
 				AB9C50961DC99D8800107130 /* MJRefreshBackStateFooter.m in Sources */,
 				AB0774051DFFCA7D00D782BF /* SP_VipVC.swift in Sources */,
-				ABFAA1841EC5BA8A00EEA338 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				ABBFE0751DF7B807000D7124 /* UIFont_extension.swift in Sources */,
 				ABFAA18C1EC5DBAF00EEA338 /* SP_UploadParam.swift in Sources */,
 				AB0774041DFFCA7D00D782BF /* SP_ParentVC_Drawer.swift in Sources */,

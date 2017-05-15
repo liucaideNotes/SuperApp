@@ -32,15 +32,12 @@ class SP_AdsVC: SP_ParentVC,UITableViewDelegate,UITableViewDataSource {
     ]
     
     override class func initSPVC() -> SP_AdsVC {
-        return UIStoryboard(name: "SP_CommonClassStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_AdsVC") as! SP_AdsVC
+        return UIStoryboard(name: "SP_MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_AdsVC") as! SP_AdsVC
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        self.perform(#selector(SP_AdsVC.upArrayClick), with: nil, afterDelay: 4.3)
     }
     
     func upArrayClick() {
@@ -52,10 +49,16 @@ class SP_AdsVC: SP_ParentVC,UITableViewDelegate,UITableViewDataSource {
         
     }
     
-    @IBAction func backClick(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
+    override func clickn_btn_L1()  {
+        if (navigationController?.popViewController(animated: true)) != nil {
+            
+        }else{
+            self.dismiss(animated: true, completion: { 
+                
+            })
+        }
+    }
     
     
     let cell_H:CGFloat = 150.0
@@ -251,7 +254,17 @@ class SP_AdsVC: SP_ParentVC,UITableViewDelegate,UITableViewDataSource {
     
     
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 滚动时修改NavigationBar的透明度
+        // NavigationBar的颜色
+        // 当前的Y轴偏移量offsetY
+        // 最大偏移量，当滚动到这个位置时，NavigationBar完全显示
+        // 向下滚动为负
+        
+        //self.navigationController?.sp_changeColor(offsetY: scrollView.contentOffset.y, maxOffsetY: 100, bgColor:UIColor.main_1)
+        
+        print_SP(scrollView.contentOffset.y)
+    }
     
     
     

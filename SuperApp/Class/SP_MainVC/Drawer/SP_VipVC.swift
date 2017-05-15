@@ -19,7 +19,7 @@ class SP_VipVC: SP_ParentVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self._title = "会员特权\(_tag)"
+        n_view._title = "会员特权\(_tag)"
         self.view.backgroundColor = UIColor.red
     }
 

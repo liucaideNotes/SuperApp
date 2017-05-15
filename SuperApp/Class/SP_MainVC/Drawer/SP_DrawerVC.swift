@@ -18,7 +18,7 @@ class SP_DrawerVC: UIViewController {
 
     //MARK:----------- 生命周期
     override class func initSPVC() -> SP_DrawerVC {
-        return UIStoryboard(name: "SP_MainVCStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_DrawerVC") as! SP_DrawerVC
+        return UIStoryboard(name: "SP_MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SP_DrawerVC") as! SP_DrawerVC
     }
     override func viewDidLoad() {
         super.viewDidLoad()

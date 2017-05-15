@@ -20,7 +20,7 @@ let mainDatas:[[String:Any]] = [
     ["sectionName":"基本写法",
      "titles":[
         "Navigation&TabBar",
-        "仿新浪微博TabBar",
+        
         "类QQ抽屉式首页",
         "TableView",
         "CollectionView",
@@ -30,8 +30,8 @@ let mainDatas:[[String:Any]] = [
         "RXSwift+MVVM"
               ],
      "represent":[
-        "基本Navigation&TabBar嵌套封装，简单接口",
-        "基本嵌套基础之上添加一个独立按钮",
+        "基本和多样化Navigation&TabBar嵌套封装，简单接口",
+        
         "点击头像或右划即可展示",
         "",
         "",

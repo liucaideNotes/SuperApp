@@ -29,6 +29,7 @@ class SP_NavigationController: UINavigationController,UINavigationControllerDele
         super.viewDidLoad()
         self.popDelegate = self.interactivePopGestureRecognizer?.delegate
         self.delegate = self
+        
     }
     
     
