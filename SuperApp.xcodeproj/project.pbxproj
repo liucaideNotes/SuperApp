@@ -104,6 +104,9 @@
 		ABC71FBA1EC992B900C780F9 /* NT_ViewController13.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC71FB91EC992B900C780F9 /* NT_ViewController13.swift */; };
 		ABD9EB891DA8C399004DAB58 /* jpush-ios-2.1.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD9EB591DA8C399004DAB58 /* jpush-ios-2.1.8.a */; };
 		ABDFC9101EC99E53002110AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDFC90F1EC99E53002110AB /* Main.storyboard */; };
+		ABDFC9131EC9E8BF002110AB /* SP_RxDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDFC9121EC9E8BF002110AB /* SP_RxDemo.storyboard */; };
+		ABDFC9171EC9F0FD002110AB /* SP_Rx_TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDFC9161EC9F0FD002110AB /* SP_Rx_TableView.swift */; };
+		ABDFC91B1EC9F30E002110AB /* SP_Rx_DemoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDFC91A1EC9F30E002110AB /* SP_Rx_DemoVC.swift */; };
 		ABFAA18A1EC5DBAF00EEA338 /* SP_AFNetWorkingSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAA1871EC5DBAF00EEA338 /* SP_AFNetWorkingSwift.swift */; };
 		ABFAA18B1EC5DBAF00EEA338 /* SP_NetWorkingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAA1881EC5DBAF00EEA338 /* SP_NetWorkingType.swift */; };
 		ABFAA18C1EC5DBAF00EEA338 /* SP_UploadParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAA1891EC5DBAF00EEA338 /* SP_UploadParam.swift */; };
@@ -270,6 +273,11 @@
 		ABD9EB5B1DA8C399004DAB58 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		ABD9EBA21DA8C8A6004DAB58 /* SuperApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SuperApp-Bridging-Header.h"; path = "SuperApp/SuperApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		ABDFC90F1EC99E53002110AB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		ABDFC9121EC9E8BF002110AB /* SP_RxDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_RxDemo.storyboard; sourceTree = "<group>"; };
+		ABDFC9141EC9EDDD002110AB /* SP_RxDemo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SP_RxDemo.playground; sourceTree = "<group>"; };
+		ABDFC9161EC9F0FD002110AB /* SP_Rx_TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Rx_TableView.swift; sourceTree = "<group>"; };
+		ABDFC91A1EC9F30E002110AB /* SP_Rx_DemoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Rx_DemoVC.swift; sourceTree = "<group>"; };
+		ABDFC9211ECA7C93002110AB /* SP_API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SP_API.h; sourceTree = "<group>"; };
 		ABFAA1871EC5DBAF00EEA338 /* SP_AFNetWorkingSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_AFNetWorkingSwift.swift; sourceTree = "<group>"; };
 		ABFAA1881EC5DBAF00EEA338 /* SP_NetWorkingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_NetWorkingType.swift; sourceTree = "<group>"; };
 		ABFAA1891EC5DBAF00EEA338 /* SP_UploadParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_UploadParam.swift; sourceTree = "<group>"; };
@@ -435,9 +443,11 @@
 		AB96F0DE1DA88EB7001D8EEE /* SuperApp */ = {
 			isa = PBXGroup;
 			children = (
+				ABDFC91C1ECA7B46002110AB /* SP_API */,
 				ABD9EA5A1DA8C1BF004DAB58 /* Third_SDK */,
 				AB63A1C11DA88F7D00BC7C64 /* Tool */,
 				AB63A1C01DA88F7D00BC7C64 /* NetWorking */,
+				ABDFC9111EC9E877002110AB /* Rx_Demo */,
 				AB63A1BE1DA88F7D00BC7C64 /* Class */,
 				AB63A1C51DA88FA800BC7C64 /* Other */,
 			);
@@ -723,6 +733,33 @@
 			path = JPush;
 			sourceTree = "<group>";
 		};
+		ABDFC9111EC9E877002110AB /* Rx_Demo */ = {
+			isa = PBXGroup;
+			children = (
+				ABDFC9141EC9EDDD002110AB /* SP_RxDemo.playground */,
+				ABDFC9121EC9E8BF002110AB /* SP_RxDemo.storyboard */,
+				ABDFC91A1EC9F30E002110AB /* SP_Rx_DemoVC.swift */,
+				ABDFC9151EC9EE90002110AB /* Rx_TableView */,
+			);
+			path = Rx_Demo;
+			sourceTree = "<group>";
+		};
+		ABDFC9151EC9EE90002110AB /* Rx_TableView */ = {
+			isa = PBXGroup;
+			children = (
+				ABDFC9161EC9F0FD002110AB /* SP_Rx_TableView.swift */,
+			);
+			path = Rx_TableView;
+			sourceTree = "<group>";
+		};
+		ABDFC91C1ECA7B46002110AB /* SP_API */ = {
+			isa = PBXGroup;
+			children = (
+				ABDFC9211ECA7C93002110AB /* SP_API.h */,
+			);
+			path = SP_API;
+			sourceTree = "<group>";
+		};
 		ABF8C0F81E00E82B000AC595 /* AF_NetWorking */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +898,7 @@
 				AB9C509A1DC99D8800107130 /* MJRefresh.bundle in Resources */,
 				ABBFE08A1DF7B807000D7124 /* navi_share_gray@2x.png in Resources */,
 				ABC71FB71EC97C2300C780F9 /* SP_iPadStoryboard.storyboard in Resources */,
+				ABDFC9131EC9E8BF002110AB /* SP_RxDemo.storyboard in Resources */,
 				ABBF72CB1EC565FC00C590E5 /* SP_NavigationView.xib in Resources */,
 				ABBFE0891DF7B807000D7124 /* navi_search_gray@2x.png in Resources */,
 				ABBFE0661DF7B807000D7124 /* SP_AdsColleCell.xib in Resources */,
@@ -986,12 +1024,14 @@
 				ABBFE0681DF7B807000D7124 /* SP_AdsCollectionViewModel.swift in Sources */,
 				ABBFE0991DF7B84A000D7124 /* SP_MainVC.swift in Sources */,
 				ABBFE0781DF7B807000D7124 /* UITextField_LCD.swift in Sources */,
+				ABDFC91B1EC9F30E002110AB /* SP_Rx_DemoVC.swift in Sources */,
 				AB96F0E01DA88EB7001D8EEE /* AppDelegate.swift in Sources */,
 				AB9C50931DC99D8800107130 /* MJRefreshAutoStateFooter.m in Sources */,
 				ABBFE0671DF7B807000D7124 /* SP_AdsCollectionView.swift in Sources */,
 				AB9C50991DC99D8800107130 /* MJRefreshStateHeader.m in Sources */,
 				ABBFE07F1DF7B807000D7124 /* SP_MJDIYBackFooter.swift in Sources */,
 				AB8B4CB01EC5510F0063AFBB /* NT_ViewController11.swift in Sources */,
+				ABDFC9171EC9F0FD002110AB /* SP_Rx_TableView.swift in Sources */,
 				ABBFE06A1DF7B807000D7124 /* Bool_extension.swift in Sources */,
 				ABBFE0961DF7B84A000D7124 /* SP_AdsVC.swift in Sources */,
 				AB8B4CAE1EC550FF0063AFBB /* NT_ViewController1.swift in Sources */,

@@ -146,6 +146,10 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         case "Navigation&TabBar":
             let vc = SPNT_TabBarController.initSPVC()
             self.present(vc, animated: true, completion: nil)
+        case "RXSwift_Demo":
+            let vc = SP_Rx_DemoVC.initSPVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         default:
             break
         }

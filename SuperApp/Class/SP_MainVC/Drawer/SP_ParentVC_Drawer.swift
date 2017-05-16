@@ -11,9 +11,11 @@
  */
 
 import UIKit
+import RxSwift
 
 class SP_ParentVC_Drawer: SP_ParentVC {
 
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.fd_prefersNavigationBarHidden = true
@@ -23,10 +25,11 @@ class SP_ParentVC_Drawer: SP_ParentVC {
             .rx
             .notification(NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: nil)
             .takeUntil(self.rx.deallocated)
-            .asObservable().subscribe(onNext: { (notification) in
-                
-            }).addDisposableTo(disposeBag)*/
-        
+            .asObservable().subscribe(onNext: { [weak self](notification) in
+                //MARK:--- 抽屉点击事件通知
+                self?.closeDrawer()
+            }).addDisposableTo(disposeBag)
+        */
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(SP_ParentVC_Drawer.drawerReceptionValue(_:)), name:NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: nil)

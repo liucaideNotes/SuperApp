@@ -20,26 +20,17 @@ let mainDatas:[[String:Any]] = [
     ["sectionName":"基本写法",
      "titles":[
         "Navigation&TabBar",
-        
         "类QQ抽屉式首页",
-        "TableView",
-        "CollectionView",
-        "WebView",
-        "不借助第三方写约束",
-        "RXSwift+TableView",
-        "RXSwift+MVVM"
+        "WKWebView",
+        "RXSwift_Demo"
               ],
      "represent":[
         "基本和多样化Navigation&TabBar嵌套封装，简单接口",
-        
         "点击头像或右划即可展示",
-        "",
-        "",
         "",
         ""
                  ],
-     "classes":[
-               ]
+     "classes":[]
     ],
     
     ["sectionName":"APP展示",
