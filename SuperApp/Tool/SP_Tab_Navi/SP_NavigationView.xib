@@ -18,7 +18,6 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-IM-EYP">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Id4-tO-zQa"/>
                     </constraints>
@@ -118,7 +117,6 @@
                             <rect key="frame" x="131" y="314" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="qlr-EB-sBv" secondAttribute="bottom" id="03Q-0d-aLe"/>
                         <constraint firstItem="3my-6z-Lip" firstAttribute="leading" secondItem="IgE-3m-cYa" secondAttribute="leading" id="9el-Jk-sNm"/>
@@ -146,6 +144,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.89594927226027399" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="uLX-Yu-0wj" firstAttribute="top" secondItem="QIc-mq-RQP" secondAttribute="top" id="7PL-8a-LQB"/>
                 <constraint firstItem="MfL-IM-EYP" firstAttribute="top" secondItem="QIc-mq-RQP" secondAttribute="top" id="Dx7-Ip-qUF"/>
@@ -164,12 +163,14 @@
                 <outlet property="n_btn_C1_H" destination="UwE-c4-GO0" id="fl0-iK-D7B"/>
                 <outlet property="n_btn_L1" destination="3my-6z-Lip" id="dQm-wA-Q7h"/>
                 <outlet property="n_btn_L1_H" destination="rT5-U9-yN4" id="XR2-dh-VA0"/>
+                <outlet property="n_btn_L1_L" destination="9el-Jk-sNm" id="xgZ-fo-rpq"/>
                 <outlet property="n_btn_L1_W" destination="qPH-V5-TjM" id="yB1-is-V6I"/>
                 <outlet property="n_btn_L2" destination="yF6-WD-ClI" id="9C8-PD-fN8"/>
                 <outlet property="n_btn_L2_H" destination="Ae9-Z1-7ZQ" id="y9H-qI-0cr"/>
                 <outlet property="n_btn_L2_W" destination="crE-p2-23B" id="tah-kM-1c1"/>
                 <outlet property="n_btn_R1" destination="kLR-Kg-drR" id="y5L-rw-swc"/>
                 <outlet property="n_btn_R1_H" destination="WE2-I2-rHj" id="VEz-ri-Gvj"/>
+                <outlet property="n_btn_R1_R" destination="Zpw-GL-oSJ" id="kjN-Rh-h5J"/>
                 <outlet property="n_btn_R1_W" destination="7ao-LB-Ldz" id="uZD-W8-f6f"/>
                 <outlet property="n_btn_R2" destination="mw5-76-fcC" id="udt-KP-3r4"/>
                 <outlet property="n_btn_R2_H" destination="KfE-G2-zJ6" id="O76-sS-wrE"/>

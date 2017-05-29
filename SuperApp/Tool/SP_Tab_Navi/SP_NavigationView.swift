@@ -8,7 +8,7 @@
 
 import UIKit
 let sp_navigationViewLeftButtonImg = "navi_back_gray"
-let sp_navigationViewLeftButtonImg2 = "navi_back_gray"
+let sp_navigationViewLeftButtonImg2 = "navi_back_white"
 
 class SP_NavigationView: UIView {
     
@@ -52,12 +52,14 @@ class SP_NavigationView: UIView {
     
     @IBOutlet weak var n_btn_L1_H: NSLayoutConstraint!
     @IBOutlet weak var n_btn_L1_W: NSLayoutConstraint!
+    @IBOutlet weak var n_btn_L1_L: NSLayoutConstraint!
     
     @IBOutlet weak var n_btn_L2_H: NSLayoutConstraint!
     @IBOutlet weak var n_btn_L2_W: NSLayoutConstraint!
     
     @IBOutlet weak var n_btn_R1_H: NSLayoutConstraint!
     @IBOutlet weak var n_btn_R1_W: NSLayoutConstraint!
+    @IBOutlet weak var n_btn_R1_R: NSLayoutConstraint!
     
     @IBOutlet weak var n_btn_R2_H: NSLayoutConstraint!
     @IBOutlet weak var n_btn_R2_W: NSLayoutConstraint!
@@ -211,6 +213,9 @@ class SP_NavigationView: UIView {
             }
         }
     }
+    
+    
+    var n_bgHiddenBeginDraggingOffsetY:CGFloat?
 
 }
 
@@ -226,52 +231,59 @@ extension UIColor {
 //MARK:---------- SP_ParentVC
 
 extension SP_NavigationView {
-    
-    
-    
-    func sp_setClearColor(_ titleClear:Bool = true, leftBackImg:String = sp_navigationViewLeftButtonImg2) {
-        backgroundColor = UIColor.clear
-        n_view_NaviLine.backgroundColor = UIColor.clear
-        n_view_Status.backgroundColor = UIColor.clear
-        n_view_NaviBar.backgroundColor = UIColor.clear
-        
-        if titleClear {
-            _titleColor = UIColor.clear
-        }
-        //n_btn_L1.backgroundColor = UIColor.sp_ParentMainColor.withAlphaComponent(0.4)
-        //n_btn_R1.backgroundColor = UIColor.sp_ParentMainColor.withAlphaComponent(0.4)
-        n_btn_L1.setImage(UIImage(named: leftBackImg), for: .normal)
-    }
-    
-    func sp_setBgAlpha(_ bgColor: UIColor,textColor: UIColor = UIColor.sp_ParentTintColor, offsetY: CGFloat, maxOffsetY: CGFloat = 150.0, leftBackImg:String = sp_navigationViewLeftButtonImg, leftBackImg2:String = sp_navigationViewLeftButtonImg2, naviLineHidden:Bool = false) {
-        
-        if offsetY > 0 {
+    //MARK:---------- 背景色透明
+    func sp_setBgAlpha(_ bgColor: UIColor,textColor: UIColor = UIColor.sp_ParentTintColor, offsetY: CGFloat, maxOffsetY: CGFloat = 150.0, leftBackImg:String = sp_navigationViewLeftButtonImg, leftBackImg2:String = sp_navigationViewLeftButtonImg2, btnBgColor:UIColor = UIColor.black, btnBgAlpha:Bool = true) {
+        if offsetY >= 0 {
             let alpha = 1 - ((maxOffsetY - offsetY) / maxOffsetY)
             
             backgroundColor = bgColor.withAlphaComponent(alpha)
-            if !naviLineHidden {
-                n_view_NaviLine.backgroundColor = UIColor.main_line.withAlphaComponent(alpha)
-            }
-            
             _titleColor = textColor.withAlphaComponent(alpha)
             
-            //self.n_btn_L1.backgroundColor = UIColor.sp_ParentMainColor.withAlphaComponent(0.4-alpha)
-            //self.n_btn_R1.backgroundColor = UIColor.sp_ParentMainColor.withAlphaComponent(0.4-alpha)
+            if btnBgAlpha {
+                sp_lrBtnBgAlpha(btnBgColor, alpha:alpha)
+            }
+           
             if alpha >= 0.5 {
                 n_btn_L1.setImage(UIImage(named: leftBackImg), for: UIControlState())
             }else{
                 n_btn_L1.setImage(UIImage(named: leftBackImg2), for: UIControlState())
             }
             
+            if !n_view_NaviLine.isHidden {
+                n_view_NaviLine.backgroundColor = UIColor.main_line.withAlphaComponent(alpha)
+            }
         } else {
             backgroundColor = bgColor.withAlphaComponent(0)
-            if !naviLineHidden {
+            if !n_view_NaviLine.isHidden {
                 n_view_NaviLine.backgroundColor = UIColor.main_line.withAlphaComponent(0)
             }
-            
             _titleColor = textColor.withAlphaComponent(0)
-            //n_btn_L1.backgroundColor = UIColor.sp_ParentMainColor.withAlphaComponent(0.4)
-            //n_btn_R1.backgroundColor = UIColor.sp_ParentMainColor.withAlphaComponent(0.4)
+            
+        }
+    }
+    
+    private func sp_lrBtnBgAlpha(_ bgColor:UIColor, alpha:CGFloat) {
+        let alpha2 = 0.6-alpha > 0 ? 0.6-alpha : 0
+        n_btn_L1.backgroundColor = bgColor.withAlphaComponent(alpha2)
+        n_btn_L2.backgroundColor = bgColor.withAlphaComponent(alpha2)
+        n_btn_R1.backgroundColor = bgColor.withAlphaComponent(alpha2)
+        n_btn_R2.backgroundColor = bgColor.withAlphaComponent(alpha2)
+        n_btn_R3.backgroundColor = bgColor.withAlphaComponent(alpha2)
+    }
+    
+    //MARK:---------- 导航栏上划隐藏下滑显示
+    func sp_setBgHidden(_ isBegin:Bool, offsetY:CGFloat) {
+        if isBegin {
+            n_bgHiddenBeginDraggingOffsetY = offsetY
+        }else{
+            guard (n_bgHiddenBeginDraggingOffsetY != nil) else {
+                return
+            }
+            if offsetY-n_bgHiddenBeginDraggingOffsetY! <= 64 && offsetY-n_bgHiddenBeginDraggingOffsetY! > 0 {
+                self.snp.updateConstraints { (make) in
+                    make.top.equalToSuperview().offset(-(offsetY-n_bgHiddenBeginDraggingOffsetY!))
+                }
+            }
         }
     }
     

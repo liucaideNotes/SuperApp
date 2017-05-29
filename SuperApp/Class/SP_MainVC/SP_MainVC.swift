@@ -160,7 +160,9 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         guard let vc = (mainDatas[indexPath.section]["classes"] as? [UIViewController.Type])?[indexPath.row].initSPVC() else {
             return
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+        //ios 8 之后可使用这个
+        self.navigationController?.show(vc, sender: nil)
+        //self.navigationController?.pushViewController(vc, animated: true)
         //self.present(vc, animated: true, completion: nil)
         
         

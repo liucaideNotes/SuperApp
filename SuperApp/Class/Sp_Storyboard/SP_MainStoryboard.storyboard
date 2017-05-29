@@ -70,7 +70,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqc-bN-Xan">
                                         <rect key="frame" x="0.0" y="166" width="260" height="441"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ihZ-ap-mPV">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ihZ-ap-mPV">
                                                 <rect key="frame" x="0.0" y="0.0" width="260" height="441"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -137,7 +137,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="j9H-8g-wy2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title=" 设置" image="0FEA75E6-177A-4B58-ADFD-4320D41F22FD">
+                                                <state key="normal" title=" 设置" image="419EF740-212B-4B54-8578-CFC76D175075">
                                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
@@ -148,7 +148,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="fCS-Uo-Mxj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title=" 夜间" image="0FEA75E6-177A-4B58-ADFD-4320D41F22FD">
+                                                <state key="normal" title=" 夜间" image="419EF740-212B-4B54-8578-CFC76D175075">
                                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
@@ -499,7 +499,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0FEA75E6-177A-4B58-ADFD-4320D41F22FD" width="20" height="20">
+        <image name="200x200" width="229" height="229"/>
+        <image name="419EF740-212B-4B54-8578-CFC76D175075" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -577,7 +578,6 @@ D/oQAxAIEBAQExAYECcQKxAyEDoQRxBMEE4QUBBVEF0QYBBlEG0QcBCCEIUQigAAAAAAAAIBAAAAAAAA
 AEEAAAAAAAAAAAAAAAAAABCMA
 </mutableData>
         </image>
-        <image name="200x200" width="229" height="229"/>
         <image name="firstOpen_2" width="320" height="480"/>
     </resources>
 </document>

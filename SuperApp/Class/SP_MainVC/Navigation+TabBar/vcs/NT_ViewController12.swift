@@ -14,11 +14,48 @@ class NT_ViewController12: SP_ParentVC {
         super.viewDidLoad()
         
         self.fd_prefersNavigationBarHidden = true
+        
+//        if self.responds(to: #selector(getter: UIViewController.automaticallyAdjustsScrollViewInsets)) {
+//            
+//            self.automaticallyAdjustsScrollViewInsets = false
+//            
+//        }
+        myTableView.delegate = self
+        var insets = self.myTableView.contentInset
+        insets.top = 24
+        self.myTableView.contentInset = insets
+        self.myTableView.scrollIndicatorInsets = insets
+        
+        /*
+        myTableView._touchesBlock = { (type,touches,event) in
+            switch type {
+            case .tBegan:
+                self.n_view.sp_setBgHidden(true, offsetY: 0)
+            case .tMoved:
+                break
+            default:
+                break
+            }
+        }*/
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBOutlet weak var myTableView: UITableView!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print_SP("touchesBegan --> \(touches)")
+    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print_SP("touchesMoved --> \(touches)")
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print_SP("touchesCancelled --> \(touches)")
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print_SP("touchesEnded --> \(touches)")
     }
     
 }
@@ -40,16 +77,32 @@ extension NT_ViewController12:UITableViewDelegate,UITableViewDataSource {
     }
     
     //MARK:---------- ScrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // 滚动时修改NavigationBar的透明度
-        // NavigationBar的颜色
-        // 当前的Y轴偏移量offsetY
-        // 最大偏移量，当滚动到这个位置时，NavigationBar完全显示
-        // 向下滚动为负
+    /*
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print_SP("velocity --> \(velocity)")
+        print_SP("targetContentOffset --> \(targetContentOffset)")
         
-        //self.navigationController?.sp_changeColor(offsetY: scrollView.contentOffset.y, maxOffsetY: 100, bgColor:UIColor.main_1)
-        
-        
+        if(velocity.y>0)
+        {
+            n_view.n_view_NaviBar.isHidden = true
+        }
+        else
+        {
+            n_view.n_view_NaviBar.isHidden = false
+        }
+    }*/
+    //MARK:--- 开始拖动 -----------------------------
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print_SP("开始拖动 --> \(scrollView.contentOffset.y)")
+        //n_view.sp_setBgHidden(true, offsetY: scrollView.contentOffset.y)
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print_SP("正在滚动 --> \(scrollView.contentOffset.y)")
+        //n_view.sp_setBgHidden(false, offsetY: scrollView.contentOffset.y)
+    }
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        print_SP("开始滚动 --> \(scrollView.contentOffset.y)")
+    }
+    
     
 }

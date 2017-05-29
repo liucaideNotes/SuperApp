@@ -15,6 +15,11 @@ target ‘SuperApp’ do
     pod 'RxDataSources'
     pod 'MPBluetoothKit'
     pod 'UITableView+FDTemplateLayoutCell'
+    pod 'RxAlamofire'
+    #pod 'Moya'
+    pod 'Moya/RxSwift'
+    pod 'ObjectMapper'
+    #pod 'Hyphenate_CN'
     #pod 'YYKit'
 end
 

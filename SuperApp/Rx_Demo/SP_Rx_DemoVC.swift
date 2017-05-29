@@ -73,16 +73,24 @@ class SP_Rx_DemoVC: UITableViewController {
         
         
         tableView.rx.modelSelected(M_SP_Rx_Demo.self)
-            .subscribe(onNext: { model in
+            .subscribe(onNext: { [unowned self]model in
                 print(model.name)
+                switch model.type {
+                case 33:
+                    let vc = SP_Rx_SigninVC.initSPVC()
+                    self.navigationController?.show(vc, sender: nil)
+                default:
+                    break
+                }
             })
             .addDisposableTo(disposeBag)
-        
         
         
     }
     
 
+    
+    
 }
 
 

@@ -8,12 +8,14 @@
 
 import UIKit
 
-class NT_ViewController13: SP_ParentVC {
+class NT_ViewController13: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fd_prefersNavigationBarHidden = true
+        //self.fd_prefersNavigationBarHidden = true
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

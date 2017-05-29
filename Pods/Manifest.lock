@@ -16,7 +16,20 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (4.4.0)
   - MBProgressHUD (1.0.0)
+  - Moya/Core (8.0.4):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (8.0.4):
+    - Moya/Core
+    - RxSwift (~> 3.0)
   - MPBluetoothKit (0.1.0)
+  - ObjectMapper (2.2.6)
+  - Result (3.2.1)
+  - RxAlamofire (3.0.2):
+    - RxAlamofire/Core (= 3.0.2)
+  - RxAlamofire/Core (3.0.2):
+    - Alamofire (~> 4.0)
+    - RxSwift (~> 3.0)
   - RxCocoa (3.4.1):
     - RxSwift (~> 3.4)
   - RxDataSources (1.0.3):
@@ -35,7 +48,10 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - MBProgressHUD
+  - Moya/RxSwift
   - MPBluetoothKit
+  - ObjectMapper
+  - RxAlamofire
   - RxCocoa
   - RxDataSources
   - RxSwift
@@ -49,7 +65,11 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Moya: a08bc060c7a44eee27447b239ed33a189b641e2b
   MPBluetoothKit: 40f9e1c3cf9f5d7357f344560015b8c8cc7f5b53
+  ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  RxAlamofire: bc53604b29fd2d220cfaa490c736cc4500819f34
   RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
   RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
   RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
@@ -59,6 +79,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: 6d397f7fd108f3d5f3e0535a69057e3cfdb43a20
+PODFILE CHECKSUM: 1a86857cf28e7947025039b41ff3cd017fff5f04
 
 COCOAPODS: 1.0.1
