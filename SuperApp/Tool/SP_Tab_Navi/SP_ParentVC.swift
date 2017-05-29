@@ -69,7 +69,7 @@ class SP_ParentVC: UIViewController {
     
     //MARK:--- 设置各按钮默认值 -----------------------------
     open func sp_makeNaviDefault() {
-        n_view._title = self.title ?? ""
+        n_view._title = NSLocalizedString("sp_key", tableName: "Localization",  comment: "")
         n_view._logoImage = ""
         n_view.n_btn_L1_Text = ""
         n_view.n_btn_L2_Text = ""

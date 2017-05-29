@@ -1,5 +1,5 @@
 //
-//  SP_Macros.swift
+//  SP_Constant.swift
 //  SuperApp
 //
 //  Created by LCD-sifenzi on 2016/10/4.

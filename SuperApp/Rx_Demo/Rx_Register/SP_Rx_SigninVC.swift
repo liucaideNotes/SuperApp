@@ -69,7 +69,7 @@ class SP_Rx_SigninVC: UITableViewController {
                 print_SP(text!)
                 self?.title_phone = text!
             }).addDisposableTo(disposeBag)
-            item.text_field.rx.textInput
+            
             
             phoneValid.map { $0!.characters.count == 11 }
                 .bind(to: label_phone.rx.isHidden)

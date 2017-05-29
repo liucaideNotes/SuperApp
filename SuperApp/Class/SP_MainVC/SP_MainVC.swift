@@ -17,6 +17,8 @@ class SP_MainVC: SP_ParentVC_Drawer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SP_Info.sp_print()
+        
         //网络判断
         Reachability.netRemindForNone(self)
         Reachability.netWorkType { (type) in
@@ -128,6 +130,8 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SP_MainVCCell", for: indexPath)
         if (mainDatas[indexPath.section]["titles"] as? [String] ?? [])!.count > indexPath.row {
             cell.textLabel?.text = (mainDatas[indexPath.section]["titles"] as? [String])![indexPath.row]
+            
+            //NSLocalizedString("sp_key", tableName: "Localization",  comment: "")
         }
         if (mainDatas[indexPath.section]["represent"] as? [String] ?? [])!.count > indexPath.row {
             cell.detailTextLabel?.text = (mainDatas[indexPath.section]["represent"] as? [String])![indexPath.row]
