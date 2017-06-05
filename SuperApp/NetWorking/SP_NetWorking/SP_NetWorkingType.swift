@@ -29,7 +29,7 @@ enum SP_NetWorkingType {
     func af_Net(_ completionBlock:((Bool,Any?,String?) -> Void)? = nil, progressBlock:((Progress)->Void)? = nil) {
         switch self {
         case .get(urlString: let url, parameters: _):
-            SP_AFNetWorkingSwift.shared.get(url) { (success, result, error) in
+            SP_AFSwift.shared.get(url) { (success, result, error) in
                 switch success {
                 case true:
                     completionBlock?(success,result,"")
@@ -39,7 +39,7 @@ enum SP_NetWorkingType {
                 }
             }
         case .post(urlString: let url, parameters: let param):
-            SP_AFNetWorkingSwift.shared.post(url, param:param) { (success, result, error) in
+            SP_AFSwift.shared.post(url, param:param) { (success, result, error) in
                 switch success {
                 case true:
                     completionBlock?(success,result,"")
@@ -49,7 +49,7 @@ enum SP_NetWorkingType {
                 }
             }
         case .upload(urlString: let url, parameters: let param, uploadParam: let uploadParam):
-            SP_AFNetWorkingSwift.shared.upload(url, param: param, uploadParams: uploadParam, progress: { (progress) in
+            SP_AFSwift.shared.upload(url, param: param, uploadParams: uploadParam, progress: { (progress) in
                 progressBlock?(progress!)
             }, block: { (success, result, error) in
                 switch success {
@@ -61,7 +61,7 @@ enum SP_NetWorkingType {
                 }
             })
         case .downLoad(urlString: let url, parameters: let param):
-            SP_AFNetWorkingSwift.shared.downLoad(url, param: param, progress: { (progress) in
+            SP_AFSwift.shared.downLoad(url, param: param, progress: { (progress) in
                 progressBlock?(progress!)
             }, block: { (success, result, error) in
                 switch success {

@@ -5,20 +5,34 @@ use_frameworks!
 target ‘SuperApp’ do
     pod 'Alamofire'
     pod 'AFNetworking'
-    pod 'SDWebImage'
+    
     pod 'SwiftyJSON'
+    pod 'ObjectMapper'
+    
+    pod 'SDWebImage'
+    
     pod 'SnapKit'
+    pod 'Masonry'
+    
     pod 'MBProgressHUD'
     pod 'SVProgressHUD'
+    
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'RxDataSources'
-    pod 'MPBluetoothKit'
-    pod 'UITableView+FDTemplateLayoutCell'
     pod 'RxAlamofire'
-    #pod 'Moya'
     pod 'Moya/RxSwift'
-    pod 'ObjectMapper'
+    #pod 'Moya'
+    
+    #蓝牙
+    pod 'MPBluetoothKit'
+    
+    #高度自适应
+    pod 'UITableView+FDTemplateLayoutCell'
+    
+    #图表库
+    pod 'Charts'
+    
     #pod 'Hyphenate_CN'
     #pod 'YYKit'
 end

@@ -83,7 +83,7 @@ class SP_ParentVC_Drawer: SP_ParentVC {
         let viewPan = UIPanGestureRecognizer(target: self, action: #selector(SP_ParentVC_Drawer.viewPanClick(_:)))
         self.view.addGestureRecognizer(viewPan)
     }
-    override func clickn_btn_L2() {
+    override func clickN_btn_L2() {
         //_naviBlock?(true)
         openDrawer()
     }

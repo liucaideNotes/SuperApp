@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SP_AdsColleCell" id="gTV-IL-0wX" customClass="SP_AdsColleCell" customModule="carpark" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="319" height="158"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="319" height="158"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="92u-sG-2qi">
+                        <rect key="frame" x="0.0" y="0.0" width="319" height="158"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="92u-sG-2qi" secondAttribute="trailing" id="1p9-oP-jRz"/>
+                <constraint firstItem="92u-sG-2qi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GBA-U1-Jb4"/>
+                <constraint firstAttribute="bottom" secondItem="92u-sG-2qi" secondAttribute="bottom" id="ahc-lj-3eb"/>
+                <constraint firstItem="92u-sG-2qi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uNX-M4-5tF"/>
+            </constraints>
+            <size key="customSize" width="319" height="158"/>
+            <connections>
+                <outlet property="imageView" destination="92u-sG-2qi" id="7NB-GF-7Ib"/>
+            </connections>
+            <point key="canvasLocation" x="235.5" y="167"/>
+        </collectionViewCell>
+    </objects>
+</document>

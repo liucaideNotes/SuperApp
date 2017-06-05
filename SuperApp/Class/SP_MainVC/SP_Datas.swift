@@ -9,95 +9,88 @@
 import Foundation
 
 /*mainDatas结构说明：
-["sectionName" : String,  //组名
- "titles"      : [String],//功能名
- "represent"   : [String],//描述
- "classes"     : [UIViewController.Type]//类
+["section" : String,  //组名
+ "title"      : [String],//功能名
+ "subtitle"   : [String],//描述
+ "class"     : [UIViewController.Type]//类
 ]
  */
 
 let mainDatas:[[String:Any]] = [
-    ["sectionName":"基本写法",
-     "titles":[
-        "Navigation&TabBar",
-        "类QQ抽屉式首页",
-        "WKWebView",
-        "RXSwift_Demo"
-              ],
-     "represent":[
-        "基本和多样化Navigation&TabBar嵌套封装，简单接口",
-        "点击头像或右划即可展示",
-        "",
-        ""
-                 ],
-     "classes":[]
+    ["section":"基本写法",
+     "rows":[
+        ["title":"Navigation&TabBar",
+         "subtitle":"基本和多样化Navigation&TabBar嵌套封装，简单接口",
+         "class":"SPNT_TabBarController"],
+        
+        ["title":"类QQ抽屉式首页",
+         "subtitle":"点击头像或右划即可展示",
+         "class":""],
+        
+        ["title":"WKWebView",
+         "subtitle":"",
+         "class":""],
+        
+        ["title":"RXSwift_Demo",
+         "subtitle":"",
+         "class":"SP_Rx_DemoVC"],
+        
+        ["title":"Charts_Demo",
+         "subtitle":"Swift版 关于Charts库使用Demo",
+         "class":"SP_Charts_Demo"]
+        ]
+     
     ],
     
-    ["sectionName":"APP展示",
-     "titles":[
-        "电商类app"
-        ],
-     "represent":[
-        ""
-        ],
-    "classes":[
-              ]
+    ["section":"APP展示",
+     "rows":[
+        ["title":"电商类",
+         "subtitle":"",
+         "class":""]
+        ]
+        
     ],
     
-    ["sectionName":"网络层封装写法",
-     "titles":[
-        "写法1",
-        "写法2",
-        "写法3"
-              ],
-     "represent":[
-        "",
-        "",
-        ""
-        ],
-     "classes":[
-               ]
+    ["section":"网络层封装写法",
+     "rows":[
+        ["title":"1",
+         "subtitle":"",
+         "class":""]
+        ]
     ],
     
-    ["sectionName":"Model",
-     "titles":[
-        "写法1",
-        "写法2",
-        "写法3"
-        ],
-     "represent":[
-        "",
-        "",
-        ""
-        ],
-     "classes":[
-               ]
+    ["section":"Model",
+     "rows":[
+        ["title":"1",
+         "subtitle":"",
+         "class":""]
+        ]
+        
     ],
     
-    ["sectionName":"第三方库二次封装",
-     "titles":[
-        "MJRefresh"
-              ],
-     "represent":[
-        "点我或上拉下拉本页面即可观看效果"
-        ],
-     "classes":[
-               ]
+    ["section":"第三方库二次封装",
+     "rows":[
+        ["title":"MJRefresh",
+         "subtitle":"点我或上拉下拉本页面即可观看效果",
+         "class":"MJRefresh"]
+        ]
     ],
     
-    ["sectionName":"通用独立模块",
-     "titles":[
-        "广告轮播图",
-        "九宫格",
-        "城市选择器",
-        "标签导航"
-              ],
-     "represent":[
-        "基于CollectionView实现"
-        ],
-     "classes":[
-        SP_AdsVC.self,
-               ]
+    ["section":"通用独立模块",
+     "rows":[
+        ["title":"广告轮播图",
+         "subtitle":"基于CollectionView实现",
+         "class":"SP_AdsVC"],
+        ["title":"九宫格",
+         "subtitle":"",
+         "class":""],
+        ["title":"城市选择器",
+         "subtitle":"",
+         "class":""],
+        ["title":"标签导航",
+         "subtitle":"",
+         "class":""]
+        ]
     ],
 ]
 

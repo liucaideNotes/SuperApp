@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class SP_MainVC: SP_ParentVC_Drawer {
 
     //MARK:----------- 生命周期
@@ -71,9 +71,11 @@ class SP_MainVC: SP_ParentVC_Drawer {
     
     @IBOutlet weak var rightTableVIew: UITableView!
     
-
     
     
+    lazy var _mainDatas:JSON = {
+        return JSON(mainDatas)
+    }()
 
 }
 //MARK:----------- UITableViewDelegate
@@ -117,25 +119,25 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (mainDatas[section]["titles"] as? [AnyObject] ?? [])!.count
+        return (mainDatas[section]["rows"] as? [AnyObject] ?? [])!.count
         
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return mainDatas[section]["sectionName"] as? String ?? ""
+        return mainDatas[section]["section"] as? String ?? ""
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SP_MainVCCell", for: indexPath)
-        if (mainDatas[indexPath.section]["titles"] as? [String] ?? [])!.count > indexPath.row {
-            cell.textLabel?.text = (mainDatas[indexPath.section]["titles"] as? [String])![indexPath.row]
-            
-            //NSLocalizedString("sp_key", tableName: "Localization",  comment: "")
-        }
-        if (mainDatas[indexPath.section]["represent"] as? [String] ?? [])!.count > indexPath.row {
-            cell.detailTextLabel?.text = (mainDatas[indexPath.section]["represent"] as? [String])![indexPath.row]
-        }
+        
+        
+        
+        let title = _mainDatas[indexPath.section]["rows"][indexPath.row]["title"].stringValue
+        let subtitle = _mainDatas[indexPath.section]["rows"][indexPath.row]["subtitle"].stringValue
+        
+        cell.textLabel?.text = title
+        cell.detailTextLabel?.text = subtitle
         
         return cell
         
@@ -144,28 +146,33 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch (mainDatas[indexPath.section]["titles"] as? [String])![indexPath.row] {
+        let className = _mainDatas[indexPath.section]["rows"][indexPath.row]["class"].stringValue
+        guard !className.isEmpty else {
+            return
+        }
+        switch className {
         case "MJRefresh":
             tableView.sp_headerBeginRefresh()
-        case "Navigation&TabBar":
+        case "SPNT_TabBarController":
             let vc = SPNT_TabBarController.initSPVC()
             self.present(vc, animated: true, completion: nil)
-        case "RXSwift_Demo":
-            let vc = SP_Rx_DemoVC.initSPVC()
-            self.navigationController?.pushViewController(vc, animated: true)
-            
         default:
-            break
+            
+            if let vc = SP_classFromString(className)?.initSPVC() {
+                self.navigationController?.show(vc, sender: nil)
+            }
         }
         
+        
+        /*
         guard indexPath.row < (mainDatas[indexPath.section]["classes"] as? [UIViewController.Type] ?? [])!.count else {
             return
         }
         guard let vc = (mainDatas[indexPath.section]["classes"] as? [UIViewController.Type])?[indexPath.row].initSPVC() else {
             return
-        }
+        }*/
         //ios 8 之后可使用这个
-        self.navigationController?.show(vc, sender: nil)
+        //self.navigationController?.show(vc, sender: nil)
         //self.navigationController?.pushViewController(vc, animated: true)
         //self.present(vc, animated: true, completion: nil)
         
