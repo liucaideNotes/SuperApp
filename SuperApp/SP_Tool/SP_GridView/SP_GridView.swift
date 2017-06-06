@@ -76,13 +76,8 @@ class SP_GridView: UIView, UIScrollViewDelegate {
         return view
     }()
     fileprivate func setBgImage(_ name:String, color:UIColor) {
-        if name.hasPrefix("http://") || name.hasPrefix("https://") {
-            _bgImageView.sd_setImage(with: URL(string:name))
-        }else{
-            if !name.isEmpty {
-                _bgImageView.image = UIImage(named: name)
-            }
-        }
+        _bgImageView.sp_ImageName(name)
+        
         _bgImageView.backgroundColor = color
     }
     

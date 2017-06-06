@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MJRefresh
 class SP_MJDIYAutoFooter: MJRefreshAutoFooter {
 
     //MARK:----------- 在这里做一些初始化配置（比如添加子控件）

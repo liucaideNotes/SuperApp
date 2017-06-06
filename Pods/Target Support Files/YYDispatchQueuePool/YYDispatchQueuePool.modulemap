@@ -1,0 +1,6 @@
+framework module YYDispatchQueuePool {
+  umbrella header "YYDispatchQueuePool-umbrella.h"
+
+  export *
+  module * { export * }
+}

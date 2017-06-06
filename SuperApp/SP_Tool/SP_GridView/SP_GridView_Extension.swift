@@ -25,15 +25,8 @@ extension SP_GridView {
                         image.layer.cornerRadius = image_h/2
                         image.clipsToBounds = true
                     }
-                    if _images[i].hasPrefix("http://") || _images[i].hasPrefix("https://") {
-                        image.sd_setImage(with: URL(string:_images[i]) , placeholderImage: UIImage(named: placeholderImage))
-                    }else{
-                        if !_images[i].isEmpty {
-                            image.image = UIImage(named: _images[i])
-                        }else{
-                            image.image = UIImage(named: placeholderImage)
-                        }
-                    }
+                    image.sp_ImageName(_images[i])
+                    
                 }
                 if let label = item.subviews.last as? UILabel {
                     label.text = _angles.count>i ? _angles[i] : ""
@@ -56,17 +49,8 @@ extension SP_GridView {
                 imageView.clipsToBounds = true
             }
             
+            imageView.sp_ImageName(_images[i])
             
-            if _images[i].hasPrefix("http://") || _images[i].hasPrefix("https://") {
-                imageView.sd_setImage(with: URL(string:_images[i]) , placeholderImage: UIImage(named: placeholderImage))
-            }else{
-                if !_images[i].isEmpty {
-                    imageView.image = UIImage(named: _images[i])
-                }else{
-                    imageView.image = UIImage(named: placeholderImage)
-                }
-                
-            }
             imageView.snp.makeConstraints({ (make) in
                 make.top.equalToSuperview().offset(margin)
                 make.centerX.equalToSuperview()
@@ -115,15 +99,8 @@ extension SP_GridView {
         for (i,item) in _pageView.subviews.enumerated() {
             for subView in item.subviews {
                 if let image = subView as? UIImageView {
-                    if _images[i].hasPrefix("http://") || _images[i].hasPrefix("https://") {
-                        image.sd_setImage(with: URL(string:_images[i]) , placeholderImage: UIImage(named: placeholderImage))
-                    }else{
-                        if !_images[i].isEmpty {
-                            image.image = UIImage(named: _images[i])
-                        }else{
-                            image.image = UIImage(named: placeholderImage)
-                        }
-                    }
+                    image.sp_ImageName(_images[i])
+                    
                 }
                 if let label = item.subviews.last as? UILabel {
                     label.text = _angles[i]
@@ -135,16 +112,8 @@ extension SP_GridView {
             ///图片
             let imageView = UIImageView()
             item.addSubview(imageView)
-            if _images[i].hasPrefix("http://") || _images[i].hasPrefix("https://") {
-                imageView.sd_setImage(with: URL(string:_images[i]) , placeholderImage: UIImage(named: placeholderImage))
-            }else{
-                if !_images[i].isEmpty {
-                    imageView.image = UIImage(named: _images[i])
-                }else{
-                    imageView.image = UIImage(named: placeholderImage)
-                }
-                
-            }
+            imageView.sp_ImageName(_images[i])
+            
             let image_w = item.bounds.width
             var image_h = item.bounds.height
             image_h = image_h<image_w ? image_h : image_w
@@ -252,15 +221,8 @@ extension SP_GridView {
                     label.text = _titles.count>i ? _titles[i] : ""
                 }
                 if let image = subView as? UIImageView {
-                    if _images[i].hasPrefix("http://") || _images[i].hasPrefix("https://") {
-                        image.sd_setImage(with: URL(string:_images[i]) , placeholderImage: UIImage(named: placeholderImage))
-                    }else{
-                        if !_images[i].isEmpty {
-                            image.image = UIImage(named: _images[i])
-                        }else{
-                            image.image = UIImage(named: placeholderImage)
-                        }
-                    }
+                    image.sp_ImageName(_images[i])
+                    
                 }
                 if let label = item.subviews.last as? UILabel {
                     label.text = _angles.count>i ? _angles[i] : ""
@@ -286,16 +248,8 @@ extension SP_GridView {
             ///图片
             let imageView = UIImageView()
             item.addSubview(imageView)
-            if _images[i].hasPrefix("http://") || _images[i].hasPrefix("https://") {
-                imageView.sd_setImage(with: URL(string:_images[i]) , placeholderImage: UIImage(named: placeholderImage))
-            }else{
-                if !_images[i].isEmpty {
-                    imageView.image = UIImage(named: _images[i])
-                }else{
-                    imageView.image = UIImage(named: placeholderImage)
-                }
-                
-            }
+            imageView.sp_ImageName(_images[i])
+            
             
             //文字 原价
             let label_old = UILabel()

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import MJRefresh
 /*
  1,需要添加第三方库 MJRefresh 支持
  2,在桥接文件中添加 #import "MJRefresh.h"

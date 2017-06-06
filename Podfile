@@ -9,7 +9,7 @@ target ‘SuperApp’ do
     pod 'SwiftyJSON'
     pod 'ObjectMapper'
     
-    pod 'SDWebImage'
+    #pod 'SDWebImage'
     
     pod 'SnapKit'
     pod 'Masonry'
@@ -33,8 +33,20 @@ target ‘SuperApp’ do
     #图表库
     pod 'Charts'
     
+    pod 'MJRefresh'
+    
     #pod 'Hyphenate_CN'
     #pod 'YYKit'
+    pod 'YYModel'
+    pod 'YYWebImage'
+    pod 'YYCache'
+    pod 'YYImage'
+    pod 'YYWebImage'
+    pod 'YYText'
+    pod 'YYKeyboardManager'
+    pod 'YYDispatchQueuePool'
+    pod 'YYAsyncLayer'
+    pod 'YYCategories'
 end
 
 post_install do |installer|

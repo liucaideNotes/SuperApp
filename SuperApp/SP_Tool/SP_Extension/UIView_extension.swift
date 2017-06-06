@@ -9,6 +9,7 @@
 
 
 import UIKit
+import YYWebImage
 
 extension UIView {
     public enum PlaceType {
@@ -135,9 +136,11 @@ extension UIView {
 }
 
 extension UIImageView {
-    func sp_ImageName(_ name:String, ph:Bool = true, phStr:String = "HuanChong中", phColor:UIColor = UIColor.main_line) {
+    static let placeholderImgName = "HuanChong中"
+    func sp_ImageName(_ name:String, ph:Bool = true, phStr:String = placeholderImgName, phColor:UIColor = UIColor.main_line) {
         if name.hasPrefix("http://") || name.hasPrefix("https://") {
-            self.sd_setImage(with: URL(string:name), placeholderImage: UIImage(named:phStr))
+            self.yy_setImage(with: URL(string:name), placeholder: UIImage(named:phStr), options: .progressiveBlur)
+            //self.sd_setImage(with: URL(string:name), placeholderImage: UIImage(named:phStr))
         }else{
             guard name.isEmpty else {
                 self.image = UIImage(named: name)
