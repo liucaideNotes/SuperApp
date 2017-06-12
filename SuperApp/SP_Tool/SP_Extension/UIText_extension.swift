@@ -19,9 +19,9 @@ enum UITextDelegateType {
 //MARK:---- UITextField
 extension UITextField {
     func showOkButton() {
-        let toolBar = UIToolbar(frame: CGRect(x: 0,y: 0, width: SP_ScreenWidth,height: 25))
+        let toolBar = UIToolbar(frame: CGRect(x: 0,y: 0, width: sp_ScreenWidth,height: 25))
         toolBar.backgroundColor = UIColor.main_bg
-        let button = UIButton(frame: CGRect(x: SP_ScreenWidth - 40,y: 0,width: 40,height: 25))
+        let button = UIButton(frame: CGRect(x: sp_ScreenWidth - 40,y: 0,width: 40,height: 25))
         button.setTitle("完成", for: UIControlState())
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.setTitleColor(UIColor.main_1, for: .normal)
@@ -35,9 +35,9 @@ extension UITextField {
 //MARK:---- UITextView
 extension UITextView {
     func showOkButton() {
-        let toolBar = UIToolbar(frame: CGRect(x: 0,y: 0, width: SP_ScreenWidth,height: 25))
+        let toolBar = UIToolbar(frame: CGRect(x: 0,y: 0, width: sp_ScreenWidth,height: 25))
         toolBar.backgroundColor = UIColor.main_bg
-        let button = UIButton(frame: CGRect(x: SP_ScreenWidth - 40,y: 0,width: 40,height: 25))
+        let button = UIButton(frame: CGRect(x: sp_ScreenWidth - 40,y: 0,width: 40,height: 25))
         button.setTitle("完成", for: UIControlState())
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.setTitleColor(UIColor.main_1, for: .normal)

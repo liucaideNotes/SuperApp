@@ -17,7 +17,7 @@ extension UINavigationController {
         //去掉顶部线条
         
         if imageName.isEmpty {
-            let rect = CGRect(x: 0, y: 0, width: SP_ScreenWidth, height: 64)
+            let rect = CGRect(x: 0, y: 0, width: sp_ScreenWidth, height: 64)
             UIGraphicsBeginImageContext(rect.size)
             let context = UIGraphicsGetCurrentContext()
             context!.setFillColor(bgColor.cgColor)

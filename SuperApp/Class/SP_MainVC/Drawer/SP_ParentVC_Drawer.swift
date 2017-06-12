@@ -74,10 +74,10 @@ class SP_ParentVC_Drawer: SP_ParentVC {
 //        })
         
         //设置抽屉
-        SP_MainWindow.addSubview(sunshadeView)
+        sp_MainWindow.addSubview(sunshadeView)
         sunshadeView.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(SP_MainWindow)
-            make.leading.equalTo(SP_MainWindow)
+            make.top.bottom.equalTo(sp_MainWindow)
+            make.leading.equalTo(sp_MainWindow)
             make.width.equalTo(0)
         }
         let viewPan = UIPanGestureRecognizer(target: self, action: #selector(SP_ParentVC_Drawer.viewPanClick(_:)))
@@ -115,9 +115,9 @@ class SP_ParentVC_Drawer: SP_ParentVC {
     @objc private func viewPanClick(_ pan:UIPanGestureRecognizer)  {
         switch pan.state {
         case .began:  // 开始拖动
-            panPointBegan = pan.location(in: SP_MainWindow).x
+            panPointBegan = pan.location(in: sp_MainWindow).x
         case .changed:  // 正在拖动
-            panPointChanged = pan.location(in: SP_MainWindow).x - panPointBegan
+            panPointChanged = pan.location(in: sp_MainWindow).x - panPointBegan
             if !_isOpen {
                 if panPointChanged >= 0  {
                     self.tabBarController?.view.snp.updateConstraints { (make) in
@@ -169,7 +169,7 @@ class SP_ParentVC_Drawer: SP_ParentVC {
             make.bottom.equalToSuperview().offset(-_top_H)
         }
         sunshadeView.snp.updateConstraints { (make) in
-            make.leading.equalTo(SP_MainWindow).offset(_left_W)
+            make.leading.equalTo(sp_MainWindow).offset(_left_W)
             make.width.equalTo(400)
         }
         self.tabBarController?.view.superview?.setNeedsLayout()
@@ -183,7 +183,7 @@ class SP_ParentVC_Drawer: SP_ParentVC {
             make.top.bottom.leading.trailing.equalToSuperview()
         }
         sunshadeView.snp.updateConstraints { (make) in
-            make.leading.equalTo(SP_MainWindow).offset(0)
+            make.leading.equalTo(sp_MainWindow).offset(0)
             make.width.equalTo(0)
         }
         self.tabBarController?.view.superview?.setNeedsLayout()

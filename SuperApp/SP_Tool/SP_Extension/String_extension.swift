@@ -175,8 +175,8 @@ extension String {
         //3.拼接字符串
         let ihguuid = "\(time)\(randomNum)"
         print(ihguuid)
-        SP_UserDefaultsSet(SP_UUID, obj: ihguuid)
-        SP_UserDefaultsSyn()
+        sp_UserDefaultsSet(SPUUID, obj: ihguuid)
+        sp_UserDefaultsSyn()
         
     }
     

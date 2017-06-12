@@ -63,7 +63,7 @@ class SP_ParentVC: UIViewController {
     
     lazy var n_view:SP_NavigationView = {
         let view = SP_NavigationView.show(self.view)
-        view.backgroundColor = UIColor.main_1
+        view.backgroundColor = UIColor.white
         return view
     }()
     
@@ -88,7 +88,7 @@ class SP_ParentVC: UIViewController {
         n_view.n_view_ActShow = false
         
         
-        n_view.n_view_NaviLine.isHidden = true
+        n_view.n_view_NaviLine.isHidden = false
         
         n_view._tintColor = UIColor.white
         n_view._titleColor = UIColor.white

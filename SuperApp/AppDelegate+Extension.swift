@@ -56,7 +56,7 @@ extension AppDelegate {
         print(versionString)
         let nowVersion = versionString
         // 获取到之前的版本号
-        let oldVersion: String = SP_UserDefaultsGet("oldVersionKey") as! String
+        let oldVersion: String = sp_UserDefaultsGet("oldVersionKey") as! String
         // 对比
         return nowVersion > oldVersion
     }
@@ -65,8 +65,8 @@ extension AppDelegate {
         // 获取当前的版本号
         let nowVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         // 保存当前版本号
-        SP_UserDefaultsSet("oldVersionKey", obj:nowVersion as AnyObject)
-        SP_UserDefaultsSyn()
+        sp_UserDefaultsSet("oldVersionKey", obj:nowVersion as AnyObject)
+        sp_UserDefaultsSyn()
     }
     
     

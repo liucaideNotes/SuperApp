@@ -54,7 +54,6 @@
 		AB0235151EE52BEA007AB6BB /* Y_StockChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0234FE1EE52BEA007AB6BB /* Y_StockChartView.m */; };
 		AB0235171EE530BF007AB6BB /* SP_YYStockDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235161EE530BF007AB6BB /* SP_YYStockDemo.swift */; };
 		AB0236121EE56087007AB6BB /* SP_Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235CD1EE56087007AB6BB /* SP_Constant.swift */; };
-		AB0236241EE56087007AB6BB /* placeholderImage.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0235E21EE56087007AB6BB /* placeholderImage.png */; };
 		AB0236251EE56087007AB6BB /* SP_GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235E31EE56087007AB6BB /* SP_GridView.swift */; };
 		AB0236261EE56087007AB6BB /* SP_GridView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235E41EE56087007AB6BB /* SP_GridView_Extension.swift */; };
 		AB0236271EE56087007AB6BB /* SP_TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235E51EE56087007AB6BB /* SP_TabMenuView.swift */; };
@@ -118,11 +117,20 @@
 		AB0AC6DA1EDC64560011F2F5 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0AC6DC1EDC64560011F2F5 /* Localization.strings */; };
 		AB0AC6E21EDC7D910011F2F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0AC6E01EDC7D910011F2F5 /* InfoPlist.strings */; };
 		AB102A0D1EE101CB0042654F /* SP_Charts_DemoStockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB102A0C1EE101CB0042654F /* SP_Charts_DemoStockVC.swift */; };
+		AB2D33481EE6729100A29F91 /* LBPFontInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2D33401EE6729100A29F91 /* LBPFontInfo.m */; };
+		AB2D33491EE6729100A29F91 /* LBPIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2D33421EE6729100A29F91 /* LBPIconFont.m */; };
+		AB2D334A1EE6729100A29F91 /* UIColor+picker.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2D33441EE6729100A29F91 /* UIColor+picker.m */; };
+		AB2D334B1EE6729100A29F91 /* UIImage+LBPIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2D33461EE6729100A29F91 /* UIImage+LBPIconFont.m */; };
+		AB2D33531EE6816600A29F91 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB2D33521EE6816600A29F91 /* iconfont.ttf */; };
+		AB2D33661EE69A1F00A29F91 /* SP_TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2D33641EE69A1F00A29F91 /* SP_TextField.swift */; };
+		AB2D33671EE69A1F00A29F91 /* SP_TextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2D33651EE69A1F00A29F91 /* SP_TextField.xib */; };
 		AB3A29CA1ED03A1E00871B52 /* jpush-ios-2.1.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3A29991ED03A1E00871B52 /* jpush-ios-2.1.8.a */; };
 		AB3A29E01ED0892E00871B52 /* NT_ViewController14.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3A29DF1ED0892E00871B52 /* NT_ViewController14.swift */; };
 		AB3A29E21ED1730900871B52 /* SP_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3A29E11ED1730900871B52 /* SP_UITableView.swift */; };
 		AB3A29F51ED2B2EC00871B52 /* SP_Rx_SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3A29F41ED2B2EC00871B52 /* SP_Rx_SigninVC.swift */; };
 		AB3A29F71ED31DC900871B52 /* SP_Rx_SigninVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3A29F61ED31DC900871B52 /* SP_Rx_SigninVCCell.swift */; };
+		AB43F5C61EE78FD200B02DB7 /* SP_Rx_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43F5C51EE78FD200B02DB7 /* SP_Rx_NotificationCenter.swift */; };
+		AB43F5C81EE79B5D00B02DB7 /* SP_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43F5C71EE79B5D00B02DB7 /* SP_API.swift */; };
 		AB605F8B1EE00A6C0046BA15 /* SP_Charts_Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB605F8A1EE00A6C0046BA15 /* SP_Charts_Demo.storyboard */; };
 		AB605F8D1EE015F50046BA15 /* SP_Charts_Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB605F8C1EE015F50046BA15 /* SP_Charts_Demo.swift */; };
 		AB63A1C71DA890AD00BC7C64 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */; };
@@ -276,7 +284,6 @@
 		AB0234FE1EE52BEA007AB6BB /* Y_StockChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Y_StockChartView.m; sourceTree = "<group>"; };
 		AB0235161EE530BF007AB6BB /* SP_YYStockDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SP_YYStockDemo.swift; path = SuperApp/Sp_Charts_Demo/YYStock/SP_YYStockDemo.swift; sourceTree = SOURCE_ROOT; };
 		AB0235CD1EE56087007AB6BB /* SP_Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Constant.swift; sourceTree = "<group>"; };
-		AB0235E21EE56087007AB6BB /* placeholderImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderImage.png; sourceTree = "<group>"; };
 		AB0235E31EE56087007AB6BB /* SP_GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_GridView.swift; sourceTree = "<group>"; };
 		AB0235E41EE56087007AB6BB /* SP_GridView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_GridView_Extension.swift; sourceTree = "<group>"; };
 		AB0235E51EE56087007AB6BB /* SP_TabMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_TabMenuView.swift; sourceTree = "<group>"; };
@@ -354,6 +361,17 @@
 		AB0AC6E31EDC7D970011F2F5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		AB0AC6E41EDC7D9B0011F2F5 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		AB102A0C1EE101CB0042654F /* SP_Charts_DemoStockVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Charts_DemoStockVC.swift; sourceTree = "<group>"; };
+		AB2D333F1EE6729100A29F91 /* LBPFontInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPFontInfo.h; sourceTree = "<group>"; };
+		AB2D33401EE6729100A29F91 /* LBPFontInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPFontInfo.m; sourceTree = "<group>"; };
+		AB2D33411EE6729100A29F91 /* LBPIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPIconFont.h; sourceTree = "<group>"; };
+		AB2D33421EE6729100A29F91 /* LBPIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPIconFont.m; sourceTree = "<group>"; };
+		AB2D33431EE6729100A29F91 /* UIColor+picker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+picker.h"; sourceTree = "<group>"; };
+		AB2D33441EE6729100A29F91 /* UIColor+picker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+picker.m"; sourceTree = "<group>"; };
+		AB2D33451EE6729100A29F91 /* UIImage+LBPIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBPIconFont.h"; sourceTree = "<group>"; };
+		AB2D33461EE6729100A29F91 /* UIImage+LBPIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBPIconFont.m"; sourceTree = "<group>"; };
+		AB2D33521EE6816600A29F91 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		AB2D33641EE69A1F00A29F91 /* SP_TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_TextField.swift; sourceTree = "<group>"; };
+		AB2D33651EE69A1F00A29F91 /* SP_TextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SP_TextField.xib; sourceTree = "<group>"; };
 		AB3A29931ED0375400871B52 /* P_控制流.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "P_控制流.playground"; sourceTree = "<group>"; };
 		AB3A29941ED0375400871B52 /* P_Arr_Dict.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = P_Arr_Dict.playground; sourceTree = "<group>"; };
 		AB3A29951ED0375400871B52 /* P_Sets.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = P_Sets.playground; sourceTree = "<group>"; };
@@ -364,6 +382,8 @@
 		AB3A29E11ED1730900871B52 /* SP_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_UITableView.swift; sourceTree = "<group>"; };
 		AB3A29F41ED2B2EC00871B52 /* SP_Rx_SigninVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Rx_SigninVC.swift; sourceTree = "<group>"; };
 		AB3A29F61ED31DC900871B52 /* SP_Rx_SigninVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Rx_SigninVCCell.swift; sourceTree = "<group>"; };
+		AB43F5C51EE78FD200B02DB7 /* SP_Rx_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Rx_NotificationCenter.swift; sourceTree = "<group>"; };
+		AB43F5C71EE79B5D00B02DB7 /* SP_API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_API.swift; sourceTree = "<group>"; };
 		AB5FFE8F1DCA1C4D0039C9D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AB605F8A1EE00A6C0046BA15 /* SP_Charts_Demo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_Charts_Demo.storyboard; sourceTree = "<group>"; };
 		AB605F8C1EE015F50046BA15 /* SP_Charts_Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Charts_Demo.swift; sourceTree = "<group>"; };
@@ -903,6 +923,8 @@
 				AB0235CD1EE56087007AB6BB /* SP_Constant.swift */,
 				AB0235EA1EE56087007AB6BB /* SP_Info.h */,
 				AB0235EB1EE56087007AB6BB /* SP_Info.m */,
+				AB2D33631EE69A1F00A29F91 /* SP_TextField */,
+				AB2D333C1EE6729100A29F91 /* SP_IconFont */,
 				AB0235C61EE56087007AB6BB /* SP_AdsView */,
 				AB0235CC1EE56087007AB6BB /* SP_Blu */,
 				AB0235E11EE56087007AB6BB /* SP_GridView */,
@@ -938,7 +960,6 @@
 		AB0235E11EE56087007AB6BB /* SP_GridView */ = {
 			isa = PBXGroup;
 			children = (
-				AB0235E21EE56087007AB6BB /* placeholderImage.png */,
 				AB0235E31EE56087007AB6BB /* SP_GridView.swift */,
 				AB0235E41EE56087007AB6BB /* SP_GridView_Extension.swift */,
 				AB0235E51EE56087007AB6BB /* SP_TabMenuView.swift */,
@@ -1019,6 +1040,7 @@
 		AB0236C81EE5629F007AB6BB /* SP_Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AB2D33541EE681FB00A29F91 /* image */,
 				AB0236C91EE562A0007AB6BB /* Bool_extension.swift */,
 				AB0236CA1EE562A0007AB6BB /* Cell_extension.swift */,
 				AB0236CB1EE562A0007AB6BB /* CGSize_extension.swift */,
@@ -1076,6 +1098,46 @@
 			path = Drawer;
 			sourceTree = "<group>";
 		};
+		AB2D333C1EE6729100A29F91 /* SP_IconFont */ = {
+			isa = PBXGroup;
+			children = (
+				AB2D33521EE6816600A29F91 /* iconfont.ttf */,
+				AB2D333E1EE6729100A29F91 /* IconFontLib */,
+			);
+			path = SP_IconFont;
+			sourceTree = "<group>";
+		};
+		AB2D333E1EE6729100A29F91 /* IconFontLib */ = {
+			isa = PBXGroup;
+			children = (
+				AB2D333F1EE6729100A29F91 /* LBPFontInfo.h */,
+				AB2D33401EE6729100A29F91 /* LBPFontInfo.m */,
+				AB2D33411EE6729100A29F91 /* LBPIconFont.h */,
+				AB2D33421EE6729100A29F91 /* LBPIconFont.m */,
+				AB2D33431EE6729100A29F91 /* UIColor+picker.h */,
+				AB2D33441EE6729100A29F91 /* UIColor+picker.m */,
+				AB2D33451EE6729100A29F91 /* UIImage+LBPIconFont.h */,
+				AB2D33461EE6729100A29F91 /* UIImage+LBPIconFont.m */,
+			);
+			path = IconFontLib;
+			sourceTree = "<group>";
+		};
+		AB2D33541EE681FB00A29F91 /* image */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		AB2D33631EE69A1F00A29F91 /* SP_TextField */ = {
+			isa = PBXGroup;
+			children = (
+				AB2D33641EE69A1F00A29F91 /* SP_TextField.swift */,
+				AB2D33651EE69A1F00A29F91 /* SP_TextField.xib */,
+			);
+			path = SP_TextField;
+			sourceTree = "<group>";
+		};
 		AB3A29921ED0370D00871B52 /* Swift基础 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,6 +1173,14 @@
 				AB3A29F61ED31DC900871B52 /* SP_Rx_SigninVCCell.swift */,
 			);
 			path = Rx_Register;
+			sourceTree = "<group>";
+		};
+		AB43F5C41EE78FB500B02DB7 /* Rx_NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				AB43F5C51EE78FD200B02DB7 /* SP_Rx_NotificationCenter.swift */,
+			);
+			path = Rx_NotificationCenter;
 			sourceTree = "<group>";
 		};
 		AB605F891EE00A180046BA15 /* SP_Charts_Demo */ = {
@@ -1274,6 +1344,7 @@
 				ABDFC9141EC9EDDD002110AB /* SP_RxDemo.playground */,
 				ABDFC9121EC9E8BF002110AB /* SP_RxDemo.storyboard */,
 				ABDFC91A1EC9F30E002110AB /* SP_Rx_DemoVC.swift */,
+				AB43F5C41EE78FB500B02DB7 /* Rx_NotificationCenter */,
 				AB3A29F31ED2B2D300871B52 /* Rx_Register */,
 				ABDFC9151EC9EE90002110AB /* Rx_TableView */,
 			);
@@ -1292,6 +1363,7 @@
 			isa = PBXGroup;
 			children = (
 				ABDFC9211ECA7C93002110AB /* SP_API.h */,
+				AB43F5C71EE79B5D00B02DB7 /* SP_API.swift */,
 			);
 			path = SP_API;
 			sourceTree = "<group>";
@@ -1426,15 +1498,16 @@
 				ABC71FB81EC97C2300C780F9 /* SP_MainStoryboard.storyboard in Resources */,
 				AB0234B81EE50EA1007AB6BB /* YYFiveRecordTableViewCell.xib in Resources */,
 				AB0236361EE56087007AB6BB /* navi_back_gray@2x.png in Resources */,
+				AB2D33671EE69A1F00A29F91 /* SP_TextField.xib in Resources */,
 				AB96F0EA1DA88EB7001D8EEE /* LaunchScreen.storyboard in Resources */,
 				AB0236371EE56087007AB6BB /* navi_back_white@2x.png in Resources */,
 				ABC71FB71EC97C2300C780F9 /* SP_iPadStoryboard.storyboard in Resources */,
 				ABDFC9131EC9E8BF002110AB /* SP_RxDemo.storyboard in Resources */,
+				AB2D33531EE6816600A29F91 /* iconfont.ttf in Resources */,
 				AB0AC6E21EDC7D910011F2F5 /* InfoPlist.strings in Resources */,
 				AB0236281EE56087007AB6BB /* SP_TabMenuView.xib in Resources */,
 				ABC71FB51EC97C2300C780F9 /* SP_Navigation_TabBar.storyboard in Resources */,
 				AB96F0E71DA88EB7001D8EEE /* Assets.xcassets in Resources */,
-				AB0236241EE56087007AB6BB /* placeholderImage.png in Resources */,
 				AB0237021EE56328007AB6BB /* SP_AdsColleCell.xib in Resources */,
 				AB0AC6DA1EDC64560011F2F5 /* Localization.strings in Resources */,
 				AB0236381EE56087007AB6BB /* navi_scanCode_white@2x.png in Resources */,
@@ -1541,13 +1614,16 @@
 				AB02350A1EE52BEA007AB6BB /* Y_KLineGroupModel.m in Sources */,
 				AB0236EE1EE562A0007AB6BB /* NSTimer_extension.swift in Sources */,
 				AB0235081EE52BEA007AB6BB /* KDJ介绍.md in Sources */,
+				AB2D334A1EE6729100A29F91 /* UIColor+picker.m in Sources */,
 				ABFAA18A1EC5DBAF00EEA338 /* SP_AFSwift.swift in Sources */,
 				AB02363B1EE56087007AB6BB /* Navigation_Extension.swift in Sources */,
+				AB2D33481EE6729100A29F91 /* LBPFontInfo.m in Sources */,
 				AB0235151EE52BEA007AB6BB /* Y_StockChartView.m in Sources */,
 				AB02350F1EE52BEA007AB6BB /* Y_StockChartRightYView.m in Sources */,
 				ABBFE0981DF7B84A000D7124 /* SP_Datas.swift in Sources */,
 				AB0236E81EE562A0007AB6BB /* Date_extension.swift in Sources */,
 				AB0234BC1EE50EA1007AB6BB /* YYTimeLineVolumeView.m in Sources */,
+				AB2D33491EE6729100A29F91 /* LBPIconFont.m in Sources */,
 				AB0237051EE56328007AB6BB /* SP_AdsView.swift in Sources */,
 				AB0235091EE52BEA007AB6BB /* MA-EMA-MACD介绍.md in Sources */,
 				AB0236EB1EE562A0007AB6BB /* LCDToolClass.m in Sources */,
@@ -1555,7 +1631,9 @@
 				ABC71FBA1EC992B900C780F9 /* NT_ViewController13.swift in Sources */,
 				AB0774031DFFCA7D00D782BF /* SP_DrawerVC.swift in Sources */,
 				AB0234B41EE50EA1007AB6BB /* YYKlineVolumeView.m in Sources */,
+				AB43F5C81EE79B5D00B02DB7 /* SP_API.swift in Sources */,
 				AB63A1C71DA890AD00BC7C64 /* AppDelegate+Extension.swift in Sources */,
+				AB43F5C61EE78FD200B02DB7 /* SP_Rx_NotificationCenter.swift in Sources */,
 				AB0235131EE52BEA007AB6BB /* Y_KLineVolumeView.m in Sources */,
 				AB102A0D1EE101CB0042654F /* SP_Charts_DemoStockVC.swift in Sources */,
 				ABFAA18B1EC5DBAF00EEA338 /* SP_NetWorkingType.swift in Sources */,
@@ -1580,6 +1658,7 @@
 				AB02363C1EE56087007AB6BB /* SP_NavigationView.swift in Sources */,
 				AB0236E61EE562A0007AB6BB /* Cell_extension.swift in Sources */,
 				AB0234B71EE50EA1007AB6BB /* YYFiveRecordTableViewCell.m in Sources */,
+				AB2D334B1EE6729100A29F91 /* UIImage+LBPIconFont.m in Sources */,
 				ABDFC91B1EC9F30E002110AB /* SP_Rx_DemoVC.swift in Sources */,
 				AB0234B01EE50EA1007AB6BB /* YYKline.m in Sources */,
 				AB0236F51EE562A0007AB6BB /* UIFont_extension.swift in Sources */,
@@ -1632,6 +1711,7 @@
 				AB0236EC1EE562A0007AB6BB /* NSData+YYAdd.m in Sources */,
 				AB0774041DFFCA7D00D782BF /* SP_ParentVC_Drawer.swift in Sources */,
 				AB02350B1EE52BEA007AB6BB /* Y_KLineModel.m in Sources */,
+				AB2D33661EE69A1F00A29F91 /* SP_TextField.swift in Sources */,
 				AB0235061EE52BEA007AB6BB /* Y_MALine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

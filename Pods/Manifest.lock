@@ -18,6 +18,10 @@ PODS:
   - Charts (3.0.2):
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
+  - CYLTableViewPlaceHolder (1.0.8)
+  - DZNEmptyDataSet (1.5.2)
+  - FORScrollViewEmptyAssistant (0.1.2):
+    - DZNEmptyDataSet (~> 1.5.2)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
@@ -65,6 +69,8 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - Charts
+  - CYLTableViewPlaceHolder
+  - FORScrollViewEmptyAssistant
   - Masonry
   - MBProgressHUD
   - MJRefresh
@@ -93,6 +99,9 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
+  CYLTableViewPlaceHolder: 44075c119aab78bbc514c75d771d6565e19938e8
+  DZNEmptyDataSet: 741da409081a4bf707c949c964623a6ad1799772
+  FORScrollViewEmptyAssistant: 8434fcb61e4dc1c19bb4670ec99d48a3d5fea4d7
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -118,6 +127,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 6d295f29c47fe2c36338c115722b40619fba5e14
+PODFILE CHECKSUM: 458f8e15af6c0de31a9458638360fce912d685e4
 
 COCOAPODS: 1.0.1

@@ -1,0 +1,6 @@
+framework module CYLTableViewPlaceHolder {
+  umbrella header "CYLTableViewPlaceHolder-umbrella.h"
+
+  export *
+  module * { export * }
+}

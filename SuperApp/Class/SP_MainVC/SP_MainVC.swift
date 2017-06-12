@@ -158,7 +158,7 @@ extension SP_MainVC: UITableViewDelegate,UITableViewDataSource {
             self.present(vc, animated: true, completion: nil)
         default:
             
-            if let vc = SP_classFromString(className)?.initSPVC() {
+            if let vc = sp_classFromString(className)?.initSPVC() {
                 self.navigationController?.show(vc, sender: nil)
             }
         }

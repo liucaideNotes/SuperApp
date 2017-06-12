@@ -34,7 +34,9 @@ target ‘SuperApp’ do
     pod 'Charts'
     
     pod 'MJRefresh'
-    
+    #占位图
+    pod 'CYLTableViewPlaceHolder'
+    pod 'FORScrollViewEmptyAssistant'
     #pod 'Hyphenate_CN'
     #pod 'YYKit'
     pod 'YYModel'

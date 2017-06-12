@@ -7,8 +7,8 @@
 //
 
 import UIKit
-let sp_navigationViewLeftButtonImg = "login_Backup"
-let sp_navigationViewLeftButtonImg2 = "login_Backup"
+let sp_navigationViewLeftButtonImg = "navi_back_gray"
+let sp_navigationViewLeftButtonImg2 = "navi_back_gray"
 
 class SP_NavigationView: UIView {
     
@@ -41,6 +41,7 @@ class SP_NavigationView: UIView {
     @IBOutlet weak var n_img_NaviBar: UIImageView!
     
     @IBOutlet weak var n_btn_C1: UIButton!
+    @IBOutlet weak var n_label_C1: UILabel!
     
     @IBOutlet weak var n_btn_L1: UIButton!
     @IBOutlet weak var n_btn_L2: UIButton!
@@ -49,7 +50,7 @@ class SP_NavigationView: UIView {
     @IBOutlet weak var n_btn_R2: UIButton!
     @IBOutlet weak var n_btn_R3: UIButton!
     
-    @IBOutlet weak var n_btn_C1_H: NSLayoutConstraint!
+    @IBOutlet weak var n_label_C1_B: NSLayoutConstraint!
     
     @IBOutlet weak var n_btn_L1_H: NSLayoutConstraint!
     @IBOutlet weak var n_btn_L1_W: NSLayoutConstraint!
@@ -204,10 +205,16 @@ class SP_NavigationView: UIView {
             n_btn_C1.setTitle(_title, for: .normal)
         }
     }
+    open var _detailTitle = "" {
+        didSet{
+            n_label_C1.text = _detailTitle
+        }
+    }
     open var _titleColor:UIColor = UIColor.sp_ParentTintColor {
         didSet{
             n_btn_C1.setTitleColor(_titleColor, for: .normal)
             n_view_Act.color = _titleColor
+            n_label_C1.textColor = _titleColor
         }
     }
     open var _tintColor:UIColor = UIColor.sp_ParentTintColor {

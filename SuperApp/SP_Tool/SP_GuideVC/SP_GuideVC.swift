@@ -36,7 +36,7 @@ class SP_GuideVC: UIViewController {
         collecView.isPagingEnabled = true //分页显示
         collecView.bounces = false
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: SP_ScreenWidth, height: SP_ScreenHeight)
+        layout.itemSize = CGSize(width: sp_ScreenWidth, height: sp_ScreenHeight)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         return collecView
@@ -47,7 +47,7 @@ class SP_GuideVC: UIViewController {
     }
     //MARK:---------- 设置分页圆点
     private lazy var  scrollPageControl: UIPageControl = {
-        let pageControl = UIPageControl(frame: CGRect(x:10, y:SP_ScreenHeight - 20, width:SP_ScreenWidth - 20, height:20))
+        let pageControl = UIPageControl(frame: CGRect(x:10, y:sp_ScreenHeight - 20, width:sp_ScreenWidth - 20, height:20))
         pageControl.numberOfPages = launch_Images.count // 页数
         //圆点颜色
         pageControl.pageIndicatorTintColor = .white

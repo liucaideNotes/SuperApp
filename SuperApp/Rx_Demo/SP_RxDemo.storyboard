@@ -60,6 +60,7 @@
                     <connections>
                         <segue destination="Ues-3e-Q5g" kind="show" id="2No-C4-J3Q"/>
                         <segue destination="NXT-yP-Htd" kind="show" id="WrL-rW-uPy"/>
+                        <segue destination="wU9-EY-2Yu" kind="show" id="wgA-9l-0gD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1p-tA-EYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,7 +151,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fL-do-BMi">
-                                            <rect key="frame" x="358.5" y="45" width="6.5" height="14"/>
+                                            <rect key="frame" x="358" y="45" width="7" height="14"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -201,7 +202,7 @@
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCo-FR-tRs">
-                                            <rect key="frame" x="248.5" y="45" width="6.5" height="14"/>
+                                            <rect key="frame" x="248" y="45" width="7" height="14"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -246,7 +247,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC4-Vm-mNU">
-                                            <rect key="frame" x="358.5" y="45" width="6.5" height="14"/>
+                                            <rect key="frame" x="358" y="45" width="7" height="14"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -300,6 +301,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUq-Bm-K1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-980" y="251.42428785607197"/>
+        </scene>
+        <!--Rx Notification Center-->
+        <scene sceneID="lDh-51-hxn">
+            <objects>
+                <viewController storyboardIdentifier="SP_Rx_NotificationCenter" id="wU9-EY-2Yu" customClass="SP_Rx_NotificationCenter" customModule="SuperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="38A-Gi-c7k"/>
+                        <viewControllerLayoutGuide type="bottom" id="rFM-Ny-Nfq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="97j-eJ-ODt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nt-Eo-QfA">
+                                <rect key="frame" x="165" y="100" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="发通知"/>
+                                <connections>
+                                    <action selector="postClick:" destination="wU9-EY-2Yu" eventType="touchUpInside" id="QTF-cE-xto"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收通知" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRt-WD-mNo">
+                                <rect key="frame" x="0.0" y="323" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jRt-WD-mNo" firstAttribute="centerX" secondItem="97j-eJ-ODt" secondAttribute="centerX" id="dpD-Px-lKJ"/>
+                            <constraint firstItem="7nt-Eo-QfA" firstAttribute="centerX" secondItem="97j-eJ-ODt" secondAttribute="centerX" id="j9S-jB-h29"/>
+                            <constraint firstItem="jRt-WD-mNo" firstAttribute="centerY" secondItem="97j-eJ-ODt" secondAttribute="centerY" id="lS4-72-DuG"/>
+                            <constraint firstItem="jRt-WD-mNo" firstAttribute="leading" secondItem="97j-eJ-ODt" secondAttribute="leading" id="sA1-Je-UjZ"/>
+                            <constraint firstItem="7nt-Eo-QfA" firstAttribute="top" secondItem="97j-eJ-ODt" secondAttribute="top" constant="100" id="tK6-8O-WGN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label_text" destination="jRt-WD-mNo" id="oB2-8V-rGl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wp5-1W-wbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-188" y="250.52473763118442"/>
         </scene>
     </scenes>
 </document>

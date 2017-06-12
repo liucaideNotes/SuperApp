@@ -62,7 +62,7 @@ class SP_Rx_DemoVC: UITableViewController {
             cell?.textLabel?.text = row.name
             return cell!
         }
-        
+        tabData.
         
         //数据绑定
         sections.asObservable()
@@ -78,6 +78,9 @@ class SP_Rx_DemoVC: UITableViewController {
                 switch model.type {
                 case 33:
                     let vc = SP_Rx_SigninVC.initSPVC()
+                    self.navigationController?.show(vc, sender: nil)
+                case 21:
+                    let vc = SP_Rx_NotificationCenter.initSPVC()
                     self.navigationController?.show(vc, sender: nil)
                 default:
                     break

@@ -51,7 +51,7 @@ extension UITabBarController {
     //MARK:--- 去掉tabBar顶部线条
     func sp_hideLine() {
         //去掉tabBar顶部线条
-        let rect = CGRect(x: 0, y: 0, width: SP_ScreenWidth, height: 0.5)
+        let rect = CGRect(x: 0, y: 0, width: sp_ScreenWidth, height: 0.5)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
         context!.setFillColor(UIColor.clear.cgColor)
