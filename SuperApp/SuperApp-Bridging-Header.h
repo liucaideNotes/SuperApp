@@ -2,7 +2,7 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 //#pragma mark ---------- 工程全局配置 ----------
-#import "SP_Info.h"
+#import "SP_InfoOC.h"
 #import "SP_API.h"
 
 //#pragma mark ---------- 极光推送 ----------

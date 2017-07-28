@@ -12,40 +12,36 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class SP_ParentVC_Drawer: SP_ParentVC {
 
     let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.fd_prefersNavigationBarHidden = true
-        /*
-        NotificationCenter
-            .default
-            .rx
-            .notification(NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: nil)
+        
+        
+        
+        
+        sp_Notification.rx
+            .notification(ntf_Name_SP_DrawerVCPostValue, object: nil)
             .takeUntil(self.rx.deallocated)
-            .asObservable().subscribe(onNext: { [weak self](notification) in
-                //MARK:--- 抽屉点击事件通知
-                self?.closeDrawer()
+            .asObservable()
+            .subscribe(onNext: { [weak self](n) in
+                self?.drawerReceptionValue(n)
             }).addDisposableTo(disposeBag)
-        */
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SP_ParentVC_Drawer.drawerReceptionValue(_:)), name:NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: nil)
         
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+ 
+        
         
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: nil)
-        NotificationCenter.default.removeObserver(self)
-    }
     //MARK:--- 抽屉点击事件通知
-    func drawerReceptionValue(_ notification:NSNotification) {
+    func drawerReceptionValue(_ notification:Notification) {
         closeDrawer()
     }
     //左侧展开宽度

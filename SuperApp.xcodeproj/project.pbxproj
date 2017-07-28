@@ -60,7 +60,7 @@
 		AB0236281EE56087007AB6BB /* SP_TabMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0235E61EE56087007AB6BB /* SP_TabMenuView.xib */; };
 		AB0236291EE56087007AB6BB /* tanhuang.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AB0235E71EE56087007AB6BB /* tanhuang.mp3 */; };
 		AB02362A1EE56087007AB6BB /* SP_GuideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235E91EE56087007AB6BB /* SP_GuideVC.swift */; };
-		AB02362B1EE56087007AB6BB /* SP_Info.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0235EB1EE56087007AB6BB /* SP_Info.m */; };
+		AB02362B1EE56087007AB6BB /* SP_InfoOC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0235EB1EE56087007AB6BB /* SP_InfoOC.m */; };
 		AB02362C1EE56087007AB6BB /* CLLocation+YCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0235EE1EE56087007AB6BB /* CLLocation+YCLocation.m */; };
 		AB02362D1EE56087007AB6BB /* SP_LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235EF1EE56087007AB6BB /* SP_LocationManager.swift */; };
 		AB02362E1EE56087007AB6BB /* SP_MJDIYAutoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0235F11EE56087007AB6BB /* SP_MJDIYAutoFooter.swift */; };
@@ -88,9 +88,6 @@
 		AB0236E71EE562A0007AB6BB /* CGSize_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0236CB1EE562A0007AB6BB /* CGSize_extension.swift */; };
 		AB0236E81EE562A0007AB6BB /* Date_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0236CC1EE562A0007AB6BB /* Date_extension.swift */; };
 		AB0236E91EE562A0007AB6BB /* DragableTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0236CD1EE562A0007AB6BB /* DragableTableExtension.swift */; };
-		AB0236EA1EE562A0007AB6BB /* LCD_Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0236CE1EE562A0007AB6BB /* LCD_Tool.swift */; };
-		AB0236EB1EE562A0007AB6BB /* LCDToolClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0236D01EE562A0007AB6BB /* LCDToolClass.m */; };
-		AB0236EC1EE562A0007AB6BB /* NSData+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0236D21EE562A0007AB6BB /* NSData+YYAdd.m */; };
 		AB0236ED1EE562A0007AB6BB /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0236D41EE562A0007AB6BB /* NSString+Hash.m */; };
 		AB0236EE1EE562A0007AB6BB /* NSTimer_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0236D51EE562A0007AB6BB /* NSTimer_extension.swift */; };
 		AB0236EF1EE562A0007AB6BB /* SP_Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0236D61EE562A0007AB6BB /* SP_Singleton.swift */; };
@@ -134,6 +131,8 @@
 		AB605F8B1EE00A6C0046BA15 /* SP_Charts_Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB605F8A1EE00A6C0046BA15 /* SP_Charts_Demo.storyboard */; };
 		AB605F8D1EE015F50046BA15 /* SP_Charts_Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB605F8C1EE015F50046BA15 /* SP_Charts_Demo.swift */; };
 		AB63A1C71DA890AD00BC7C64 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */; };
+		AB82CED21EEE3DE600D015B1 /* SP_Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB82CECF1EEE3DE600D015B1 /* SP_Tool.swift */; };
+		AB82CED31EEE3DE600D015B1 /* SP_ToolOC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB82CED11EEE3DE600D015B1 /* SP_ToolOC.m */; };
 		AB8B4CA91EC54F080063AFBB /* SPNT_NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CA81EC54F080063AFBB /* SPNT_NavigationController.swift */; };
 		AB8B4CAB1EC54F520063AFBB /* SPNT_TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CAA1EC54F520063AFBB /* SPNT_TabBarController.swift */; };
 		AB8B4CAE1EC550FF0063AFBB /* NT_ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B4CAD1EC550FF0063AFBB /* NT_ViewController1.swift */; };
@@ -290,8 +289,8 @@
 		AB0235E61EE56087007AB6BB /* SP_TabMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SP_TabMenuView.xib; sourceTree = "<group>"; };
 		AB0235E71EE56087007AB6BB /* tanhuang.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tanhuang.mp3; sourceTree = "<group>"; };
 		AB0235E91EE56087007AB6BB /* SP_GuideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_GuideVC.swift; sourceTree = "<group>"; };
-		AB0235EA1EE56087007AB6BB /* SP_Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SP_Info.h; sourceTree = "<group>"; };
-		AB0235EB1EE56087007AB6BB /* SP_Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SP_Info.m; sourceTree = "<group>"; };
+		AB0235EA1EE56087007AB6BB /* SP_InfoOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SP_InfoOC.h; sourceTree = "<group>"; };
+		AB0235EB1EE56087007AB6BB /* SP_InfoOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SP_InfoOC.m; sourceTree = "<group>"; };
 		AB0235ED1EE56087007AB6BB /* CLLocation+YCLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+YCLocation.h"; sourceTree = "<group>"; };
 		AB0235EE1EE56087007AB6BB /* CLLocation+YCLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+YCLocation.m"; sourceTree = "<group>"; };
 		AB0235EF1EE56087007AB6BB /* SP_LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_LocationManager.swift; sourceTree = "<group>"; };
@@ -321,11 +320,6 @@
 		AB0236CB1EE562A0007AB6BB /* CGSize_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSize_extension.swift; sourceTree = "<group>"; };
 		AB0236CC1EE562A0007AB6BB /* Date_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date_extension.swift; sourceTree = "<group>"; };
 		AB0236CD1EE562A0007AB6BB /* DragableTableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragableTableExtension.swift; sourceTree = "<group>"; };
-		AB0236CE1EE562A0007AB6BB /* LCD_Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCD_Tool.swift; sourceTree = "<group>"; };
-		AB0236CF1EE562A0007AB6BB /* LCDToolClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCDToolClass.h; sourceTree = "<group>"; };
-		AB0236D01EE562A0007AB6BB /* LCDToolClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCDToolClass.m; sourceTree = "<group>"; };
-		AB0236D11EE562A0007AB6BB /* NSData+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+YYAdd.h"; sourceTree = "<group>"; };
-		AB0236D21EE562A0007AB6BB /* NSData+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+YYAdd.m"; sourceTree = "<group>"; };
 		AB0236D31EE562A0007AB6BB /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
 		AB0236D41EE562A0007AB6BB /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		AB0236D51EE562A0007AB6BB /* NSTimer_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimer_extension.swift; sourceTree = "<group>"; };
@@ -388,6 +382,9 @@
 		AB605F8A1EE00A6C0046BA15 /* SP_Charts_Demo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SP_Charts_Demo.storyboard; sourceTree = "<group>"; };
 		AB605F8C1EE015F50046BA15 /* SP_Charts_Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Charts_Demo.swift; sourceTree = "<group>"; };
 		AB63A1C61DA890AD00BC7C64 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AppDelegate+Extension.swift"; path = "SuperApp/AppDelegate+Extension.swift"; sourceTree = "<group>"; };
+		AB82CECF1EEE3DE600D015B1 /* SP_Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SP_Tool.swift; sourceTree = "<group>"; };
+		AB82CED01EEE3DE600D015B1 /* SP_ToolOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SP_ToolOC.h; sourceTree = "<group>"; };
+		AB82CED11EEE3DE600D015B1 /* SP_ToolOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SP_ToolOC.m; sourceTree = "<group>"; };
 		AB8B4CA81EC54F080063AFBB /* SPNT_NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNT_NavigationController.swift; sourceTree = "<group>"; };
 		AB8B4CAA1EC54F520063AFBB /* SPNT_TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNT_TabBarController.swift; sourceTree = "<group>"; };
 		AB8B4CAD1EC550FF0063AFBB /* NT_ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NT_ViewController1.swift; sourceTree = "<group>"; };
@@ -921,8 +918,11 @@
 			isa = PBXGroup;
 			children = (
 				AB0235CD1EE56087007AB6BB /* SP_Constant.swift */,
-				AB0235EA1EE56087007AB6BB /* SP_Info.h */,
-				AB0235EB1EE56087007AB6BB /* SP_Info.m */,
+				AB0235EA1EE56087007AB6BB /* SP_InfoOC.h */,
+				AB0235EB1EE56087007AB6BB /* SP_InfoOC.m */,
+				AB82CECF1EEE3DE600D015B1 /* SP_Tool.swift */,
+				AB82CED01EEE3DE600D015B1 /* SP_ToolOC.h */,
+				AB82CED11EEE3DE600D015B1 /* SP_ToolOC.m */,
 				AB2D33631EE69A1F00A29F91 /* SP_TextField */,
 				AB2D333C1EE6729100A29F91 /* SP_IconFont */,
 				AB0235C61EE56087007AB6BB /* SP_AdsView */,
@@ -1046,11 +1046,6 @@
 				AB0236CB1EE562A0007AB6BB /* CGSize_extension.swift */,
 				AB0236CC1EE562A0007AB6BB /* Date_extension.swift */,
 				AB0236CD1EE562A0007AB6BB /* DragableTableExtension.swift */,
-				AB0236CE1EE562A0007AB6BB /* LCD_Tool.swift */,
-				AB0236CF1EE562A0007AB6BB /* LCDToolClass.h */,
-				AB0236D01EE562A0007AB6BB /* LCDToolClass.m */,
-				AB0236D11EE562A0007AB6BB /* NSData+YYAdd.h */,
-				AB0236D21EE562A0007AB6BB /* NSData+YYAdd.m */,
 				AB0236D31EE562A0007AB6BB /* NSString+Hash.h */,
 				AB0236D41EE562A0007AB6BB /* NSString+Hash.m */,
 				AB0236D51EE562A0007AB6BB /* NSTimer_extension.swift */,
@@ -1612,6 +1607,7 @@
 				AB02350D1EE52BEA007AB6BB /* Y_KLineVolumePositionModel.m in Sources */,
 				AB0234BF1EE50EA1007AB6BB /* YYStock.m in Sources */,
 				AB02350A1EE52BEA007AB6BB /* Y_KLineGroupModel.m in Sources */,
+				AB82CED31EEE3DE600D015B1 /* SP_ToolOC.m in Sources */,
 				AB0236EE1EE562A0007AB6BB /* NSTimer_extension.swift in Sources */,
 				AB0235081EE52BEA007AB6BB /* KDJ介绍.md in Sources */,
 				AB2D334A1EE6729100A29F91 /* UIColor+picker.m in Sources */,
@@ -1626,7 +1622,6 @@
 				AB2D33491EE6729100A29F91 /* LBPIconFont.m in Sources */,
 				AB0237051EE56328007AB6BB /* SP_AdsView.swift in Sources */,
 				AB0235091EE52BEA007AB6BB /* MA-EMA-MACD介绍.md in Sources */,
-				AB0236EB1EE562A0007AB6BB /* LCDToolClass.m in Sources */,
 				AB0236321EE56087007AB6BB /* SP_MJRefreshDatas.swift in Sources */,
 				ABC71FBA1EC992B900C780F9 /* NT_ViewController13.swift in Sources */,
 				AB0774031DFFCA7D00D782BF /* SP_DrawerVC.swift in Sources */,
@@ -1637,6 +1632,7 @@
 				AB0235131EE52BEA007AB6BB /* Y_KLineVolumeView.m in Sources */,
 				AB102A0D1EE101CB0042654F /* SP_Charts_DemoStockVC.swift in Sources */,
 				ABFAA18B1EC5DBAF00EEA338 /* SP_NetWorkingType.swift in Sources */,
+				AB82CED21EEE3DE600D015B1 /* SP_Tool.swift in Sources */,
 				ABBFE0991DF7B84A000D7124 /* SP_MainVC.swift in Sources */,
 				AB0234BD1EE50EA1007AB6BB /* YYStockView_Kline.m in Sources */,
 				AB0236331EE56087007AB6BB /* Reachability.swift in Sources */,
@@ -1674,7 +1670,6 @@
 				AB0236F01EE562A0007AB6BB /* SP_TimeSingleton.swift in Sources */,
 				AB0235141EE52BEA007AB6BB /* Y_KLineView.m in Sources */,
 				AB8B4CB01EC5510F0063AFBB /* NT_ViewController11.swift in Sources */,
-				AB0236EA1EE562A0007AB6BB /* LCD_Tool.swift in Sources */,
 				ABDFC9171EC9F0FD002110AB /* SP_Rx_TableView.swift in Sources */,
 				AB0234B51EE50EA1007AB6BB /* YYStockViewMaskView.m in Sources */,
 				ABBFE0961DF7B84A000D7124 /* SP_AdsVC.swift in Sources */,
@@ -1688,7 +1683,7 @@
 				AB8B4CAB1EC54F520063AFBB /* SPNT_TabBarController.swift in Sources */,
 				AB0235001EE52BEA007AB6BB /* UIColor+Y_StockChart.m in Sources */,
 				AB0236E71EE562A0007AB6BB /* CGSize_extension.swift in Sources */,
-				AB02362B1EE56087007AB6BB /* SP_Info.m in Sources */,
+				AB02362B1EE56087007AB6BB /* SP_InfoOC.m in Sources */,
 				AB0236E91EE562A0007AB6BB /* DragableTableExtension.swift in Sources */,
 				AB605F8D1EE015F50046BA15 /* SP_Charts_Demo.swift in Sources */,
 				AB3A29F51ED2B2EC00871B52 /* SP_Rx_SigninVC.swift in Sources */,
@@ -1708,7 +1703,6 @@
 				AB0236F91EE562A0007AB6BB /* UITextField_LCD.swift in Sources */,
 				AB0774051DFFCA7D00D782BF /* SP_VipVC.swift in Sources */,
 				ABFAA18C1EC5DBAF00EEA338 /* SP_UploadParam.swift in Sources */,
-				AB0236EC1EE562A0007AB6BB /* NSData+YYAdd.m in Sources */,
 				AB0774041DFFCA7D00D782BF /* SP_ParentVC_Drawer.swift in Sources */,
 				AB02350B1EE52BEA007AB6BB /* Y_KLineModel.m in Sources */,
 				AB2D33661EE69A1F00A29F91 /* SP_TextField.swift in Sources */,

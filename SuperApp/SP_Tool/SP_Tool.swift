@@ -10,8 +10,8 @@ import UIKit
 import Foundation
 import UIKit
 //MARK:---- 获取本地文件
-struct LCD_Tool {
-    static func xz_ReturnBundleArray(_ path:String, name:String) -> [AnyObject] {
+struct SP_Tool{
+    static func sp_ReturnBundleArray(_ path:String, name:String) -> [AnyObject] {
         let path:String = Bundle.main.path(forResource: path, ofType: nil)!
         let dic = NSDictionary(contentsOfFile: path)
         let arr = dic!["\(name)"]

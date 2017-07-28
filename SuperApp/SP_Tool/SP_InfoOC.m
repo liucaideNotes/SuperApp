@@ -1,17 +1,17 @@
 //
-//  SP_Info.m
+//  SP_InfoOC.m
 //  SuperApp
 //
 //  Created by 刘才德 on 2017/5/30.
 //  Copyright © 2017年 Friends-Home. All rights reserved.
 //
 
-#import "SP_Info.h"
+#import "SP_InfoOC.h"
 
-static SP_Info* shared = nil;
-@implementation SP_Info
+static SP_InfoOC* shared = nil;
+@implementation SP_InfoOC
 #pragma mark ---------- 单例 ----------
-+ (SP_Info*) shared
++ (SP_InfoOC*) shared
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
@@ -61,13 +61,13 @@ static SP_Info* shared = nil;
 }
 //测试
 + (void)sp_print {
-    SP_Info *defaultManagerSingleton =[SP_Info shared];
+    SP_InfoOC *defaultManagerSingleton =[SP_InfoOC shared];
     NSLog(@"defaultManagerSingleton:\n%@",defaultManagerSingleton);
-    SP_Info *allocSingleton = [[SP_Info alloc] init];
+    SP_InfoOC *allocSingleton = [[SP_InfoOC alloc] init];
     NSLog(@"allocSingleton:\n%@",allocSingleton);
-    SP_Info *copySingleton = [allocSingleton copy];
+    SP_InfoOC *copySingleton = [allocSingleton copy];
     NSLog(@"copySingleton:\n%@",copySingleton);
-    SP_Info *mutebleCopySingleton = [allocSingleton mutableCopy];
+    SP_InfoOC *mutebleCopySingleton = [allocSingleton mutableCopy];
     NSLog(@"mutebleCopySingleton:\n%@",mutebleCopySingleton);
 }
 #pragma mark ---------- 国际化文字 ----------
@@ -142,10 +142,10 @@ static SP_Info* shared = nil;
 
 #pragma mark ---------- 字号适配 ----------
 + (UIFont*) sp_fontFitWithSize:(CGFloat)size {
-    return [UIFont systemFontOfSize:[SP_Info sp_fitWithSize:size]];
+    return [UIFont systemFontOfSize:[SP_InfoOC sp_fitWithSize:size]];
 }
 + (CGFloat) sp_fitWithSize:(CGFloat)size {
-    switch ([SP_Info sp_deviceModel]) {
+    switch ([SP_InfoOC sp_deviceModel]) {
         case tiPhone:
             return size;
             break;

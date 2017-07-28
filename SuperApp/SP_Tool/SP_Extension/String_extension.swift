@@ -208,7 +208,7 @@ extension String {
     
     //MARK:---------- 筛除富文本
 //    func xz_RemoveRichText(_ regexString:String) -> String {
-//        return LCDToolClass.xzRemoveString(with: self, withRegex: regexString)
+//        return SP_ToolOC.xzRemoveString(with: self, withRegex: regexString)
 //        
 //    }
 }

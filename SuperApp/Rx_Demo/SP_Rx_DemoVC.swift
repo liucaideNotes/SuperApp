@@ -57,12 +57,12 @@ class SP_Rx_DemoVC: UITableViewController {
     
     func makeTableView() {
         let tabData = RxTableViewSectionedReloadDataSource<TableSP_Rx_DemoModel>()
-        tabData.configureCell = { (data, tab, index, row) in
+        tabData.configureCell = { (dat, tab, index, model) in
             let cell = tab.dequeueReusableCell(withIdentifier: "Rx_DemoCell")
-            cell?.textLabel?.text = row.name
+            cell?.textLabel?.text = model.name
             return cell!
         }
-        tabData.
+        
         
         //数据绑定
         sections.asObservable()

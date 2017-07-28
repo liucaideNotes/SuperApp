@@ -9,4 +9,5 @@
 import Foundation
 
 //MARK:--- NotificationName -----------------------------
-let NotificationName_SP_Rx = NSNotification.Name(rawValue: "SP_Rx_NotificationCenter")
+let ntf_Name_SP_Rx = Notification.Name(rawValue: "SP_Rx_NotificationCenter")
+let ntf_Name_SP_DrawerVCPostValue = Notification.Name(rawValue: "SP_DrawerVCPostValue")

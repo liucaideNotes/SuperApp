@@ -1,5 +1,5 @@
 //
-//  LCDToolClass.h
+//  SP_ToolOC.h
 //  ihg
 //
 //  Created by sifenzi on 15/12/17.
@@ -21,7 +21,7 @@
 //#import "HXPhotoModel.h"
 
 
-@interface LCDToolClass : NSObject
+@interface SP_ToolOC : NSObject
 + (NSArray *) xzReturnCategoryStringWithType:(NSString *)mallType;
 
 

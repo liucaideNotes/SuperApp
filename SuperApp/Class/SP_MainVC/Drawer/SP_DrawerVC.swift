@@ -58,7 +58,7 @@ class SP_DrawerVC: UIViewController {
     //MARK:--- 向子控制器传值 - 通知
     func postNotification(_ tag:Int) {
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SP_DrawerVCPostValue"), object: ["tag":tag,"selectIndex":self.tabBar.selectedIndex])
+        sp_Notification.post(name: ntf_Name_SP_DrawerVCPostValue, object: ["tag":tag,"selectIndex":self.tabBar.selectedIndex])
     }
     
 

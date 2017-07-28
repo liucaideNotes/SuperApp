@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wav-W9-VyF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wav-W9-VyF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,7 +137,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="j9H-8g-wy2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title=" 设置" image="419EF740-212B-4B54-8578-CFC76D175075">
+                                                <state key="normal" title=" 设置" image="CAB13417-1A86-4E98-8EEC-4ED1A79965A2">
                                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
@@ -148,7 +148,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="fCS-Uo-Mxj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title=" 夜间" image="419EF740-212B-4B54-8578-CFC76D175075">
+                                                <state key="normal" title=" 夜间" image="CAB13417-1A86-4E98-8EEC-4ED1A79965A2">
                                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
@@ -222,10 +222,10 @@
             </objects>
             <point key="canvasLocation" x="-1122.4000000000001" y="-1278.7106446776613"/>
         </scene>
-        <!--MainVC-->
+        <!--SuperApp-->
         <scene sceneID="jKx-1M-3iT">
             <objects>
-                <viewController storyboardIdentifier="SP_MainVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2V-8a-8lA" customClass="SP_MainVC" customModule="SuperApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SP_MainVC" title="SuperApp" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2V-8a-8lA" customClass="SP_MainVC" customModule="SuperApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fTh-BH-QGT"/>
                         <viewControllerLayoutGuide type="bottom" id="Gvx-Ad-nVd"/>
@@ -500,7 +500,7 @@
     </scenes>
     <resources>
         <image name="200x200" width="229" height="229"/>
-        <image name="419EF740-212B-4B54-8578-CFC76D175075" width="20" height="20">
+        <image name="CAB13417-1A86-4E98-8EEC-4ED1A79965A2" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -44,12 +44,7 @@ if arr[4] == 12 {
 //guard arr[4] == 12 else{return}
 //print(arr[4])
 
-switch <#value#> {
-case <#pattern#>:
-    <#code#>
-default:
-    <#code#>
-}
+
 
 
 

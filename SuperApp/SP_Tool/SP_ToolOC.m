@@ -1,16 +1,16 @@
 //
-//  LCDToolClass.m
+//  SP_ToolOC.m
 //  ihg
 //
 //  Created by sifenzi on 15/12/17.
 //  Copyright © 2015年 Robin Zhang. All rights reserved.
 //
 
-#import "LCDToolClass.h"
+#import "SP_ToolOC.h"
 #import <CoreText/CoreText.h>
 
 
-@implementation LCDToolClass
+@implementation SP_ToolOC
 + (NSArray *) xzReturnCategoryStringWithType:(NSString *)mallType{
     NSString* path = [[NSBundle mainBundle] pathForResource:@"TuPian.plist" ofType:nil];
     NSDictionary * Dic = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -555,7 +555,7 @@
     NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] init];
     for (NSString *string in stringList) {
         //如果含有Emoji表情，不做处理
-        if ([LCDToolClass stringContainsEmoji:string]) {
+        if ([SP_ToolOC stringContainsEmoji:string]) {
             NSMutableAttributedString *contentEmojistring = [[NSMutableAttributedString alloc] initWithString:string];
             [mutableString appendAttributedString:contentEmojistring];
         }else { //否则设置段落样式，行高为4（这个高度要根据自己的需求慢慢的试）

@@ -18,9 +18,9 @@ class SP_Rx_NotificationCenter: UIViewController {
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        sp_Notification
-            .rx
-            .notification(NotificationName_SP_Rx, object: nil)
+        
+        sp_Notification.rx
+            .notification(ntf_Name_SP_Rx, object: nil)
             .takeUntil(self.rx.deallocated)
             .asObservable()
             .subscribe(onNext: { [weak self](notification) in
@@ -33,7 +33,7 @@ class SP_Rx_NotificationCenter: UIViewController {
     var num = 0
     
     @IBAction func postClick(_ sender: UIButton) {
-        sp_Notification.post(name: NotificationName_SP_Rx, object: "发送了通知_\(num+1)")
+        sp_Notification.post(name: ntf_Name_SP_Rx, object: "发送了通知_\(num+1)")
     }
     @IBOutlet weak var label_text: UILabel!
 }

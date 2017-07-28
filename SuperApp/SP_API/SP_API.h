@@ -10,7 +10,7 @@
 #define SP_MainURL   @"http://admin.militaryapp.china.com/News/NewsServlet.do"
 
 
-#define URL_getNewInfo  @"getNewsList"  //新闻列表
+#define URL_getNewList  @"getNewsList"  //新闻列表
 #define URL_getNewInfo  @"getNewInfo"   //新闻详情
 
 

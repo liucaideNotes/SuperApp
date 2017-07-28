@@ -17,7 +17,7 @@ class SP_MainVC: SP_ParentVC_Drawer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SP_Info.sp_print()
+        SP_InfoOC.sp_print()
         
         //网络判断
         Reachability.netRemindForNone(self)
@@ -54,7 +54,7 @@ class SP_MainVC: SP_ParentVC_Drawer {
         super.didReceiveMemoryWarning()
     }
     //MARK:--- 抽屉点击事件通知
-    override func drawerReceptionValue(_ notification:NSNotification) {
+    override func drawerReceptionValue(_ notification:Notification) {
         super.drawerReceptionValue(notification)
         let notifi = notification.object as? [String:Any]
         

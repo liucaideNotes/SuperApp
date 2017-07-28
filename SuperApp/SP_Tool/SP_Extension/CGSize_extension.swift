@@ -14,7 +14,7 @@ extension CGSize {
         paragraphStyle.lineBreakMode = .byWordWrapping
         let attributes = [NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle.copy()]
         
-//        let textttt = LCDToolClass.changeLineSpacing(LCDToolClass.getSeparatedLinesFromtext(text, font: font, maxWidth: size.width))
+//        let textttt = SP_ToolOC.changeLineSpacing(SP_ToolOC.getSeparatedLinesFromtext(text, font: font, maxWidth: size.width))
 //        var labelSize = textttt?.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil).size
 //        labelSize?.height = ceil(labelSize!.height)
 //        labelSize?.width = ceil(labelSize!.width)

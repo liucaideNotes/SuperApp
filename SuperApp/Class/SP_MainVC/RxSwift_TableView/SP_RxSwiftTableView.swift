@@ -39,7 +39,7 @@ class SP_RxSwiftTableView: SP_ParentVC_Drawer,UITableViewDelegate {
         n_view.n_view_NaviLine.isHidden = true
     }
     //MARK:--- 抽屉点击事件通知
-    override func drawerReceptionValue(_ notification:NSNotification) {
+    override func drawerReceptionValue(_ notification:Notification) {
         super.drawerReceptionValue(notification)
         let notifi = notification.object as? [String:Any]
         
