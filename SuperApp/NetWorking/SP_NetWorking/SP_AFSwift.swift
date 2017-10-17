@@ -13,9 +13,6 @@ enum SP_AFSwiftType {
     case get
     case post
 }
-/// 网络请求回调闭包 success:是否成功 result:数据 progress:请求进度 error:错误信息
-typealias NetworkFinished = (_ success: Bool, _ result: Any?, _ error: Error?) -> Void
-typealias NetworkProgress = (_ progress:Progress?) -> Void
 
 open class SP_AFSwift {
     fileprivate static let sharedInstance = SP_AFSwift()
@@ -45,8 +42,7 @@ open class SP_AFSwift {
         securityPolicy.validatesDomainName = true
         return securityPolicy
     }()
-    
-    private func makeSSL(_ cerName:String) {
+    fileprivate func makeSSL(_ cerName:String) {
         guard !cerName.isEmpty else {return}
         let cerPath:String = Bundle.main.path(forResource: cerName, ofType: "cer")!
         let url = URL(fileURLWithPath: cerPath)
@@ -96,92 +92,95 @@ open class SP_AFSwift {
         return _netState
     }
     
+    var uploadCancel = false
+}
+
+
+extension SP_AFSwift {
     //MARK:---- get 请求
-    func get(_ url:String, cerName:String = "", block:@escaping NetworkFinished) {
-        guard netWorkReachability() else {return}
-        makeSSL(cerName)
-        
-        _manager.get(url, parameters: nil, progress: { (Progress) in
-            
+    class func get(_ url:String, param:[String:Any], cerName:String = "", block: sp_netComBlock? = nil) {
+        guard SP_AFSwift.shared.netWorkReachability() else {return}
+        SP_AFSwift.shared.makeSSL(cerName)
+        SP_AFSwift.shared._manager.get(url, parameters: param, progress: { (Progress) in
         }, success: { (DataTask, obj) in
-            block(true,obj, nil)
+            block?(true,obj, nil)
         }, failure: { (DataTask, error) in
-            block(false,"", error)
+            block?(false,"", sp_returnNSError(error))
         })
     }
     //MARK:---- post 请求
-    func post(_ url:String, param:[String:Any], cerName:String = "", block:@escaping NetworkFinished) {
-        guard netWorkReachability() else {return}
-        makeSSL(cerName)
-        
-        _manager.post(url, parameters: param, progress: { (Progress) in
+    class func post(_ url:String, param:[String:Any], cerName:String = "", block: sp_netComBlock? = nil) {
+        guard SP_AFSwift.shared.netWorkReachability() else {return}
+        SP_AFSwift.shared.makeSSL(cerName)
+        SP_AFSwift.shared._manager.post(url, parameters: param, progress: { (Progress) in
             
         }, success: { (DataTask, obj) in
-            block(true,obj, nil)
+            block?(true,obj, nil)
         }) { (DataTask, error) in
             print(error)
-            block(false,"", error)
+            block?(false,"", sp_returnNSError(error))
         }
-        
     }
     //MARK:---- 上传
-    func upload(_ url:String, param:[String:Any], uploadParams:[SP_UploadParam], cerName:String = "",progress:@escaping NetworkProgress, block:@escaping NetworkFinished) {
-        guard netWorkReachability() else {return}
-        makeSSL(cerName)
-        
-        _manager.post(url, parameters: param, constructingBodyWith: { (formData) in
+    class func upload(_ url:String, param:[String:Any], uploadParams:[SP_UploadParam], cerName:String = "",progressBlock: sp_netProgressBlock? = nil, block: sp_netComBlock? = nil) {
+        guard SP_AFSwift.shared.netWorkReachability() else {return}
+        SP_AFSwift.shared.makeSSL(cerName)
+        SP_AFSwift.shared.uploadCancel = false
+        SP_AFSwift.shared._manager.post(url, parameters: param, constructingBodyWith: { (formData) in
             //上传文件参数
-            for param in uploadParams {
-                switch (param.type) {
+            for model in uploadParams {
+                switch (model.type) {
                 case .tData:
-                    //formData.appendPart(withForm: param.imageData, name: param.imageName)
-                    formData.appendPart(withFileData: param.imageData, name: param.imageName, fileName: param.filename, mimeType: param.mimeType)
-                case .tFileURL:
                     
+                    formData.appendPart(withFileData: model.fileData, name: model.serverName, fileName: model.filename, mimeType: model.mimeType)
+                case .tFileURL:
                     //formData.appendPartWithFileURL(NSURL(fileURLWithPath: param.fileURL), name: param.imageName, fileName: param.filename, mimeType: param.mimeType)
                     break
                 }
             }
             
-            }, progress: { (uploadProgress) in
-                //打印下上传进度
-                //print(uploadProgress.completedUnitCount / uploadProgress.totalUnitCount)
-               progress(uploadProgress)
-                
-            }, success: { (dataTask, obj) in
-                block(true,obj, nil);
-            }) { (dataTask, error) in
-                block(false,"", error);
+        }, progress: { (uploadProgress) in
+            if SP_AFSwift.shared.uploadCancel {
+                uploadProgress.cancel()
+            }
+            progressBlock?(uploadProgress)
+            
+        }, success: { (dataTask, obj) in
+            block?(true,obj, nil);
+        }) { (dataTask, error) in
+            block?(false,"", sp_returnNSError(error));
         }
         
     }
     
     //MARK:---- 下载
-    func downLoad(_ url:String, param:[String:Any], cerName:String = "", progress:@escaping NetworkProgress, block:@escaping NetworkFinished) {
+    class func downLoad(_ url:String, param:[String:Any], cerName:String = "", progressBlock: sp_netProgressBlock? = nil, block: sp_netComBlock? = nil) {
         
-        guard netWorkReachability() else {return}
-        makeSSL(cerName)
+        guard SP_AFSwift.shared.netWorkReachability() else {return}
+        SP_AFSwift.shared.makeSSL(cerName)
         
-        _manager = AFHTTPSessionManager(sessionConfiguration: URLSessionConfiguration.default)
+        //SP_AFSwift.shared._manager = AFHTTPSessionManager(sessionConfiguration: URLSessionConfiguration.default)
+        
         let request = URLRequest(url: URL(string: url)!)
-        let downLoadTask = _manager.downloadTask(with: request, progress: { (downloadProgress) in
+        
+        let downLoadTask = SP_AFSwift.shared._manager.downloadTask(with: request, progress: { (downloadProgress) in
             //打印下下载进度
             print(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)
-            progress(downloadProgress)
-            }, destination: { (targetPath, response) -> URL in
-                //下载地址
-                print("默认下载地址:\(targetPath)")
-                return targetPath
-                //设置下载路径，通过沙盒获取缓存地址，最后返回NSURL对象
-                //NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject];
-                //return [NSURL URLWithString:filePath];
-            }) { (response, filePath, error) in
-                //下载完成调用的方法
-                print("下载完成")
-                print("\(response)-->\(filePath)")
-                let result:[String:AnyObject] = ["response":response,"filePath":filePath as AnyObject? ?? "" as AnyObject]
-                block(true,result as AnyObject?, error as NSError?);
-                
+            progressBlock?(downloadProgress)
+        }, destination: { (targetPath, response) -> URL in
+            //下载地址
+            print("默认下载地址:\(targetPath)")
+            return targetPath
+            //设置下载路径，通过沙盒获取缓存地址，最后返回NSURL对象
+            //NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject];
+            //return [NSURL URLWithString:filePath];
+        }) { (response, filePath, error) in
+            //下载完成调用的方法
+            print("下载完成")
+            print("\(response)-->\(filePath)")
+            let result:[String:Any] = ["response":response,"filePath":filePath as Any? ?? "" as Any]
+            block?(true,result, sp_returnNSError(error!));
+            
         }
         downLoadTask.resume()
     }

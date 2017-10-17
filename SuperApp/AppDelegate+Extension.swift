@@ -65,7 +65,7 @@ extension AppDelegate {
         // 获取当前的版本号
         let nowVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         // 保存当前版本号
-        sp_UserDefaultsSet("oldVersionKey", obj:nowVersion as AnyObject)
+        sp_UserDefaultsSet("oldVersionKey", value:nowVersion as AnyObject)
         sp_UserDefaultsSyn()
     }
     

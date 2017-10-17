@@ -13,12 +13,24 @@
 
 #pragma mark ---------- 设备型号 ----------
 typedef NS_ENUM(NSInteger) {
-    tiPhone = 0,
+    tiPhone4 = 0,
+    tiPhone,
     tiPhoneA,
     tiPhoneP,
-    tiPod,
     tiPad,
 }SP_DeviceModel;
+
+typedef NS_ENUM(NSInteger) {
+    tUltraLight = 0,
+    tThin,
+    tLight,
+    tRegular,
+    tMedium,
+    tSemibold,
+    tBold,
+    tHeavy,
+    tBlack
+}SP_UIFontWeight;
 
 @interface SP_InfoOC : NSObject
 #pragma mark ---------- 单例及打印测试 ----------
@@ -26,9 +38,13 @@ typedef NS_ENUM(NSInteger) {
 + (id)shared;
 + (void)sp_print;
 #pragma mark ---------- 国际化文字 ----------
-+ (NSString *)sp_localizedStringForKey:(NSString *)key;
++ (NSString *)sp_localizedStringForKey:(NSString *)key from:(NSString *)from;
 #pragma mark ---------- 字号适配 ----------
 + (UIFont*) sp_fontFitWithSize:(CGFloat)size;
++ (UIFont*) sp_fontFitWithSize:(CGFloat)size weightType:(SP_UIFontWeight)weightType;
 + (CGFloat) sp_fitWithSize:(CGFloat)size;
 + (SP_DeviceModel)sp_deviceModel;
++ (NSString*) sp_getDateTimeStamp:(double)timeStamp WithFormat:(NSString*)format;
+
+
 @end

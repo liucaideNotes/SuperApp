@@ -22,48 +22,54 @@
 
 
 @interface SP_ToolOC : NSObject
-+ (NSArray *) xzReturnCategoryStringWithType:(NSString *)mallType;
++ (NSArray *) sp_returnTuPianStringWithType:(NSString *)mallType;
 
 
-+(NSString *)subStringWithString:(NSString *)string withRegex:(NSString *)regexString;
-+ (NSString*) xzRemoveStringWithString:(NSString *)string withRegex:(NSString *)regexString;
++(NSString *) sp_subStringWithString:(NSString *)string withRegex:(NSString *)regexString;
++ (NSString*) sp_removeStringWithString:(NSString *)string withRegex:(NSString *)regexString;
 
-+ (NSString *)getIPAddress;
++ (NSString *)sp_getIPAddress;
 
-+ (UIViewController *)getCurrentVC;
-+ (UIViewController *)getPresentedViewController;
++ (UIViewController *)sp_getCurrentVC;
++ (UIViewController *)sp_getPresentedVC;
 // 根据图片url获取图片尺寸
 //+(CGSize)getImageSizeWithURL:(id)imageURL;
 
 + (NSString *)sha1String:(NSData*)data;
 + (NSString*)sign:(NSString*)hash withFileName:(NSString*)fileName;
 + (NSString*)imagePathForVideo:(NSURL *)videoURL;
-+ (NSString*)videoUrl;
++ (NSURL*) sp_getFilePathWithSuffix:(NSString*)suffix;
++ (NSString *)sp_recordPath;
++ (NSString*)sp_audio_PCMtoMP3WithFilePath:(NSString*)filePath;
 
 + (void)clickUpload:(NSString*)sign customFolderPath:(NSString*)customFolderPath tempImage:(NSString*)tempImage;
-
-//+ (AVAssetExportSession*) zipVideoWithModel:(HXPhotoModel *) model;
 
 + (void) zipVideoWithInputURL:(NSURL*)inputURL
                 completeBlock:(void (^)(NSURL *))completeBlock;
 
-+ (NSDictionary*) prameWithTitle:(NSString*)Title
-                         Content:(NSString*)Content
-                             Ids:(NSString*)Ids
-                     TypeNameIds:(NSString*)TypeNameIds
-                       cheyouhui:(NSString*)cheyouhui
-                        CityClub:(NSString*)CityClub
-                         CarClub:(NSString*)CarClub
-                       Ifreprint:(NSString*)Ifreprint
-                         DraftId:(NSString*)DraftId
-                         TopicId:(NSString*)TopicId;
-
-
+//+ (AVAssetExportSession*) zipVideoWithModel:(HXPhotoModel *) model;
+/*
+ 
+ 
+ + (NSDictionary*) prameWithTitle:(NSString*)Title
+ Content:(NSString*)Content
+ Ids:(NSString*)Ids
+ TypeNameIds:(NSString*)TypeNameIds
+ cheyouhui:(NSString*)cheyouhui
+ CityClub:(NSString*)CityClub
+ CarClub:(NSString*)CarClub
+ Ifreprint:(NSString*)Ifreprint
+ DraftId:(NSString*)DraftId
+ TopicId:(NSString*)TopicId;
+ 
+ */
 
 + (NSArray *)getSeparatedLinesFromtext:(NSString *)text font:(UIFont *)font maxWidth:(CGFloat)maxWidth;
 
 + (BOOL)stringContainsEmoji:(NSString *)string;
 
 + (NSMutableAttributedString *)changeLineSpacing:(NSArray *)stringList;
+
++ (NSString *) stringByReplacingOccurrences:(NSString*)string;
 @end
 

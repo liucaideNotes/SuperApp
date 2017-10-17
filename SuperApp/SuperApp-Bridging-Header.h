@@ -17,3 +17,7 @@
 #pragma mark ---------- IconFont ----------
 #import "UIImage+LBPIconFont.h"
 #import "LBPFontInfo.h"
+
+//#pragma mark ---------- 照片视频选择器 ----------
+#import "HXPhotoView.h"
+#import "HXPhotoViewController.h"

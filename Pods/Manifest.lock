@@ -22,6 +22,7 @@ PODS:
   - DZNEmptyDataSet (1.5.2)
   - FORScrollViewEmptyAssistant (0.1.2):
     - DZNEmptyDataSet (~> 1.5.2)
+  - IQKeyboardManager (4.0.11)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
@@ -46,9 +47,15 @@ PODS:
     - RxSwift (~> 3.0)
   - RxSwift (3.4.1)
   - SnapKit (3.2.0)
+  - Socket.IO-Client-Swift (11.0.0):
+    - StarscreamSocketIO (~> 8.0.1)
+  - StarscreamSocketIO (8.0.1)
   - SVProgressHUD (2.1.2)
   - SwiftyJSON (3.1.4)
+  - Then (2.1.0)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - WCDB (1.0.3)
+  - YCXMenu (0.0.11)
   - YYAsyncLayer (1.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
@@ -59,7 +66,6 @@ PODS:
     - YYImage/Core (= 1.0.4)
   - YYImage/Core (1.0.4)
   - YYKeyboardManager (1.0.1)
-  - YYModel (1.0.4)
   - YYText (1.0.7)
   - YYWebImage (1.0.5):
     - YYCache
@@ -71,6 +77,7 @@ DEPENDENCIES:
   - Charts
   - CYLTableViewPlaceHolder
   - FORScrollViewEmptyAssistant
+  - IQKeyboardManager
   - Masonry
   - MBProgressHUD
   - MJRefresh
@@ -82,16 +89,19 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift
   - SnapKit
+  - Socket.IO-Client-Swift
   - SVProgressHUD
   - SwiftyJSON
+  - Then
   - UITableView+FDTemplateLayoutCell
+  - WCDB
+  - YCXMenu
   - YYAsyncLayer
   - YYCache
   - YYCategories
   - YYDispatchQueuePool
   - YYImage
   - YYKeyboardManager
-  - YYModel
   - YYText
   - YYWebImage
 
@@ -102,6 +112,7 @@ SPEC CHECKSUMS:
   CYLTableViewPlaceHolder: 44075c119aab78bbc514c75d771d6565e19938e8
   DZNEmptyDataSet: 741da409081a4bf707c949c964623a6ad1799772
   FORScrollViewEmptyAssistant: 8434fcb61e4dc1c19bb4670ec99d48a3d5fea4d7
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -114,19 +125,23 @@ SPEC CHECKSUMS:
   RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
   RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Socket.IO-Client-Swift: 9cafa4459be23886c231942baeebb0df94f3989e
+  StarscreamSocketIO: 821a1a2597cc4735919fd5d7683a85c14b81bb8c
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Then: 8496793c8fcac95482b943909b440724c7d8d82c
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  WCDB: 1f32cb4d3fa59ec36afdf827614e9f014fa5bce4
+  YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
   YYAsyncLayer: df6b01ebc695c5f6b4c15dd5c23fa3e081eb25c0
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYDispatchQueuePool: 3dfb2274bcc74207688dde8ac6f7bdd46871dd7b
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
-  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 458f8e15af6c0de31a9458638360fce912d685e4
+PODFILE CHECKSUM: e48fae1a8c5c710aa68dfa5e9cef0d3a62f2e720
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.1

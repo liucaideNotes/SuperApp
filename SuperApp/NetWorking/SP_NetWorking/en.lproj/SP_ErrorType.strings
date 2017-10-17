@@ -1,0 +1,48 @@
+/* 
+  SP_ErrorType.strings
+  Fortuna
+
+  Created by 刘才德 on 2017/6/26.
+  Copyright © 2017年 Friends-Home. All rights reserved.
+*/
+"未知错误" = "An unknown error";
+"取消了网址" = "Cancel the url";
+"错误URL" = "Error URL";
+"请求超时" = "The request timeout";
+"不支持URL" = "Does not support URL";
+"无法找到服务器" = "Unable to find a server";
+"无法连接到服务器" = "Unable to connect to the server";
+"数据长度超过最大值" = "Data length exceeds the maximum";
+"网络连接丢失" = "Network connection lost";
+"DNS查找失败" = "DNS lookup failure";
+"HTTP重定向" = "HTTP redirection";
+"资源不可用" = "Resource is not available";
+"您可能没有连接互联网" = "You may not connect to the Internet";
+"重定向到不存在的位置" = "Redirect to do not exist";
+"服务器响应错误" = "The server response errors";
+"用户取消认证" = "The user to cancel the certification";
+"用户认证要求" = "User authentication request";
+"零字节资源" = "Zero bytes resources";
+"不能解码原始数据" = "Can't decode the raw data";
+"无法解码内容数据" = "Unable to decode the content data";
+"无法解析响应" = "Unable to parse the response";
+"文件不存在" = "File does not exist";
+"文件目录错误" = "File directory error";
+"没有权限读取文件" = "No permission to read the file";
+"安全连接失败" = "A secure connection failure";
+"服务器证书已过期" = "The server certificate has expired";
+"服务器证书不可信" = "The server certificate is not to be trusted";
+"服务器证书具有未知的Root" = "The Root of the server certificate is unknown";
+"服务器证书无效" = "The server certificate is invalid";
+"客户端证书被拒绝" = "The client certificate is rejected";
+"客户端证书要求" = "Client certificate";
+"无法加载网络" = "Unable to load the network";
+"无法创建文件" = "Unable to create the file";
+"无法打开文件" = "Unable to open file";
+"无法关闭文件" = "Unable to close the file";
+"无法写入文件" = "Cannot write file";
+"无法删除文件" = "Unable to delete file";
+"无法移动文件" = "Unable to move file";
+"下载解码失败" = "Download the decoding failure";
+"下载解码未能完成" = "Download the decoding was not completed";
+"连接错误" = "Connection error";

@@ -13,23 +13,23 @@ import RxCocoa
 //MARK:--- RxSwift -----------------------------
 
 
+
 let sp_Notification = NotificationCenter.default
+let sp_ntfNameKeyboardWillShow = NSNotification.Name.UIKeyboardWillShow
+let sp_ntfNameKeyboardWillHide = NSNotification.Name.UIKeyboardWillHide
+
 //import SnapKit
 //MARK:---- 打印
 func print_SP(_ items:Any){
     print(items)
 }
-
-//MARK:----------- 基本数据
-var sp_UserIsLogin: Bool {
-    let isLogin = ((sp_UserDefaultsGet(UserId) as? String ?? "").isEmpty) ? false : true
-    return isLogin
+func print_Json(_ items:Any){
+    print(items)
 }
-
 //MARK:------------- sp_UserDefaults
 //全局设置 简化 NSUserDefaults 的写法
-func sp_UserDefaultsSet(_ key:String, obj:Any) -> Void {
-    return UserDefaults.standard.set(obj, forKey: key)
+func sp_UserDefaultsSet(_ key:String, value:Any) -> Void {
+    return UserDefaults.standard.set(value, forKey: key)
 }
 func sp_UserDefaultsGet(_ key:String) -> Any {
     return UserDefaults.standard.value(forKey: key) ?? ""
@@ -41,10 +41,6 @@ func sp_UserDefaultsBool(_ key:String) -> Bool {
     
     return UserDefaults.standard.bool(forKey: key)
 }
-func sp_UserDefaultsSetBool(_ key:String, value:Bool) -> Void {
-    
-    return UserDefaults.standard.set(value, forKey: key)
-}
 func sp_UserDefaultsSyn() {
     UserDefaults.standard.synchronize()
 }
@@ -55,25 +51,64 @@ func += <KeyType, ValueType> ( left: inout Dictionary<KeyType, ValueType>, right
     }
 }
 //MARK:----------- 屏幕  屏幕宽高 宽高比
-let sp_MainWindow = UIApplication.shared.delegate!.window!!
+var sp_MainWindow: UIWindow!// = UIApplication.shared.delegate!.window!!
 let sp_ScreenMidX: CGFloat = UIScreen.main.bounds.midX
 let sp_ScreenMidY: CGFloat = UIScreen.main.bounds.midY
 let sp_ScreenWidth:CGFloat = UIScreen.main.bounds.size.width
 let sp_ScreenHeight:CGFloat = UIScreen.main.bounds.size.height
 let sp_ScreenRatio: CGFloat = sp_ScreenWidth / sp_ScreenHeight
+
 //MARK:----------- 设备
-let sp_iphone:String = {
-    if sp_ScreenHeight == 667 {
-        return "6"
+enum SP_DeviceType {
+    case tiPhone4
+    case tiPhone
+    case tiPhoneA
+    case tiPhoneP
+    case tiPad
+}
+var sp_iphone:SP_DeviceType {
+    let ww_hh = sp_ScreenWidth/sp_ScreenHeight
+    if (ww_hh == 320.0/480.0 || ww_hh == 480.0/320.0) {return .tiPhone4}
+    if (ww_hh == 320.0/568.0 || ww_hh == 568.0/320.0) {return .tiPhone}
+    if (ww_hh == 375.0/667.0 || ww_hh == 667.0/375.0) {return .tiPhoneA}
+    if (ww_hh == 414.0/736.0 || ww_hh == 736.0/414.0) {return .tiPhoneP}
+    return .tiPad
+}
+//MARK:----------- 屏幕适配尺寸
+func sp_fitSize(_ size:(CGFloat,CGFloat,CGFloat)) -> CGFloat {
+    switch sp_iphone {
+    case .tiPhone4,.tiPhone:
+        return size.0
+    case .tiPhoneA:
+        return size.1
+    case .tiPhoneP:
+        return size.2
+    default:
+        return size.2
     }
-    if sp_ScreenHeight == 736{
-        return "6+"
-    }
-    if sp_ScreenHeight == 480{
-        return "4"
-    }
-    return "5"
-}()
+}
+let sp_fitFont11 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 11))
+let sp_fitFont12 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 12))
+let sp_fitFont13 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 13))
+let sp_fitFont14 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 14))
+let sp_fitFont15 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 15))
+let sp_fitFont16 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 16))
+let sp_fitFont18 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 18))
+let sp_fitFont20 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 20))
+let sp_fitFont22 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 22))
+let sp_fitFont30 = UIFont.systemFont(ofSize: SP_InfoOC.sp_fit(withSize: 30))
+
+let sp_fitFontB12 = UIFont.boldSystemFont(ofSize: SP_InfoOC.sp_fit(withSize: 12))
+let sp_fitFontB14 = UIFont.boldSystemFont(ofSize: SP_InfoOC.sp_fit(withSize: 14))
+let sp_fitFontB15 = UIFont.boldSystemFont(ofSize: SP_InfoOC.sp_fit(withSize: 15))
+let sp_fitFontB16 = UIFont.boldSystemFont(ofSize: SP_InfoOC.sp_fit(withSize: 16))
+let sp_fitFontB18 = UIFont.boldSystemFont(ofSize: SP_InfoOC.sp_fit(withSize: 18))
+let sp_fitFontB20 = UIFont.boldSystemFont(ofSize: SP_InfoOC.sp_fit(withSize: 20))
+let sp_fitFontB22 = UIFont.boldSystemFont(ofSize: SP_InfoOC.sp_fit(withSize: 22))
+//MARK:--- 语言适配 -----------------------------
+func sp_localized(_ key:String, from:String = "Localization") -> String {
+    return SP_InfoOC.sp_localizedString(forKey: key, from:from)
+}
 
 //MARK:----------- 导航栏 底部栏 和各减去 高度
 let sp_NaviHeight: CGFloat = 64.0
@@ -95,9 +130,14 @@ func sp_ViewHeight_Navi_Tab(view: AnyObject) -> CGFloat {
     return view.bounds.size.height - 64 - 49
 }
 //--- 组头 组尾 高度
-let sp_SectionH_Top: CGFloat = 40.0
+let sp_SectionH_Top: CGFloat = 50.0
 let sp_SectionH_Foot: CGFloat = 5.0
 let sp_SectionH_Min: CGFloat = 0.0001
+//--- 间距
+let sp_Space_L: CGFloat = 15.0
+let sp_Space_R: CGFloat = 15.0
+let sp_Space_T: CGFloat = 15.0
+let sp_Space_B: CGFloat = 15.0
 
 /// 是否安装微信
 //var haveWeixin:Bool {

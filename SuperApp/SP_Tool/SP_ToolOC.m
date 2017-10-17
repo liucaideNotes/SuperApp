@@ -8,10 +8,11 @@
 
 #import "SP_ToolOC.h"
 #import <CoreText/CoreText.h>
-
+#import "lame.h"
+#define DocumentPath  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
 @implementation SP_ToolOC
-+ (NSArray *) xzReturnCategoryStringWithType:(NSString *)mallType{
++ (NSArray *) sp_returnTuPianStringWithType:(NSString *)mallType{
     NSString* path = [[NSBundle mainBundle] pathForResource:@"TuPian.plist" ofType:nil];
     NSDictionary * Dic = [NSDictionary dictionaryWithContentsOfFile:path];
     NSArray * CategoryArr = [Dic valueForKey:mallType];
@@ -19,7 +20,7 @@
 }
 
 #pragma mark ------------------------------ 筛除富文本
-+(NSString *)subStringWithString:(NSString *)string withRegex:(NSString *)regexString{
++(NSString *)sp_subStringWithString:(NSString *)string withRegex:(NSString *)regexString{
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString options:0 error:&error];
     if (error != nil) {
@@ -38,19 +39,19 @@
     }
     return @"";
 }
-+ (NSString*) xzRemoveStringWithString:(NSString *)string withRegex:(NSString *)regexString{
++ (NSString*) sp_removeStringWithString:(NSString *)string withRegex:(NSString *)regexString{
     //----------内容
     NSString * xzStr = string;
     
-    while (![[self subStringWithString:xzStr withRegex:regexString] isEqualToString: @""]) {
-        NSString * str = [self subStringWithString:xzStr withRegex:regexString];
+    while (![[self sp_subStringWithString:xzStr withRegex:regexString] isEqualToString: @""]) {
+        NSString * str = [self sp_subStringWithString:xzStr withRegex:regexString];
         NSArray *arr = [xzStr componentsSeparatedByString:str];
         xzStr = [arr componentsJoinedByString:@""];
     }
     return xzStr;
 }
 
-+ (NSString *)getIPAddress{
++ (NSString *)sp_getIPAddress{
     NSString *address = @"error";
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
@@ -78,7 +79,7 @@
 
 
 //获取当前屏幕显示的viewcontroller
-+ (UIViewController *)getCurrentVC
++ (UIViewController *)sp_getCurrentVC
 {
     UIViewController *result = nil;
     
@@ -100,14 +101,14 @@
     id nextResponder = [frontView nextResponder];
     
     if ([nextResponder isKindOfClass:[UIViewController class]])
-        result = nextResponder;
+    result = nextResponder;
     else
-        result = window.rootViewController;
+    result = window.rootViewController;
     
     return result;
 }
 //获取当前屏幕中present出来的viewcontroller
-+ (UIViewController *)getPresentedViewController
++ (UIViewController *)sp_getPresentedVC
 {
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topVC = appRootVC;
@@ -154,12 +155,85 @@
     
 }
 
+/**
+ *  语音文件存储路径
+ *
+ *  @return 路径
+ */
++ (NSString *)sp_recordPath {
+    NSString *filePath = [DocumentPath stringByAppendingPathComponent:@"SoundFile"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSError *error = nil;
+        [[NSFileManager defaultManager] createDirectoryAtPath:filePath withIntermediateDirectories:NO attributes:nil error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }
+    return filePath;
+}
++ (NSString*)sp_audio_PCMtoMP3WithFilePath:(NSString*)filePath
+{
+    
+    NSString *cafFilePath = filePath;    //caf文件路径
+    
+    NSString* fileName = [NSString stringWithFormat:@"/voice-%.0f.mp3", [[NSDate date] timeIntervalSince1970]*1000 ];//存储mp3文件的路径
+    
+    NSString *mp3FileName = [[DocumentPath stringByAppendingPathComponent:@"SoundFile"] stringByAppendingPathComponent:fileName];
+    
+    
+    @try {
+        int read, write;
+        
+        FILE *pcm = fopen([cafFilePath cStringUsingEncoding:1], "rb");  //source 被转换的音频文件位置
+        fseek(pcm, 4*1024, SEEK_CUR);                                   //skip file header
+        FILE *mp3 = fopen([mp3FileName cStringUsingEncoding:1], "wb");  //output 输出生成的Mp3文件位置
+        
+        const int PCM_SIZE = 8192;
+        const int MP3_SIZE = 8192;
+        short int pcm_buffer[PCM_SIZE*2];
+        unsigned char mp3_buffer[MP3_SIZE];
+        
+        lame_t lame = lame_init();
+        lame_set_num_channels(lame, 2);//设置1为单通道，默认为2双通道
+        lame_set_in_samplerate(lame, 8000.0);//11025.0
+        //lame_set_VBR(lame, vbr_default);
+        lame_set_brate(lame, 16);
+        lame_set_mode(lame, 3);
+        lame_set_quality(lame, 2);
+        lame_init_params(lame);
+        
+        do {
+            read = fread(pcm_buffer, 2*sizeof(short int), PCM_SIZE, pcm);
+            if (read == 0)
+            write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
+            else
+            write = lame_encode_buffer_interleaved(lame, pcm_buffer, read, mp3_buffer, MP3_SIZE);
+            
+            fwrite(mp3_buffer, write, 1, mp3);
+            
+        } while (read != 0);
+        
+        lame_close(lame);
+        fclose(mp3);
+        fclose(pcm);
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",[exception description]);
+    }
+    @finally {
+        //        self.audioFileSavePath = mp3FilePath;
+        NSLog(@"MP3生成成功: %@",mp3FileName);
+    }
+    
+    return mp3FileName;
+}
 
-+ (NSString*)videoUrl{
-    NSString *documentDir= [NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ];
-    //保存首页图片 写真背景图
-    NSString *customFolderPath = [documentDir stringByAppendingPathComponent:@"tempVideo.mp4"];
-    return customFolderPath;
+
++ (NSURL*) sp_getFilePathWithSuffix:(NSString*)suffix {
+    // 1.获取沙盒地址
+    NSString *path= [NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) lastObject];
+    NSString *filePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%.0f.%@",[[NSDate date] timeIntervalSince1970]*1000,suffix]];
+    return [NSURL fileURLWithPath:filePath];
 }
 + (NSString*)imagePathForVideo:(NSURL *)videoURL {
     
@@ -175,97 +249,31 @@
     thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60)actualTime:NULL error:&thumbnailImageGenerationError];
     
     if(!thumbnailImageRef)
-        NSLog(@"thumbnailImageGenerationError %@",thumbnailImageGenerationError);
+    NSLog(@"thumbnailImageGenerationError %@",thumbnailImageGenerationError);
     
     UIImage*thumbnailImage = thumbnailImageRef ? [[UIImage alloc]initWithCGImage: thumbnailImageRef] : nil;
     
     NSString *documentDir= [NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ];
     
     NSData *imagedata=UIImageJPEGRepresentation(thumbnailImage, 0.5);
-    NSString *tempImage = [documentDir stringByAppendingPathComponent:@"tempVideoImage.jpg"];
+    
+    NSString *tempImageStr = [NSString stringWithFormat:@"VideoImage-%f.jpg",[[NSDate date] timeIntervalSince1970]*1000];
+    
+    NSString *tempImage = [documentDir stringByAppendingPathComponent:tempImageStr];
     [imagedata writeToFile:tempImage atomically:YES];
     
     
     return tempImage;
 }
 
-/*
-+ (void)clickUpload:(NSString*)sign customFolderPath:(NSString*)customFolderPath tempImage:(NSString*)tempImage {
-    
-    TVCConfig *config = [[TVCConfig alloc] init];
-    
-    config.signature = sign;
-    config.secretId = @"AKIDBUemj0VuSkxvfFmijgOrdARQ8etrv2HH";
-    config.forceHttps = NO;
-    TVCClient * client = [[TVCClient alloc] initWithConfig:config];
-    
-    TVCUploadParam *param = [[TVCUploadParam alloc] init];
-    param.videoPath = customFolderPath;
-    param.coverPath = tempImage;
-    NSLog(@"customFolderPath=>%@",customFolderPath);
-    [client uploadVideo:param result:^(TVCUploadResponse *resp) {
-        NSLog(@"result : %d-%@-%@-%@-%@",
-              resp.retCode,
-              resp.descMsg,
-              resp.videoId,resp.videoURL,
-              resp.coverURL);
-    } progress:^(NSInteger bytesUpload, NSInteger bytesTotal) {
-        NSLog(@"progress : %ld-%ld",
-              (long)bytesUpload,
-              (long)bytesTotal);
-    }];
-}
-
-+ (AVAssetExportSession*) zipVideoWithModel:(HXPhotoModel *) model
-{
-    NSString *filename = model.videoURL.absoluteString;
-//    //保存至沙盒路径
-    NSString *pathDocuments = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//
-    NSString *videoPath = [NSString stringWithFormat:@"%@/Image", pathDocuments];
-//
-    NSString *sandBoxFilePath = [videoPath stringByAppendingPathComponent:filename];
-    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *documentsDirectory = [paths objectAtIndex:0];
-    //NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:
-                             //[NSString stringWithFormat:@"FinalVideo_%d.mp4",arc4random() % 1000]];
-    NSURL *clipVideoURL = [NSURL fileURLWithPath:sandBoxFilePath];
-    //转码配置
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:model.videoURL options:nil];
-    AVAssetExportSession *exportSession= [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetLowQuality];
-    exportSession.shouldOptimizeForNetworkUse = YES;
-    exportSession.outputURL = clipVideoURL;
-    exportSession.outputFileType = AVFileTypeMPEG4;
-    return exportSession;
-//    [exportSession exportAsynchronouslyWithCompletionHandler:^{
-//        int exportStatus = exportSession.status;
-//        
-//        switch (exportStatus)
-//        {
-//            case AVAssetExportSessionStatusFailed:
-//            {
-//                // log error to text view
-//                NSError *exportError = exportSession.error;
-//                NSLog (@"AVAssetExportSessionStatusFailed: %@", exportError);
-//                break;
-//            }
-//            case AVAssetExportSessionStatusCompleted:
-//            {
-//                //RZLog(@"视频转码成功");
-//            
-//            }
-//        }
-//    }];
-}
-
 + (void) zipVideoWithInputURL:(NSURL*)inputURL
-                         completeBlock:(void (^)(NSURL *))completeBlock
+                completeBlock:(void (^)(NSURL *))completeBlock
 {
     
     
     NSURL *newVideoUrl ; //一般.mp4
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];//用时间给文件全名，以免重复，在测试的时候其实可以判断文件是否存在若存在，则删除，重新生成文件即可
-    [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
+    [formater setDateFormat:@"yyyyMMddHHmmssSSS"];
     newVideoUrl = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingFormat:@"/Documents/output%@.mp4",[formater stringFromDate:[NSDate date]]]] ;//这个是保存在app自己的沙盒路径里，后面可以选择是否在上传后删除掉。我建议删除掉，免得占空间。
     
     AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
@@ -278,19 +286,19 @@
     [exportSession exportAsynchronouslyWithCompletionHandler:^(void)
      {
          switch (exportSession.status) {
-             case AVAssetExportSessionStatusCancelled:
+                 case AVAssetExportSessionStatusCancelled:
                  NSLog(@"AVAssetExportSessionStatusCancelled");
                  break;
-             case AVAssetExportSessionStatusUnknown:
+                 case AVAssetExportSessionStatusUnknown:
                  NSLog(@"AVAssetExportSessionStatusUnknown");
                  break;
-             case AVAssetExportSessionStatusWaiting:
+                 case AVAssetExportSessionStatusWaiting:
                  NSLog(@"AVAssetExportSessionStatusWaiting");
                  break;
-             case AVAssetExportSessionStatusExporting:
+                 case AVAssetExportSessionStatusExporting:
                  NSLog(@"AVAssetExportSessionStatusExporting");
                  break;
-             case AVAssetExportSessionStatusCompleted:
+                 case AVAssetExportSessionStatusCompleted:
                  NSLog(@"AVAssetExportSessionStatusCompleted");
                  //NSLog(@"%@",[NSString stringWithFormat:@"%f s", [self getVideoLength:outputURL]]);
                  //NSLog(@"%@", [NSString stringWithFormat:@"%.2f kb", [self getFileSize:[outputURL path]]]);
@@ -302,7 +310,7 @@
                      completeBlock(newVideoUrl);
                  }
                  break;
-             case AVAssetExportSessionStatusFailed:
+                 case AVAssetExportSessionStatusFailed:
                  NSLog(@"AVAssetExportSessionStatusFailed");
                  if (completeBlock) {
                      completeBlock(nil);
@@ -314,163 +322,234 @@
     
 }
 
-+ (NSDictionary*) prameWithTitle:(NSString*)Title
-                         Content:(NSString*)Content
-                             Ids:(NSString*)Ids
-                     TypeNameIds:(NSString*)TypeNameIds
-                       cheyouhui:(NSString*)cheyouhui
-                        CityClub:(NSString*)CityClub
-                         CarClub:(NSString*)CarClub
-                       Ifreprint:(NSString*)Ifreprint
-                         DraftId:(NSString*)DraftId
-                         TopicId:(NSString*)TopicId
-{
-    
-    NSDictionary * dict3 = @{@"Title":Title,
-                             @"Content":Content,
-                             @"Ids":Ids,
-                             @"TypeNameIds":TypeNameIds,
-                             @"cheyouhui":cheyouhui,
-                             @"CityClub":CityClub,
-                             @"CarClub":CarClub,
-                             @"Ifreprint":Ifreprint,
-                             @"DraftId":DraftId,
-                             @"TopicId":TopicId};
-    
-    return dict3;
-}
-*/
+
+/*
+ + (void)clickUpload:(NSString*)sign customFolderPath:(NSString*)customFolderPath tempImage:(NSString*)tempImage {
+ 
+ TVCConfig *config = [[TVCConfig alloc] init];
+ 
+ config.signature = sign;
+ config.secretId = @"AKIDBUemj0VuSkxvfFmijgOrdARQ8etrv2HH";
+ config.forceHttps = NO;
+ TVCClient * client = [[TVCClient alloc] initWithConfig:config];
+ 
+ TVCUploadParam *param = [[TVCUploadParam alloc] init];
+ param.videoPath = customFolderPath;
+ param.coverPath = tempImage;
+ NSLog(@"customFolderPath=>%@",customFolderPath);
+ [client uploadVideo:param result:^(TVCUploadResponse *resp) {
+ NSLog(@"result : %d-%@-%@-%@-%@",
+ resp.retCode,
+ resp.descMsg,
+ resp.videoId,resp.videoURL,
+ resp.coverURL);
+ } progress:^(NSInteger bytesUpload, NSInteger bytesTotal) {
+ NSLog(@"progress : %ld-%ld",
+ (long)bytesUpload,
+ (long)bytesTotal);
+ }];
+ }
+ 
+ + (AVAssetExportSession*) zipVideoWithModel:(HXPhotoModel *) model
+ {
+ NSString *filename = model.videoURL.absoluteString;
+ //    //保存至沙盒路径
+ NSString *pathDocuments = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+ //
+ NSString *videoPath = [NSString stringWithFormat:@"%@/Image", pathDocuments];
+ //
+ NSString *sandBoxFilePath = [videoPath stringByAppendingPathComponent:filename];
+ //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+ //NSString *documentsDirectory = [paths objectAtIndex:0];
+ //NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:
+ //[NSString stringWithFormat:@"FinalVideo_%d.mp4",arc4random() % 1000]];
+ NSURL *clipVideoURL = [NSURL fileURLWithPath:sandBoxFilePath];
+ //转码配置
+ AVURLAsset *asset = [AVURLAsset URLAssetWithURL:model.videoURL options:nil];
+ AVAssetExportSession *exportSession= [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetLowQuality];
+ exportSession.shouldOptimizeForNetworkUse = YES;
+ exportSession.outputURL = clipVideoURL;
+ exportSession.outputFileType = AVFileTypeMPEG4;
+ return exportSession;
+ //    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+ //        int exportStatus = exportSession.status;
+ //
+ //        switch (exportStatus)
+ //        {
+ //            case AVAssetExportSessionStatusFailed:
+ //            {
+ //                // log error to text view
+ //                NSError *exportError = exportSession.error;
+ //                NSLog (@"AVAssetExportSessionStatusFailed: %@", exportError);
+ //                break;
+ //            }
+ //            case AVAssetExportSessionStatusCompleted:
+ //            {
+ //                //RZLog(@"视频转码成功");
+ //
+ //            }
+ //        }
+ //    }];
+ }
+ 
+ 
+ + (NSDictionary*) prameWithTitle:(NSString*)Title
+ Content:(NSString*)Content
+ Ids:(NSString*)Ids
+ TypeNameIds:(NSString*)TypeNameIds
+ cheyouhui:(NSString*)cheyouhui
+ CityClub:(NSString*)CityClub
+ CarClub:(NSString*)CarClub
+ Ifreprint:(NSString*)Ifreprint
+ DraftId:(NSString*)DraftId
+ TopicId:(NSString*)TopicId
+ {
+ 
+ NSDictionary * dict3 = @{@"Title":Title,
+ @"Content":Content,
+ @"Ids":Ids,
+ @"TypeNameIds":TypeNameIds,
+ @"cheyouhui":cheyouhui,
+ @"CityClub":CityClub,
+ @"CarClub":CarClub,
+ @"Ifreprint":Ifreprint,
+ @"DraftId":DraftId,
+ @"TopicId":TopicId};
+ 
+ return dict3;
+ }
+ */
 /*/ 根据图片url获取图片尺寸
-+(CGSize)getImageSizeWithURL:(id)imageURL
-{
-    NSURL* URL = nil;
-    if([imageURL isKindOfClass:[NSURL class]]){
-        URL = imageURL;
-    }
-    if([imageURL isKindOfClass:[NSString class]]){
-        URL = [NSURL URLWithString:imageURL];
-    }
-    if(URL == nil)
-        return CGSizeZero;                  // url不正确返回CGSizeZero
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
-    NSString* pathExtendsion = [URL.pathExtension lowercaseString];
-    
-    CGSize size = CGSizeZero;
-    if([pathExtendsion isEqualToString:@"png"]){
-        size =  [self getPNGImageSizeWithRequest:request];
-    }
-    else if([pathExtendsion isEqual:@"gif"])
-    {
-        size =  [self getGIFImageSizeWithRequest:request];
-    }
-    else{
-        size = [self getJPGImageSizeWithRequest:request];
-    }
-    if(CGSizeEqualToSize(CGSizeZero, size))                    // 如果获取文件头信息失败,发送异步请求请求原图
-    {
-        NSData* data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:URL] returningResponse:nil error:nil];
-        UIImage* image = [UIImage imageWithData:data];
-        if(image)
-        {
-            size = image.size;
-        }
-    }
-    return size;
-}
-//  获取PNG图片的大小
-+(CGSize)getPNGImageSizeWithRequest:(NSMutableURLRequest*)request
-{
-    [request setValue:@"bytes=16-23" forHTTPHeaderField:@"Range"];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    if(data.length == 8)
-    {
-        int w1 = 0, w2 = 0, w3 = 0, w4 = 0;
-        [data getBytes:&w1 range:NSMakeRange(0, 1)];
-        [data getBytes:&w2 range:NSMakeRange(1, 1)];
-        [data getBytes:&w3 range:NSMakeRange(2, 1)];
-        [data getBytes:&w4 range:NSMakeRange(3, 1)];
-        int w = (w1 << 24) + (w2 << 16) + (w3 << 8) + w4;
-        int h1 = 0, h2 = 0, h3 = 0, h4 = 0;
-        [data getBytes:&h1 range:NSMakeRange(4, 1)];
-        [data getBytes:&h2 range:NSMakeRange(5, 1)];
-        [data getBytes:&h3 range:NSMakeRange(6, 1)];
-        [data getBytes:&h4 range:NSMakeRange(7, 1)];
-        int h = (h1 << 24) + (h2 << 16) + (h3 << 8) + h4;
-        return CGSizeMake(w, h);
-    }
-    return CGSizeZero;
-}
-//  获取gif图片的大小
-+(CGSize)getGIFImageSizeWithRequest:(NSMutableURLRequest*)request
-{
-    [request setValue:@"bytes=6-9" forHTTPHeaderField:@"Range"];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    if(data.length == 4)
-    {
-        short w1 = 0, w2 = 0;
-        [data getBytes:&w1 range:NSMakeRange(0, 1)];
-        [data getBytes:&w2 range:NSMakeRange(1, 1)];
-        short w = w1 + (w2 << 8);
-        short h1 = 0, h2 = 0;
-        [data getBytes:&h1 range:NSMakeRange(2, 1)];
-        [data getBytes:&h2 range:NSMakeRange(3, 1)];
-        short h = h1 + (h2 << 8);
-        return CGSizeMake(w, h);
-    }
-    return CGSizeZero;
-}
-//  获取jpg图片的大小
-+(CGSize)getJPGImageSizeWithRequest:(NSMutableURLRequest*)request
-{
-    [request setValue:@"bytes=0-209" forHTTPHeaderField:@"Range"];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    
-    if ([data length] <= 0x58) {
-        return CGSizeZero;
-    }
-    
-    if ([data length] < 210) {// 肯定只有一个DQT字段
-        short w1 = 0, w2 = 0;
-        [data getBytes:&w1 range:NSMakeRange(0x60, 0x1)];
-        [data getBytes:&w2 range:NSMakeRange(0x61, 0x1)];
-        short w = (w1 << 8) + w2;
-        short h1 = 0, h2 = 0;
-        [data getBytes:&h1 range:NSMakeRange(0x5e, 0x1)];
-        [data getBytes:&h2 range:NSMakeRange(0x5f, 0x1)];
-        short h = (h1 << 8) + h2;
-        return CGSizeMake(w, h);
-    } else {
-        short word = 0x0;
-        [data getBytes:&word range:NSMakeRange(0x15, 0x1)];
-        if (word == 0xdb) {
-            [data getBytes:&word range:NSMakeRange(0x5a, 0x1)];
-            if (word == 0xdb) {// 两个DQT字段
-                short w1 = 0, w2 = 0;
-                [data getBytes:&w1 range:NSMakeRange(0xa5, 0x1)];
-                [data getBytes:&w2 range:NSMakeRange(0xa6, 0x1)];
-                short w = (w1 << 8) + w2;
-                short h1 = 0, h2 = 0;
-                [data getBytes:&h1 range:NSMakeRange(0xa3, 0x1)];
-                [data getBytes:&h2 range:NSMakeRange(0xa4, 0x1)];
-                short h = (h1 << 8) + h2;
-                return CGSizeMake(w, h);
-            } else {// 一个DQT字段
-                short w1 = 0, w2 = 0;
-                [data getBytes:&w1 range:NSMakeRange(0x60, 0x1)];
-                [data getBytes:&w2 range:NSMakeRange(0x61, 0x1)];
-                short w = (w1 << 8) + w2;
-                short h1 = 0, h2 = 0;
-                [data getBytes:&h1 range:NSMakeRange(0x5e, 0x1)];
-                [data getBytes:&h2 range:NSMakeRange(0x5f, 0x1)];
-                short h = (h1 << 8) + h2;
-                return CGSizeMake(w, h);
-            }
-        } else {
-            return CGSizeZero;
-        }
-    }
-}*/
+ +(CGSize)getImageSizeWithURL:(id)imageURL
+ {
+ NSURL* URL = nil;
+ if([imageURL isKindOfClass:[NSURL class]]){
+ URL = imageURL;
+ }
+ if([imageURL isKindOfClass:[NSString class]]){
+ URL = [NSURL URLWithString:imageURL];
+ }
+ if(URL == nil)
+ return CGSizeZero;                  // url不正确返回CGSizeZero
+ 
+ NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
+ NSString* pathExtendsion = [URL.pathExtension lowercaseString];
+ 
+ CGSize size = CGSizeZero;
+ if([pathExtendsion isEqualToString:@"png"]){
+ size =  [self getPNGImageSizeWithRequest:request];
+ }
+ else if([pathExtendsion isEqual:@"gif"])
+ {
+ size =  [self getGIFImageSizeWithRequest:request];
+ }
+ else{
+ size = [self getJPGImageSizeWithRequest:request];
+ }
+ if(CGSizeEqualToSize(CGSizeZero, size))                    // 如果获取文件头信息失败,发送异步请求请求原图
+ {
+ NSData* data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:URL] returningResponse:nil error:nil];
+ UIImage* image = [UIImage imageWithData:data];
+ if(image)
+ {
+ size = image.size;
+ }
+ }
+ return size;
+ }
+ //  获取PNG图片的大小
+ +(CGSize)getPNGImageSizeWithRequest:(NSMutableURLRequest*)request
+ {
+ [request setValue:@"bytes=16-23" forHTTPHeaderField:@"Range"];
+ NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+ if(data.length == 8)
+ {
+ int w1 = 0, w2 = 0, w3 = 0, w4 = 0;
+ [data getBytes:&w1 range:NSMakeRange(0, 1)];
+ [data getBytes:&w2 range:NSMakeRange(1, 1)];
+ [data getBytes:&w3 range:NSMakeRange(2, 1)];
+ [data getBytes:&w4 range:NSMakeRange(3, 1)];
+ int w = (w1 << 24) + (w2 << 16) + (w3 << 8) + w4;
+ int h1 = 0, h2 = 0, h3 = 0, h4 = 0;
+ [data getBytes:&h1 range:NSMakeRange(4, 1)];
+ [data getBytes:&h2 range:NSMakeRange(5, 1)];
+ [data getBytes:&h3 range:NSMakeRange(6, 1)];
+ [data getBytes:&h4 range:NSMakeRange(7, 1)];
+ int h = (h1 << 24) + (h2 << 16) + (h3 << 8) + h4;
+ return CGSizeMake(w, h);
+ }
+ return CGSizeZero;
+ }
+ //  获取gif图片的大小
+ +(CGSize)getGIFImageSizeWithRequest:(NSMutableURLRequest*)request
+ {
+ [request setValue:@"bytes=6-9" forHTTPHeaderField:@"Range"];
+ NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+ if(data.length == 4)
+ {
+ short w1 = 0, w2 = 0;
+ [data getBytes:&w1 range:NSMakeRange(0, 1)];
+ [data getBytes:&w2 range:NSMakeRange(1, 1)];
+ short w = w1 + (w2 << 8);
+ short h1 = 0, h2 = 0;
+ [data getBytes:&h1 range:NSMakeRange(2, 1)];
+ [data getBytes:&h2 range:NSMakeRange(3, 1)];
+ short h = h1 + (h2 << 8);
+ return CGSizeMake(w, h);
+ }
+ return CGSizeZero;
+ }
+ //  获取jpg图片的大小
+ +(CGSize)getJPGImageSizeWithRequest:(NSMutableURLRequest*)request
+ {
+ [request setValue:@"bytes=0-209" forHTTPHeaderField:@"Range"];
+ NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+ 
+ if ([data length] <= 0x58) {
+ return CGSizeZero;
+ }
+ 
+ if ([data length] < 210) {// 肯定只有一个DQT字段
+ short w1 = 0, w2 = 0;
+ [data getBytes:&w1 range:NSMakeRange(0x60, 0x1)];
+ [data getBytes:&w2 range:NSMakeRange(0x61, 0x1)];
+ short w = (w1 << 8) + w2;
+ short h1 = 0, h2 = 0;
+ [data getBytes:&h1 range:NSMakeRange(0x5e, 0x1)];
+ [data getBytes:&h2 range:NSMakeRange(0x5f, 0x1)];
+ short h = (h1 << 8) + h2;
+ return CGSizeMake(w, h);
+ } else {
+ short word = 0x0;
+ [data getBytes:&word range:NSMakeRange(0x15, 0x1)];
+ if (word == 0xdb) {
+ [data getBytes:&word range:NSMakeRange(0x5a, 0x1)];
+ if (word == 0xdb) {// 两个DQT字段
+ short w1 = 0, w2 = 0;
+ [data getBytes:&w1 range:NSMakeRange(0xa5, 0x1)];
+ [data getBytes:&w2 range:NSMakeRange(0xa6, 0x1)];
+ short w = (w1 << 8) + w2;
+ short h1 = 0, h2 = 0;
+ [data getBytes:&h1 range:NSMakeRange(0xa3, 0x1)];
+ [data getBytes:&h2 range:NSMakeRange(0xa4, 0x1)];
+ short h = (h1 << 8) + h2;
+ return CGSizeMake(w, h);
+ } else {// 一个DQT字段
+ short w1 = 0, w2 = 0;
+ [data getBytes:&w1 range:NSMakeRange(0x60, 0x1)];
+ [data getBytes:&w2 range:NSMakeRange(0x61, 0x1)];
+ short w = (w1 << 8) + w2;
+ short h1 = 0, h2 = 0;
+ [data getBytes:&h1 range:NSMakeRange(0x5e, 0x1)];
+ [data getBytes:&h2 range:NSMakeRange(0x5f, 0x1)];
+ short h = (h1 << 8) + h2;
+ return CGSizeMake(w, h);
+ }
+ } else {
+ return CGSizeZero;
+ }
+ }
+ }*/
 
 
 
@@ -570,5 +649,7 @@
 }
 
 
-
++ (NSString *) stringByReplacingOccurrences:(NSString*)string {
+    return [string stringByReplacingOccurrencesOfString:@"?" withString:@""];
+}
 @end
